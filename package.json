@@ -1,0 +1,27 @@
+{
+  "name": "volkanfilazi",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vueuse/core": "^9.13.0",
+    "pinia": "^2.0.33",
+    "tsparticles": "^2.9.3",
+    "vue": "^3.2.45",
+    "vue3-circle-progress": "^1.0.7",
+    "vue3-particles": "^2.9.3"
+  },
+  "devDependencies": {
+    "@iconify/vue": "^4.1.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.1.0"
+  }
+}
