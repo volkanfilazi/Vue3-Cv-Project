@@ -11,6 +11,7 @@
   "dependencies": {
     "@vueuse/core": "^9.13.0",
     "pinia": "^2.0.33",
+    "swiper": "^9.3.2",
     "tsparticles": "^2.9.3",
     "vue": "^3.2.45",
     "vue3-circle-progress": "^1.0.7",
