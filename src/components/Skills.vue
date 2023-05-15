@@ -7,9 +7,9 @@ const skillsStore = useSkillsStore()
 
 </script>
 <template>
-    <div class="flex flex-col w-full relative h-full gap-5 p-5">
-        <div class="flex flex-col sm:flex-col h-full md:h-3/5 gap-5 md:flex-row md:justify-between">
-            <div class="flex flex-col w-full sm:w-full text-white  border-[1px] border-t-yellow-400 border-l-yellow-400 md:w-1/2 h-full p-2">
+    <div class="flex flex-col justify-center w-full relative h-full gap-5 p-5">
+        <div class="flex flex-col sm:flex-col md:w-4/4 md:px-40 h-full md:h-3/5 gap-5 md:flex-row md:justify-between">
+            <div class="flex flex-col w-full sm:w-full text-white  border-[1px] border-t-yellow-400 border-l-yellow-400 md:w-1/2 h-[370px] p-2">
                 <h2 class="text-yellow-400 font-bold">Android Skills</h2>
                 <div v-for="skills in skillsStore.androidSkills">
                     <div class="flex items-center gap-2">
@@ -18,7 +18,7 @@ const skillsStore = useSkillsStore()
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col w-full sm:w-full text-white border-[1px] border-r-yellow-400 border-b-yellow-400 md:w-1/2 h-full p-2">
+            <div class="flex flex-col w-full sm:w-full text-white border-[1px] border-r-yellow-400 border-b-yellow-400 md:w-1/2  h-[370px] p-2">
                 <h2 class="text-yellow-400 font-bold">Web Skills</h2>
                 <div v-for="webSkill in skillsStore.webSkills">
                     <div class="flex items-center gap-2">

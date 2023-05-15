@@ -55,19 +55,19 @@ function cv() {
 }
 </script>
 <template>
-    <div class="flex flex-col justify-center w-full relative h-screen gap-5">
-        <div class="flex flex-col w-full justify-center sm:w-full text-white md:w-full md:h-2/5 p-2">
+    <div id="portfolio" class="flex flex-col justify-center w-full relative mb-5 h-full sm:h-full md:h-full items-center gap-5">
+        <div class="flex flex-col w-full justify-center sm:w-full text-white md:w-4/5 md:h-[400px]">
             <div class="flex flex-col sm:flex-col md:flex-row items-center gap-5 justify-center h-full">
                 <div class="flex flex-col w-full p-5 border-[1px] gap-2 h-full sm-w-full md:w-1/4">
                     <h2 class="text-yellow-400 font-bold">Portfolio</h2>
-                    <h2 @click="booking()" class="text-white cursor-pointer transition-all duration-500"
-                        :class="{ 'text-yellow-400 transition-all duration-500': selectedBookingSystem }">Booking System</h2>
-                    <h2 @click="sumsi()" class="text-white cursor-pointer" :class="{ 'text-yellow-400 ': selectedSumsi }">
-                        Raiffeisen Sumsi</h2>
-                    <h2 @click="restaurant()" class="text-white cursor-pointer transition-all duration-500" :class="{ 'text-yellow-400 transition-all duration-500': selectedRestaurant }">
-                        Restaurant Order</h2>
-                    <h2 @click="cv()" class="text-white cursor-pointer transition-all duration-500" :class="{ 'text-yellow-400 transition-all duration-500': selectedCv }">First Cv Volkan
-                        Filazi</h2>
+                    <button @click="booking()" class="text-start text-white cursor-pointer transition-all duration-500"
+                        :class="{ 'text-yellow-400 transition-all duration-500': selectedBookingSystem }">Booking System</button>
+                    <button @click="sumsi()" class="text-start text-white cursor-pointer" :class="{ 'text-yellow-400 ': selectedSumsi }">
+                        Raiffeisen Sumsi</button>
+                    <button @click="restaurant()" class="text-start text-white cursor-pointer transition-all duration-500" :class="{ 'text-yellow-400 transition-all duration-500': selectedRestaurant }">
+                        Restaurant Order</button>
+                    <button @click="cv()" class="text-start text-white cursor-pointer transition-all duration-500" :class="{ 'text-yellow-400 transition-all duration-500': selectedCv }">First Cv Volkan
+                        Filazi</button>
                 </div>
                 <div class="flex border-[1px] w-full h-full">
                     <Transition>
@@ -88,6 +88,10 @@ function cv() {
     </div>
 </template>
 <style scoped>
+
+button{
+  cursor: url('../image/icons8-hand-cursor-50.png'), auto; 
+}
 /* we will explain what these classes do next! */
 .v-enter-active,
 .v-leave-active {
@@ -97,4 +101,6 @@ function cv() {
 .v-enter-from,
 .v-leave-to {
     opacity: 0;
-}</style>
+}
+
+</style>
