@@ -224,10 +224,10 @@ function introWhoAmI() {
           </div>
         </Transition>
         <button @click="emailOpen()"
-          class="w-12 h-12 sm:w-12 sm:h-12 md:w-20 md:h-20 cursor-pointer flex justify-center items-center  bg-white rounded-full"
+          class="w-12 h-12 sm:w-12 shadow-md shadow-black sm:h-12 md:w-20 md:h-20 cursor-pointer flex justify-center items-center border-[1px] rounded-full"
           :class="{ 'bg-yellow-400 transition-all duration-500': emailToogle }">
           <Icon class="w-[30px] h-[30px] sm:w-[30px] sm:h-[30px] md:w-[36px] md:h-[36px] " icon="ic:round-email"
-            color="black" width="36" height="36" />
+            color="white" width="36" height="36" />
         </button>
       </div>
       <div class="flex justify-end items-center gap-2">
@@ -238,10 +238,10 @@ function introWhoAmI() {
           </div>
         </Transition>
         <button @click="phoneOpen()"
-          class="w-12 h-12 sm:w-12 sm:h-12 md:w-20 md:h-20 cursor-pointer flex justify-center items-center  bg-white rounded-full"
+          class="w-12 h-12 sm:w-12 shadow-md shadow-black sm:h-12 md:w-20 md:h-20 cursor-pointer flex justify-center items-center border-[1px] rounded-full"
           :class="{ 'bg-yellow-400 transition-all duration-500': phoneToogle }">
           <Icon class="w-[30px] h-[30px] sm:w-[30px] sm:h-[30px] md:w-[36px] md:h-[36px]"
-            icon="material-symbols:phone-android" color="black" width="36" height="36" />
+            icon="material-symbols:phone-android" color="white" width="36" height="36" />
         </button>
       </div>
     </div>

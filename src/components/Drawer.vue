@@ -83,7 +83,7 @@ function drawerFunc() {
       :class="{ 'translate-x-[250px] sm:translate-x-[250px] md:translate-x-[500px] transition-all duration-500': drawerToogle }">
     </button>
     <div
-      class="fixed top-0 left-0 flex flex-col z-40 w-64 sm-w-64 md:w-[500px] h-full transition-all duration-500 transform -translate-x-full bg-black border-r-[1px] text-white shadow-l"
+      class="fixed top-0 left-0 flex flex-col z-40 w-64 sm-w-64 md:w-[500px] h-full transition-all duration-500 transform -translate-x-full bg-[#0e152f] border-r-[1px] text-white shadow-l"
       :class="{ 'translate-x-0': drawerToogle }">
       <div
         class="hidden px-6 py-4 sm:hidden md:flex flex-col z-40 bg-gray-900 text-white border-b-[2px] border-yellow-600 justify-center items-center">
@@ -142,28 +142,28 @@ function drawerFunc() {
 
       <div class="flex flex-col sm-flex-col md:flex-col md:gap-5 p-1 w-full md:justify-between md:p-10">
         <div class="flex flex-col justify-center items-center gap-1">
-          <circle-progress background="#0e1420" :percent="progressTurkish" :size="100" :border-width="10"
+          <circle-progress background="#0e152f" :percent="progressTurkish" :size="100" :border-width="10"
             :border-bg-width="10" :is-gradient="true" :gradient="{
-              startColor: '#ff0000',
-              stopColor: '#ffff00',
+              startColor: '#facc15',
+              stopColor: '#facc15',
             }" />
           <p class="absolute mb-7">{{ progressTurkish }}%</p>
           <p>Turkish</p>
         </div>
         <div class="flex flex-col justify-center items-center gap-1">
-          <circle-progress background="#0e1420" :percent="progressEnglish" :size="100" :border-width="10"
+          <circle-progress background="#0e152f" :percent="progressEnglish" :size="100" :border-width="10"
             :border-bg-width="10" :is-gradient="true" :gradient="{
-              startColor: '#ff0000',
-              stopColor: '#ffff00',
+              startColor: '#facc15',
+              stopColor: '#facc15',
             }" />
           <p class="absolute mb-7">{{ progressEnglish }}%</p>
           <p>English</p>
         </div>
         <div class="flex relative flex-col justify-center items-center gap-1">
-          <circle-progress background="#0e1420" :percent="progressGerman" :size="100" :border-width="10"
+          <circle-progress background="#0e152f" :percent="progressGerman" :size="100" :border-width="10"
             :border-bg-width="10" :is-gradient="true" :gradient="{
-              startColor: '#ff0000',
-              stopColor: '#ffff00',
+              startColor: '#facc15',
+              stopColor: '#facc15',
             }" />
           <p class="absolute mb-7">{{ progressGerman }}%</p>
           <p>German</p>

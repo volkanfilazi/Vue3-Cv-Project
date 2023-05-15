@@ -50,11 +50,11 @@ function showWorking() {
   <div id="skills"
     class="skills flex flex-col mt-5 md:mt-0 justify-between h-full sm:h-full md:h-screen md:w-4/4 sm:flex-col md:flex-row w-full  md:items-center z-10">
     <div
-      class="flex  bg-black h-full shadow-xl w-1/4 z-30 flex-col justify-center items-center  ">
+      class="flex bg-[#0e152f] h-full w-1/4 z-30 flex-col justify-center items-center  ">
       <div>
         <button @click="showWebDesign()"
-        class="flex cursor-pointer z-[500] flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
-        :class="{ 'transition-all duration-500 bg-black border-[1px] border-yellow-400': showWeb }">
+        class="flex cursor-pointer z-[500] flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent  hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+        :class="{ 'transition-all duration-500 border-[1px] border-yellow-400': showWeb }">
         <h2 class="text-white hidden sm:hidden md:flex">Skills</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
           <div class="flex items-center">
@@ -67,7 +67,7 @@ function showWorking() {
       </button>
       <button @click="showApplication()"
             class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
-                :class="{ 'transition-all duration-500 bg-black border-yellow-400': showApp }">
+                :class="{ 'transition-all duration-500 border-yellow-400': showApp }">
                 <h2 class="text-white hidden sm:hidden md:flex">Education</h2>
                 <div class="flex gap-1 h-2/3 w-full items-center justify-center">
                     <div class="flex items-center">
@@ -77,7 +77,7 @@ function showWorking() {
             </button>
             <button @click="showEducation()"
             class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
-                :class="{ 'transition-all duration-500 bg-black border-yellow-400': showEdu }">
+                :class="{ 'transition-all duration-500 border-yellow-400': showEdu }">
                 <h2 class="text-white hidden sm:hidden md:flex">Work</h2>
                 <div class="flex gap-1 h-2/3 w-full items-center justify-center">
                     <div class="flex items-center">
@@ -87,7 +87,7 @@ function showWorking() {
             </button>
             <button @click="showWorking()"
             class="flex cursor-pointer flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
-                :class="{ 'transition-all duration-500 bg-black border-yellow-400': showWork }">
+                :class="{ 'transition-all duration-500 border-yellow-400': showWork }">
                 <h2 class="text-white hidden sm:hidden md:flex">Hobbies</h2>
                 <div class="flex gap-1 h-2/3 w-full items-center justify-center">
                     <div class="flex items-center">

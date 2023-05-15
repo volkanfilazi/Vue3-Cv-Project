@@ -44,7 +44,7 @@ function showWorking() {
 }
 </script>
 <template>
-    <div class="skills flex flex-col mt-5 md:mt-0 justify-between h-full sm:h-full md:h-screen md:w-4/4 sm:flex-col md:flex-row w-full md:justify-center md:items-center z-10">
+    <div id="skillls" class="skills flex flex-col mt-5 md:mt-0 justify-between h-full sm:h-full md:h-screen md:w-4/4 sm:flex-col md:flex-row w-full md:justify-center md:items-center z-10">
         <div class="flex flex-row justify-center sm:justify-center gap-1 sm:flex-row md:justify-start md:flex-col">
             <button @click="showWebDesign()"
                 class="flex cursor-pointer flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"

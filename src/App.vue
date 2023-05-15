@@ -17,7 +17,7 @@ import Test from './components/Test.vue'
     <Navbar></Navbar>
     <Drawer></Drawer>
     <div class="w-full h-full flex ">
-      <div class="w-full flex h-full flex-col md:w-full bg-[#000000]">
+      <div class="w-full flex h-full flex-col md:w-full bg-[#0e152f]">
         <Intro></Intro>
         <Tools></Tools>
         <CareerSections class="flex sm:flex md:hidden"></CareerSections>
