@@ -215,36 +215,6 @@ function introWhoAmI() {
       </Transition>
     </div>
 
-    <div class="hidden md:flex md:flex-col gap-2 absolute top-0 right-0 md:mr-20 mt-40">
-      <div class="flex justify-end items-center gap-2">
-        <Transition>
-          <div v-if="emailToogle"
-            class="w-50 h-10 flex justify-center items-center p-2 text-black font-bold text-center bg-white">
-            <p>volkanfilazi@hotmail.com</p>
-          </div>
-        </Transition>
-        <button @click="emailOpen()"
-          class="w-12 h-12 sm:w-12 shadow-md shadow-black sm:h-12 md:w-20 md:h-20 cursor-pointer flex justify-center items-center border-[1px] rounded-full"
-          :class="{ 'bg-yellow-400 transition-all duration-500': emailToogle }">
-          <Icon class="w-[30px] h-[30px] sm:w-[30px] sm:h-[30px] md:w-[36px] md:h-[36px] " icon="ic:round-email"
-            color="white" width="36" height="36" />
-        </button>
-      </div>
-      <div class="flex justify-end items-center gap-2">
-        <Transition>
-          <div v-if="phoneToogle"
-            class="w-50 h-10 flex justify-center items-center p-2 text-black font-bold text-center bg-white">
-            <p>+4368181287010</p>
-          </div>
-        </Transition>
-        <button @click="phoneOpen()"
-          class="w-12 h-12 sm:w-12 shadow-md shadow-black sm:h-12 md:w-20 md:h-20 cursor-pointer flex justify-center items-center border-[1px] rounded-full"
-          :class="{ 'bg-yellow-400 transition-all duration-500': phoneToogle }">
-          <Icon class="w-[30px] h-[30px] sm:w-[30px] sm:h-[30px] md:w-[36px] md:h-[36px]"
-            icon="material-symbols:phone-android" color="white" width="36" height="36" />
-        </button>
-      </div>
-    </div>
   </div>
 </template>
 
