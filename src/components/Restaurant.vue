@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
-
+import { useStorage } from "@vueuse/core";
+import { useNotificationCard } from '../Store/NotificationCard';
 import VModal from '../components/V-Modal.vue'
 
 let currentIndexRestaurant = ref(0)
@@ -11,6 +12,10 @@ const popupOpenToogle = ref(false)
 const selectedImage1 = ref(false)
 const selectedImage2 = ref(false)
 const selectedImage3 = ref(false)
+const notificationCard = useNotificationCard()
+const visitToogle = useStorage("visit",false)
+
+
 
 function prevImageRestaurant() {
   currentIndexRestaurant.value--
@@ -96,12 +101,12 @@ function popupCloseButton() {
         <p class="text-yellow-400 text-center">Languages and Frameworks : <span class="text-white">Vanillejs, HTML, CSS, Tailwind</span></p>
         <p class="text-yellow-400 text-center">Used Packages : <span class="text-white">@iconify/vue, autoprefixer</span></p>
         <div class="flex justify-center mt-5">
-          <button class="border-[2px] relative w-20 h-10 text-center border-yellow-400 text-white">Visit<span
+          <button @click="notificationCard.visitButtonErrorAnimation()" class="border-[2px] relative w-20 h-10 text-center border-yellow-400 text-white">Visit<span
               class="top-0 right-0 bg-yellow-400 w-3 h-3 rounded-full absolute animate-ping"></span></button>
         </div>
-      </div>
+      </div>   
     </div>
-
+    
     <VModal :open="popupOpenToogle" @close="popupCloseButton()">
         <template #default>
             <div class="flex justify-center items-center max-w-[1000px]">

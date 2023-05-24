@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
 import VModal from '../components/V-Modal.vue'
+import { useStorage } from "@vueuse/core";
+import { useNotificationCard } from '../Store/NotificationCard';
 
 
   let currentIndexReifeisen = ref(0)
@@ -10,6 +12,8 @@ import VModal from '../components/V-Modal.vue'
   const selectedImage3 = ref(false)
   const selectedImage4 = ref(false)
   const popupOpenToogle = ref(false)
+  const notificationCard = useNotificationCard()
+  const visitToogle = useStorage("visit",false)
 
 
   function prevImageReifeisen() {
@@ -49,6 +53,8 @@ function popupCloseButton() {
     selectedImage3.value = false
     popupOpenToogle.value = false
 }
+
+
 </script>
 
 <template>
@@ -64,7 +70,7 @@ function popupCloseButton() {
         <p class="text-yellow-400 text-center">Used Packages : <span class="text-white">axios, iconify/vue,
             @vitejs/plugin-vue, autoprefixer</span></p>
         <div class="flex justify-center mt-5">
-          <button class="border-[2px] relative w-20 h-10 text-center border-yellow-400 text-white">Visit<span
+          <button @click="notificationCard.visitButtonErrorAnimation()" class="border-[2px] relative w-20 h-10 text-center border-yellow-400 text-white">Visit<span
               class="top-0 right-0 bg-yellow-400 w-3 h-3 rounded-full absolute animate-ping"></span></button>
         </div>
       </div>
@@ -112,6 +118,13 @@ function popupCloseButton() {
         </div>
       </div>
     </div>
+    <div class="flex z-[120]">
+    <div
+      class="fixed bottom-0 right-0 flex flex-col rounded-lg bg-red-600 shadow-sm shadow-black justify-center items-center z-40 w-64 sm-w-64 md:w-[250px] md:h-[100px] mb-20 ml-2 transition-transform duration-500 transform"
+      :class="{ 'translate-x-full': !visitToogle, 'translate-x-0 mr-2': visitToogle}">
+      <p class="transition-all duration-500 text-white text-center">Sorry there is no domain for this website</p>
+    </div>
+  </div>
     <VModal :open="popupOpenToogle" @close="popupCloseButton()">
         <template #default>
             <div class="flex justify-center items-center max-w-[1000px]">

@@ -2,13 +2,12 @@
 import Navbar from './components/Navbar.vue'
 import Intro from './components/Intro.vue'
 import Drawer from './components/Drawer.vue'
-import Particles from './components/Particles.vue'
 import CareerSections from './components/CareerSections.vue'
 import CareerSectionsCopy from './components/CareerSectionsCopy.vue'
-import Portfolio from './components/Portfolio.vue'
 import Tools from './components/Tools.vue'
 import Footer from './components/Footer.vue'
 import Test from './components/Test.vue'
+import Specialization from './components/Specialization.vue'
 </script>
 
 <template>
@@ -20,6 +19,7 @@ import Test from './components/Test.vue'
       <div class="w-full flex h-full flex-col md:w-full bg-[#0e152f]">
         <Intro></Intro>
         <Tools></Tools>
+        <Specialization></Specialization>
         <CareerSections class="flex sm:flex md:hidden"></CareerSections>
         <CareerSectionsCopy class="hidden sm:hidden md:flex"></CareerSectionsCopy>
         <Test></Test>

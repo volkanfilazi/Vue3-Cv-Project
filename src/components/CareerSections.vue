@@ -5,6 +5,8 @@ import Education from '../components/Education.vue'
 import Skills from '../components/Skills.vue'
 import Work from '../components/Work.vue'
 import Hobbies from '../components/Hobbies.vue'
+import { useStorage } from "@vueuse/core";
+
 const showWeb = ref(true)
 const showApp = ref(false)
 const showEdu = ref(false)

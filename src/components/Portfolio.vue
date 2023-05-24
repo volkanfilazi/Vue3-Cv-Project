@@ -4,12 +4,15 @@ import BookingSystem from '../components/BookingSystem.vue'
 import Sumsi from '../components/Sumsi.vue'
 import Restaurant from '../components/Restaurant.vue'
 import Cv from '../components/Cv.vue'
+import { useStorage } from "@vueuse/core";
+
 
 const selectedBookingSystem = ref(true)
 const selectedSumsi = ref(false)
 const selectedRestaurant = ref(false)
 const selectedCv = ref(false)
 const selectedInstagram = ref(false)
+const visitToogle = useStorage("visit","")
 
 function booking() {
     selectedSumsi.value = false
@@ -86,6 +89,14 @@ function cv() {
             </div>
         </div>
     </div>
+    <div class="flex z-[120]">
+    <div
+      class="fixed bottom-0 right-0 flex flex-col rounded-lg bg-red-500 shadow-sm shadow-black justify-center items-center z-40 w-64 sm-w-64 md:w-[250px] md:h-[100px] mb-20 ml-2 transition-transform duration-500 transform"
+      :class="{ 'translate-x-full': !visitToogle, 'translate-x-0 mr-2': visitToogle}">
+      <p v-if="visitToogle" class="transition-all duration-500 text-white">not working</p>
+      
+    </div>
+  </div>
 </template>
 <style scoped>
 

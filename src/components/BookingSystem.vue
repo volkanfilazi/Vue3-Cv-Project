@@ -2,6 +2,10 @@
 import { ref } from 'vue';
 import VModal from '../components/V-Modal.vue'
 import { Icon } from '@iconify/vue';
+import { useStorage } from "@vueuse/core";
+import { useNotificationCard } from '../Store/NotificationCard';
+
+
 
 
 const popupOpenToogle = ref(false)
@@ -11,6 +15,7 @@ const selectedImage3 = ref(false)
 const selectedImage4 = ref(false)
 const selectedImage5 = ref(false)
 let currentIndexBooking = ref(0)
+const notificationCard = useNotificationCard()
 
 
 function popupOpen() {
@@ -124,7 +129,7 @@ function nextImageBooking() {
       <p class="text-yellow-400 text-center">Used Packages : <span class="text-white">axios, jwt-decod,
           @vuepic/vue-datepicker, corelodas, pinia, vue-router@4, iconify/vue, vite, autoprefixer</span></p>
       <div class="flex justify-center mt-5">
-        <button class="border-[2px] relative w-20 h-10 text-center border-yellow-400 text-white">Visit<span
+        <button @click="notificationCard.visitButtonErrorAnimation()" class="border-[2px] relative w-20 h-10 text-center border-yellow-400 text-white">Visit<span
             class="top-0 right-0 bg-yellow-400 w-3 h-3 rounded-full absolute animate-ping"></span></button>
       </div>
     </div>
@@ -156,4 +161,5 @@ button:hover {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
-}</style>
+}
+</style>

@@ -1,6 +1,7 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="flex w-full z-[100] min-h-[35px] items-center border-b-[1px] bg-[#0e152f] md:px-40 fixed md:z-40 justify-end text-black font-bold">
+  <div
+    class="flex w-full z-[100] min-h-[35px] items-center border-b-[1px] bg-[#0e152f] md:px-40 fixed md:z-40 justify-end text-black font-bold">
     <div class="hidden pb-2 pt-2 sm:hidden md:flex md:justify-between md:w-full md:items-center">
 
       <div class="flex flex-col justify-center items-center">
@@ -18,6 +19,10 @@
           href="#intro">Intro</a>
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
           href="#skills">Skills</a>
+        <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
+          href="#tools">Tools</a>
+        <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
+          href="#specialization">Specialization</a>
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
           href="#projects">Projects</a>
       </ul>
@@ -41,4 +46,5 @@ a {
 
 html {
   scroll-behavior: smooth;
-}</style>
+}
+</style>

@@ -1,22 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
-import { useFps } from '@vueuse/core'
-import { useIntervalFn } from '@vueuse/core'
-import { rand } from '@vueuse/shared'
-
-const fps = useFps()
-
-const greetings = ['Hallo', 'Hello', 'Merhaba', 'Hi', 'Yo!', 'Hey', 'Hola', 'こんにちは', 'Bonjour', 'Salut!', '你好', 'Привет']
-const word = ref('Hallo')
-const interval = ref(500)
-const { pause, resume, isActive } = useIntervalFn(() => {
-  word.value = greetings[rand(0, greetings.length - 1)]
-}, interval)
-
-
-const emailToogle = ref(false)
-const phoneToogle = ref(false)
 
 const projects = ref(0)
 const certificate = ref(0)
@@ -64,13 +48,6 @@ progressAnimation()
 alo()
 
 
-function emailOpen() {
-  emailToogle.value = !emailToogle.value
-}
-function phoneOpen() {
-  phoneToogle.value = !phoneToogle.value
-}
-
 const introToogleOne = ref(true)
 const introToogleTwo = ref(false)
 const introToogleThree = ref(false)
@@ -102,26 +79,6 @@ function introWhoAmI() {
       <Transition>
         <div v-if="introToogleOne"
           class="flex absolute text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
-
-          <p class="text-yellow-400 font-bold text-xl">{{ word }}</p>
-          <div class="flex gap-2 w-[350px]">
-            <p>
-              Speed:
-              <input
-                class="text-yellow-500 border-[1px] border-white focus:border-yellow-400 outline-none p-1 rounded-lg bg-transparent"
-                v-model="interval" type="number" placeholder="interval">
-            </p>
-            <button v-if="isActive"
-              class="orange w-[80px] bg-red-600 focus:border-yellow-400 outline-none p-1 rounded-lg bg-transparent"
-              @click="pause">
-              Pause
-            </button>
-            <button v-if="!isActive"
-              class="w-[80px] bg-green-600 focus:border-yellow-400 outline-none p-1 rounded-lg bg-transparent"
-              @click="resume">
-              Resume
-            </button>
-          </div>
           <div
             class="border-[1px] w-full sm:w-[300px] md:w-[500px] border-yellow-400 font-bold flex justify-center items-center h-[100px]">
             <p class="text-yellow-400 text-lg font-bold">&lt;code&gt;</p>
