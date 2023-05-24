@@ -6,12 +6,16 @@ import CircleProgress from "vue3-circle-progress";
 const progressLine = ref(0)
 const progressLine2 = ref(0);
 const progressLine3 = ref(0)
+const progressLine4 = ref(0)
+const progressLine5 = ref(0)
 
 function progressAnimationLine() {
   let i = 0;
   const timer = setInterval(() => {
     progressLine.value = i;
-    progressLine2.value = (i * 80) / 90;
+    progressLine2.value = (i * 95) / 90;
+    progressLine4.value = (i * 95) / 90;
+    progressLine5.value = (i * 95) / 90;
     progressLine3.value = (i * 80) / 90;
     i++;
     if (i > 90) {
@@ -28,18 +32,7 @@ const progress = ref(0)
 const progress2 = ref(0);
 const progress3 = ref(0)
 
-function progressAnimation() {
-  let i = 0;
-  const timer = setInterval(() => {
-    progress.value = i;
-    progress2.value = (i * 80) / 90;
-    progress3.value = (i * 70) / 90;
-    i++;
-    if (i > 90) {
-      clearInterval(timer);
-    }
-  }, 10);
-}
+
 
 function progressAnimation2() {
   let i = 0;
@@ -60,7 +53,6 @@ function drawerFunc() {
   if (drawerToogle) {
     progressAnimationLine()
     progressAnimation2()
-    progressAnimation()
   } else {
     progressTurkish.value = 0
     progressEnglish.value = 0
@@ -71,6 +63,8 @@ function drawerFunc() {
     progressLine.value = 0
     progressLine2.value = 0
     progressLine3.value = 0
+    progressLine4.value = 0
+    progressLine5.value = 0
   }
 
 }
@@ -95,8 +89,8 @@ function drawerFunc() {
       <div class="w-full mt-0 pr-5 pl-5 md:p-5 md:mt-10 text-white space-y-2">
         <div>
           <h2>Html</h2>
-          <div class="shadow w-full bg-white rounded-lg">
-            <div class="bg-yellow-500 text-xs leading-none rounded-lg py-1 text-center text-black"
+          <div class="shadow w-full bg-white ">
+            <div class="bg-yellow-500 text-xs leading-none py-1 text-center text-black"
               :style="`width: ${progressLine}%`">
               {{
                 progressLine }}</div>
@@ -104,17 +98,26 @@ function drawerFunc() {
         </div>
         <div>
           <h2>Css</h2>
-          <div class="shadow w-full bg-white rounded-lg">
-            <div class="bg-yellow-500 text-xs leading-none rounded-lg py-1 text-center text-black"
+          <div class="shadow w-full bg-white ">
+            <div class="bg-yellow-500 text-xs leading-none py-1 text-center text-black"
               :style="`width: ${progressLine2}%`">
               {{
-                progressLine - 10 }}</div>
+                progressLine + 5 }}</div>
           </div>
         </div>
         <div>
           <h2>Vuejs</h2>
-          <div class="shadow w-full bg-white rounded-lg">
-            <div class="bg-yellow-500 text-xs leading-none rounded-lg py-1 text-center text-black"
+          <div class="shadow w-full bg-white">
+            <div class="bg-yellow-500 text-xs leading-none py-1 text-center text-black"
+              :style="`width: ${progressLine3 + 10}%`">
+              {{
+                progressLine }}</div>
+          </div>
+        </div>
+        <div>
+          <h2>Nodejs</h2>
+          <div class="shadow w-full bg-white">
+            <div class="bg-yellow-500 text-xs leading-none py-1 text-center text-black"
               :style="`width: ${progressLine3}%`">
               {{
                 progressLine - 10 }}</div>
@@ -122,20 +125,20 @@ function drawerFunc() {
         </div>
         <div>
           <h2>Java</h2>
-          <div class="shadow w-full bg-white rounded-lg">
-            <div class="bg-yellow-500 text-xs leading-none rounded-lg py-1 text-center text-black"
-              :style="`width: ${progressLine2}%`">
+          <div class="shadow w-full bg-white">
+            <div class="bg-yellow-500 text-xs leading-none py-1 text-center text-black"
+              :style="`width: ${progressLine4 - 20}%`">
               {{
-                progressLine - 10 }}</div>
+                progressLine - 30 }}</div>
           </div>
         </div>
         <div>
           <h2>Kotlin</h2>
-          <div class="shadow w-full bg-white rounded-lg">
-            <div class="bg-yellow-500 text-xs leading-none rounded-lg py-1 text-center text-black"
-              :style="`width: ${progressLine2}%`">
+          <div class="shadow w-full bg-white">
+            <div class="bg-yellow-500 text-xs leading-none py-1 text-center text-black"
+              :style="`width: ${progressLine5 - 20}%`">
               {{
-                progressLine - 10 }}</div>
+                progressLine - 30 }}</div>
           </div>
         </div>
       </div>
