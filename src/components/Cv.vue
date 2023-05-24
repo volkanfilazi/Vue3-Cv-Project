@@ -79,7 +79,7 @@ function popupCloseButton() {
             <Icon icon="ic:baseline-keyboard-double-arrow-left" />
           </button>
         </div>
-        <div class="w-full h-[200px] md:h-[300px] lg:h-[260px] lg:w-[500px] relative">
+        <div class="image-hover w-full h-[200px] md:h-[300px] lg:h-[260px] lg:w-[500px] relative">
           <Transition>
             <img @click="popupOpen" v-if="currentIndexCv === 0" src="../assets/CvEdu.png" alt="" class="w-full h-auto absolute">
           </Transition>
@@ -127,3 +127,12 @@ function popupCloseButton() {
         </template>
     </VModal>
 </template>
+
+<style scoped>
+button:hover {
+  cursor: url('../image/icons8-hand-cursor-50.png'), auto;
+}
+.image-hover {
+  cursor: url('../image/icons8-hand-cursor-50.png'), auto;
+}
+</style>

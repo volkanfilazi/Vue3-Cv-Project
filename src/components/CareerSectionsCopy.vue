@@ -53,45 +53,45 @@ function showWorking() {
       class="flex bg-[#0e152f] h-full w-1/4 z-30 flex-col justify-center items-center  ">
       <div>
         <button @click="showWebDesign()"
-        class="flex cursor-pointer z-[500] flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent  hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="group flex cursor-pointer hover:bg-black z-[500] flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent  hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 border-[1px] border-yellow-400': showWeb }">
-        <h2 class="text-white hidden sm:hidden md:flex">Skills</h2>
+        <h2 class="text-white hidden group-hover:text-yellow-400 transition-all duration-500 sm:hidden md:flex">Skills</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
           <div class="flex items-center">
-            <Icon class="hidden sm:hidden md:flex" icon="iconoir:design-nib" color="white" width="25" height="25" />
-            <Icon icon="icon-park-outline:code-computer" color="white" width="50" height="50" />
-            <Icon class="hidden sm:hidden md:flex" icon="fluent:design-ideas-20-filled" color="white" width="25"
+            <Icon class="hidden sm:hidden md:group-hover:text-yellow-400 transition-all duration-500 text-white md:flex" icon="iconoir:design-nib" width="25" height="25" />
+            <Icon class="md:group-hover:text-yellow-400 transition-all duration-500 text-white" icon="icon-park-outline:code-computer" width="50" height="50" />
+            <Icon class="hidden sm:hidden md:flex md:group-hover:text-yellow-400 transition-all duration-500 text-white" icon="fluent:design-ideas-20-filled" width="25"
               height="25" />
           </div>
         </div>
       </button>
       <button @click="showApplication()"
-            class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+            class="group flex cursor-pointer hover:bg-black flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
                 :class="{ 'transition-all duration-500 border-yellow-400': showApp }">
-                <h2 class="text-white hidden sm:hidden md:flex">Education</h2>
+                <h2 class="text-white hidden sm:hidden md:flex group-hover:text-yellow-400 transition-all duration-500">Education</h2>
                 <div class="flex gap-1 h-2/3 w-full items-center justify-center">
                     <div class="flex items-center">
-                        <Icon icon="zondicons:education" color="white" width="50" height="50" />
+                        <Icon class="md:group-hover:text-yellow-400 transition-all duration-500 text-white" icon="zondicons:education" width="50" height="50" />
                     </div>
                 </div>
             </button>
             <button @click="showEducation()"
-            class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+            class="group flex hover:bg-black cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
                 :class="{ 'transition-all duration-500 border-yellow-400': showEdu }">
-                <h2 class="text-white hidden sm:hidden md:flex">Work</h2>
+                <h2 class="text-white group-hover:text-yellow-400 transition-all duration-500 hidden sm:hidden md:flex">Work</h2>
                 <div class="flex gap-1 h-2/3 w-full items-center justify-center">
                     <div class="flex items-center">
-                        <Icon icon="ic:round-work-history" color="white" width="50" height="50" />
+                        <Icon class="md:group-hover:text-yellow-400 transition-all duration-500 text-white" icon="ic:round-work-history" width="50" height="50" />
                     </div>
                 </div>
             </button>
             <button @click="showWorking()"
-            class="flex cursor-pointer flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+            class="group flex cursor-pointer hover:bg-black flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
                 :class="{ 'transition-all duration-500 border-yellow-400': showWork }">
-                <h2 class="text-white hidden sm:hidden md:flex">Hobbies</h2>
+                <h2 class="text-white group-hover:text-yellow-400 transition-all duration-500 hidden sm:hidden md:flex">Hobbies</h2>
                 <div class="flex gap-1 h-2/3 w-full items-center justify-center">
                     <div class="flex items-center">
-                        <Icon icon="bi:emoji-smile-fill" color="white" width="50" height="50" />
+                        <Icon class="md:group-hover:text-yellow-400 transition-all duration-500 text-white" icon="bi:emoji-smile-fill" width="50" height="50" />
                     </div>
                 </div>
             </button>

@@ -75,7 +75,7 @@ function nextImageBooking() {
           <Icon icon="ic:baseline-keyboard-double-arrow-left" />
         </button>
       </div>
-      <div class="w-full h-[200px] md:h-[300px] lg:h-[260px] lg:w-[500px] relative">
+      <div class="image-hover cursor-pointer w-full h-[200px] md:h-[300px] lg:h-[260px] lg:w-[500px] relative">
         <Transition>
           <img @click="popupOpen" v-if="currentIndexBooking === 0" src="../assets/BookingAdmin.png" alt=""
             class="w-full h-auto absolute">
@@ -149,6 +149,10 @@ function nextImageBooking() {
 
 <style scoped>
 button:hover {
+  cursor: url('../image/icons8-hand-cursor-50.png'), auto;
+}
+
+.image-hover {
   cursor: url('../image/icons8-hand-cursor-50.png'), auto;
 }
 
