@@ -2,6 +2,7 @@
 import { Icon } from '@iconify/vue';
 import { ref } from 'vue';
 
+
 const projects = ref(0)
 const certificate = ref(0)
 const experience = ref(0)
@@ -69,12 +70,26 @@ function introWhoAmI() {
   introToogleTwo.value = false
   introToogleOne.value = false
 }
+const socialCheck = ref<boolean>(false)
 
+function socialMediaSwipper(){
+  socialCheck.value = !socialCheck.value
+}
 
 </script>
 <template>
-  <div id="intro"
-    class="flex relative flex-col h-full mt-20 mb-10 md:mb-0 sm:mt-20 md:mt-0 sm:flex-col md:h-screen md:z-10 md:flex-row md:justify-center md:items-center">
+  <div
+    class="section scrollspy flex relative flex-col h-full mb-10 md:mb-0 sm:mt-20 md:mt-0 sm:flex-col md:h-screen md:z-10 md:flex-row md:justify-center md:items-center">
+    <div
+      class="pinned section table-of-contents text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-[#0e152f] h-1/3 w-12 mr-5 border-[1px] text-xl rounded-xl p-4 shadow-md shadow-black">
+      <a href="#intro">
+        <Icon icon="mdi:home-outline" color="white" width="24" height="24" />
+      </a>
+      <Icon icon="game-icons:skills" color="white" width="24" height="24" />
+      <Icon icon="et:tools-2" color="white" width="24" height="24" />
+      <Icon icon="material-symbols:group-work-outline" color="white" width="24" height="24" />
+      <Icon icon="bytesize:portfolio" color="white" width="24" height="24" />
+    </div>
     <div class="w-full relative flex h-screen justify-center items-center">
       <Transition>
         <div v-if="introToogleOne"
@@ -90,31 +105,41 @@ function introWhoAmI() {
           <h2 class="text-sm md:text-2xl text-center sm:text-center md:text-start font-bold text-white">IAM A WEB and
             ANDROID DEVELOPER
           </h2>
-
-
           <div class="flex flex-col sm:flex-col md:flex-row text-white gap-3">
             <p><span class="text-yellow-400">+{{ projects }}</span> projects</p>
             <p><span class="text-yellow-400">+{{ certificate }}</span> certificate</p>
             <p><span class="text-yellow-400">+{{ experience }}</span> years experience</p>
             <p><span class="text-yellow-400">+{{ languages }}</span> program languages</p>
           </div>
-          <button @click="introTwoShowing()" class="text-yellow-400 hover:text-white hover:transition-all hover:duration-500 top-0 mt-20">Do you need more info?</button>
-          <p class="text-white">Fallow Me</p>
-          <div class="flex gap-5">
-            <a class="w-10 h-10 flex cursor-pointer justify-center items-center transition-all duration-300 bg-white rounded-full hover:bg-yellow-400"
-              href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
-              <Icon icon="ri:linkedin-fill" color="black" />
-            </a>
-            <a class="w-10 h-10 flex cursor-pointer justify-center items-center transition-all duration-300 bg-white rounded-full hover:bg-yellow-400"
-              href="https://github.com/volkanfilazi">
-              <Icon icon="ph:github-logo-fill" color="black" />
-            </a>
-            <a class="w-10 h-10 flex cursor-pointer justify-center items-center transition-all duration-300 bg-white rounded-full hover:bg-yellow-400"
-              href="https://www.facebook.com/profile.php?id=850434189">
-              <Icon icon="ic:outline-facebook" color="black" />
-
-            </a>
-
+          <button @click="introTwoShowing()"
+            class="text-yellow-400 hover:text-white hover:transition-all hover:duration-500 top-0 mt-20">Do you need more
+            info?</button>
+          <div class="relative w-full flex items-center justify-center">
+            <div @click="socialMediaSwipper()" class="w-[180px] cursor-pointer hover:border-yellow-400 group transition-all duration-500 h-14 absolute bg-[#0e152f] border-[1px] hover:bg-black border-gray-500 z-10 flex items-center justify-between p-3" :class="[{'border-yellow-400' : socialCheck},{'bg-black' : socialCheck}]">
+              <p class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="{'text-yellow-400' : socialCheck}" >Fallow Me</p>
+              <button class="w-10 h-10 border-[1px] flex items-center justify-center group-hover:border-yellow-400 transition-all duration-500 border-gray-500 rounded-full" :class="{'border-yellow-400' : socialCheck}">
+                <div class="w-3 h-3 bg-yellow-400 rounded-full relative">
+                  <div class="w-3 h-3 bg-yellow-400 rounded-full absolute animate-ping"></div>
+                </div>
+              </button>
+            </div>
+            <div class="flex gap-5 absolute p-2 transition-all duration-500" :class="{'translate-y-full transition-all duration-500' : socialCheck}">
+              <a class="w-10 h-10 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+                href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
+                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
+                  icon="ri:linkedin-fill" />
+              </a>
+              <a class="w-10 h-10 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+                href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
+                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
+                  icon="ic:outline-facebook" />
+              </a>
+              <a class="w-10 h-10 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+                href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
+                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
+                  icon="ph:github-logo-fill" />
+              </a>
+            </div>
           </div>
         </div>
       </Transition>
@@ -126,12 +151,16 @@ function introWhoAmI() {
           <p>Of course, proving something is more important than claiming.</p>
           <p>You can find my projects below</p>
           <a class="w-10 h-10 flex cursor-pointer justify-center items-center transition-all duration-300 bg-white rounded-full hover:bg-yellow-400"
-              href="https://github.com/volkanfilazi">
-              <Icon icon="ph:github-logo-fill" color="black" />
-            </a>
+            href="https://github.com/volkanfilazi">
+            <Icon icon="ph:github-logo-fill" color="black" />
+          </a>
           <div class="flex gap-5">
-            <button @click="introGoBack" class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Go Back</button>
-            <button @click="introWhoAmI" class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Who am i?</button>
+            <button @click="introGoBack"
+              class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Go
+              Back</button>
+            <button @click="introWhoAmI"
+              class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Who
+              am i?</button>
           </div>
         </div>
       </Transition>
@@ -165,8 +194,10 @@ function introWhoAmI() {
             discuss how I can contribute to your team.</p>
 
           <div class="flex gap-5">
-            
-            <button @click="introGoBack" class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Go Back</button>
+
+            <button @click="introGoBack"
+              class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Go
+              Back</button>
           </div>
         </div>
       </Transition>
@@ -176,14 +207,6 @@ function introWhoAmI() {
 </template>
 
 <style scoped>
-a {
-  cursor: url('../image/icons8-hand-cursor-50.png'), auto;
-}
-
-button {
-  cursor: url('../image/icons8-hand-cursor-50.png'), auto;
-}
-
 /* we will explain what these classes do next! */
 .v-enter-active,
 .v-leave-active {

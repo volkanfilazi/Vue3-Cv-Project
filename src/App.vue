@@ -15,13 +15,13 @@ import Specialization from './components/Specialization.vue'
     <!-- <Particles></Particles> -->
     <Navbar></Navbar>
     <Drawer></Drawer>
-    <div class="w-full h-full flex ">
+    <div class="w-full h-full flex">
       <div class="w-full flex h-full flex-col md:w-full bg-[#0e152f]">
-        <Intro></Intro>
-        <Tools></Tools>
-        <Specialization></Specialization>
+        <Intro id="intro"></Intro>
+        <Tools id="tools"></Tools>
+        <Specialization id="specialization"></Specialization>
         <CareerSections class="flex sm:flex md:hidden"></CareerSections>
-        <CareerSectionsCopy class="hidden sm:hidden md:flex"></CareerSectionsCopy>
+        <CareerSectionsCopy id="skills" class="hidden sm:hidden md:flex"></CareerSectionsCopy>
         <Test></Test>
       </div>
     </div>

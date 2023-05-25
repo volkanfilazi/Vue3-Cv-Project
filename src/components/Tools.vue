@@ -3,7 +3,7 @@ import { Icon } from '@iconify/vue';
 
 </script>
 <template>
-  <div id="tools" class="flex p-2 md:p-0 flex-col justify-center w-full items-center relative h-full sm:h-full gap-5">
+  <div class="target flex p-2 md:p-0 flex-col justify-center w-full items-center relative h-screen sm:h-full gap-5 transition-all duration-200" v-motion-slide-visible-once-bottom>
     <div class="flex flex-col p-5 justify-center items-center">
     <div class="w-[150px] flex justify-end">
       <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>

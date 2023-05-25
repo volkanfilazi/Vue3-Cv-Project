@@ -47,8 +47,8 @@ function showWorking() {
 
 </script>
 <template>
-  <div id="skills"
-    class="skills flex flex-col mt-5 md:mt-0 justify-between h-full sm:h-full md:h-screen md:w-4/4 sm:flex-col md:flex-row w-full  md:items-center z-10">
+  <div
+    class="skills flex flex-col mt-5 md:mt-0 justify-between h-full sm:h-full md:h-screen md:w-4/4 sm:flex-col md:flex-row w-full md:items-center z-10" v-motion-slide-visible-bottom>
     <div
       class="flex bg-[#0e152f] h-full w-1/4 z-30 flex-col justify-center items-center  ">
       <div>
