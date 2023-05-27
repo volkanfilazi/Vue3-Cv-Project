@@ -1,25 +1,54 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core'
 import { ref } from 'vue';
+import { useNotificationCard } from '../Store/NotificationCard';
 
+const notificationCard = useNotificationCard()
 const saveColor = useStorage("themeColor","yellow")
 const themeToogle = ref<boolean>(false)
+const themeCardMessage = ref<boolean>(false)
+const themeCardMessageText = ref<string>('')
 
 function changeColor(colorValue: string){
   if(colorValue === "white"){
     saveColor.value = "white"
+    themeCardMessage.value = true  
+    themeCardMessageText.value = "white"
+    setTimeout(() =>{
+      themeCardMessage.value = false
+    },2000)
   }
   if(colorValue === "green"){
     saveColor.value = "green"
+    themeCardMessage.value = true  
+    themeCardMessageText.value = "green"
+    setTimeout(() =>{
+      themeCardMessage.value = false
+    },2000)
   }
   if(colorValue === "orange"){
     saveColor.value = "orange"
+    themeCardMessage.value = true  
+    themeCardMessageText.value = "orange"
+    setTimeout(() =>{
+      themeCardMessage.value = false
+    },2000)
   }
   if(colorValue === "red"){
     saveColor.value = "red"
+    themeCardMessage.value = true  
+    themeCardMessageText.value = "red"
+    setTimeout(() =>{
+      themeCardMessage.value = false
+    },2000)
   }
   if(colorValue === "yellow"){
     saveColor.value = "yellow"
+    themeCardMessage.value = true  
+    themeCardMessageText.value = "yellow"
+    setTimeout(() =>{
+      themeCardMessage.value = false
+    },2000)
   }
 }
 </script>
@@ -67,7 +96,7 @@ function changeColor(colorValue: string){
       </ul>
 
       <div v-if="themeToogle" class="absolute right-0 translate-y-full mt-20">
-        <div class="flex justify-center items-center gap-2 bg-black rounded-full border-[1px] border-white w-44 h-10 ">
+        <div class="flex justify-center items-center gap-2 bg-[#0e152f] rounded-full border-[1px] border-white w-44 h-10 ">
         <div @click="changeColor('white')" class=" w-6 h-6 border-[2px] border-transparent top-0 rounded-full bg-white cursor-pointer" :class="{'border-orange-500' : saveColor === 'white'}"></div>
         <div @click="changeColor('green')" class=" w-6 h-6 border-[2px] border-transparent bottom-0 rounded-full bg-green-500 cursor-pointer" :class="{'border-white' : saveColor === 'green'}"></div>
         <div @click="changeColor('orange')" class=" w-6 h-6 border-[2px] border-transparent  right-0 rounded-full bg-orange-600 cursor-pointer" :class="{'border-white' : saveColor === 'orange'}"></div>
@@ -88,6 +117,13 @@ function changeColor(colorValue: string){
         <li><a href="#specialization">Specialization</a></li>
         <li><a href="#projects">Projects</a></li>
       </ul>
+    </div>
+  </div>
+  <div class="flex z-[120]">
+    <div
+      class="fixed bottom-0 right-0 flex flex-col rounded-lg bg-green-700 shadow-sm shadow-black justify-center items-center z-40 w-64 sm-w-64 md:w-[250px] md:h-[100px] mb-20 ml-2 transition-transform duration-500 transform"
+      :class="{ 'translate-x-full': !themeCardMessage, 'translate-x-0 mr-2': themeCardMessage}">
+      <p class="transition-all duration-500 text-white text-center">Theme successfully converted to {{ themeCardMessageText }}</p>
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@ import Cv from '../components/Cv.vue'
 
 </script>
 <template>
-  <div id="projects" class="flex flex-col p-5 justify-center items-center">
+  <div id="projects" class="flex observed-sections mt-20 flex-col p-5 justify-center items-center" v-motion-slide-visible-bottom>
     <div class="w-[150px] flex justify-end">
       <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
     </div>

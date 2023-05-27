@@ -3,8 +3,8 @@ import { Icon } from '@iconify/vue';
 
 </script>
 <template>
-  <div class="target flex p-2 md:p-0 flex-col justify-center w-full items-center relative h-screen sm:h-full gap-5 transition-all duration-200" v-motion-slide-visible-once-bottom>
-    <div class="flex flex-col p-5 justify-center items-center">
+  <div id="tools" class="observed-sections target flex p-2 md:p-0 flex-col justify-center w-full items-center relative h-screen sm:h-full gap-5 transition-all duration-200">
+    <div class="flex flex-col p-5 justify-center items-center" v-motion-slide-visible-bottom>
     <div class="w-[150px] flex justify-end">
       <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
     </div>
@@ -13,7 +13,7 @@ import { Icon } from '@iconify/vue';
       <div class="border-l-[2px] border-b-[2px] w-5 h-5 border-yellow-400"></div>
     </div>
   </div>
-      <div class="w-full md:w-4/5 border-[1px] p-5 gap-5 grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div class="w-full md:w-4/5 border-[1px] p-5 gap-5 grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5" v-motion-slide-visible-bottom>
         <div class="flex gap-2 p-1 hover:text-yellow-400 rounded-md text-white font-bold items-center transition-all duration-500 hover:bg-black justify-center border-[1px] border-yellow-400">
           <Icon icon="fluent:javascript-16-regular" color="yellow" width="48" height="48" />
           <p>Javascript</p>

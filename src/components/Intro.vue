@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { ref } from 'vue';
+import { computed, ref, watch, watchEffect } from 'vue';
+import { useScroll, useWindowScroll, watchDebounced } from '@vueuse/core'
+
 
 
 const projects = ref(0)
@@ -75,22 +77,43 @@ const socialCheck = ref<boolean>(false)
 function socialMediaSwipper(){
   socialCheck.value = !socialCheck.value
 }
+const sections = ref()
+
+const { y, directions, isScrolling } = useScroll(window)
+
+watchEffect(() => {
+  if (y.value !== -1)
+    sections.value = Array.prototype.slice.call(document?.querySelectorAll('body .observed-sections'))
+})
+
+const currentIndex = ref(0)
+
+watchDebounced(y, () => {
+  if (y.value >= 0 && sections.value?.length) {
+    currentIndex.value = sections.value.findIndex((e) => {
+      const clientRect = e.getBoundingClientRect()
+      return clientRect.top >= 0
+    })
+  }
+}, { debounce: 50, maxWait: 100 })
+
+watchEffect(()=>{
+  console.log("alo",currentIndex.value)
+})
 
 </script>
 <template>
-  <div
-    class="section scrollspy flex relative flex-col h-full mb-10 md:mb-0 sm:mt-20 md:mt-0 sm:flex-col md:h-screen md:z-10 md:flex-row md:justify-center md:items-center">
+  <div id="intro"
+    class="flex relative flex-col h-full mb-10 md:mb-0 sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
     <div
-      class="pinned section table-of-contents text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-[#0e152f] h-1/3 w-12 mr-5 border-[1px] text-xl rounded-xl p-4 shadow-md shadow-black">
-      <a href="#intro">
-        <Icon icon="mdi:home-outline" color="white" width="24" height="24" />
-      </a>
-      <Icon icon="game-icons:skills" color="white" width="24" height="24" />
-      <Icon icon="et:tools-2" color="white" width="24" height="24" />
-      <Icon icon="material-symbols:group-work-outline" color="white" width="24" height="24" />
-      <Icon icon="bytesize:portfolio" color="white" width="24" height="24" />
+      class="text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-[#0e152f] h-1/3 w-12 mr-5 border-[1px] text-xl rounded-full p-4 shadow-md shadow-black">
+      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 0} " icon="mdi:home-outline" width="24" height="24" />
+      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 1} " icon="game-icons:skills" width="24" height="24" />
+      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 2} " icon="et:tools-2" width="24" height="24" />
+      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 3} " icon="material-symbols:group-work-outline" width="24" height="24" />
+      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 4} " icon="bytesize:portfolio" width="24" height="24" />
     </div>
-    <div class="w-full relative flex h-screen justify-center items-center">
+    <div class="observed-sections w-full relative flex h-screen justify-center items-center">
       <Transition>
         <div v-if="introToogleOne"
           class="flex absolute text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">

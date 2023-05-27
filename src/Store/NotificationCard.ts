@@ -12,6 +12,6 @@ export const useNotificationCard = defineStore('notification', () => {
   }
 
     return {
-      visitButtonErrorAnimation
+      visitButtonErrorAnimation,
     }
 })

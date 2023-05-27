@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import LeftIntro from '../components/LeftIntro.vue'
 import CircleProgress from "vue3-circle-progress";
+import { Icon } from '@iconify/vue';
+
 
 const progressLine = ref(0)
 const progressLine2 = ref(0);
@@ -72,10 +74,13 @@ function drawerFunc() {
 </script>
 <template>
   <div class="flex z-[120]">
-    <button @click="drawerFunc()"
-      class="w-10 h-10 fixed transition-all cursor-pointer duration-500 md:mt-[500px] rounded-r-full bg-white shadow-md"
+    <div
+     @click="drawerFunc()"
+      class="w-10 h-10 fixed transition-all flex items-center justify-center cursor-pointer duration-500 rounded-r-md md:mt-[500px] bg-yellow-400 shadow-md"
       :class="{ 'translate-x-[250px] sm:translate-x-[250px] md:translate-x-[500px] transition-all duration-500': drawerToogle }">
-    </button>
+      <Icon icon="svg-spinners:gooey-balls-1" color="black"/>
+    </div>
+
     <div
       class="fixed top-0 left-0 flex flex-col z-40 w-64 sm-w-64 md:w-[500px] h-full transition-all duration-500 transform -translate-x-full bg-[#0e152f] border-r-[1px] text-white shadow-l"
       :class="{ 'translate-x-0': drawerToogle }">

@@ -3,8 +3,8 @@ import { Icon } from '@iconify/vue';
 
 </script>
 <template>
-  <div class="flex p-2 md:p-0 flex-col mt-20 w-full items-center justify-center transition-all duration-500 relative h-screen gap-5" v-motion-slide-visible-once-bottom>
-    <div class="flex flex-col p-5 justify-center items-center">
+  <div id="specialization" class="observed-sections flex p-2 md:p-0 flex-col mt-20 w-full items-center justify-center transition-all duration-500 relative h-screen gap-5">
+    <div class="flex flex-col p-5 justify-center items-center" v-motion-slide-visible-bottom>
       <div class="w-[300px] flex justify-end">
         <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
       </div>
@@ -13,7 +13,7 @@ import { Icon } from '@iconify/vue';
         <div class="border-l-[2px] border-b-[2px] w-5 h-5 border-yellow-400"></div>
       </div>
     </div>
-    <div class="w-full md:w-4/5 text-white h-full md:h-1/2 gap-2 flex justify-between">
+    <div class="w-full md:w-4/5 text-white h-full md:h-1/2 gap-2 flex justify-between" v-motion-slide-visible-bottom>
 
       <div
         class="group border-[1px] border-yellow-400 md:border-[0px] w-full md:w-1/3 items-center justify-center flex flex-col shadow-md shadow-black hover:shadow-none">
