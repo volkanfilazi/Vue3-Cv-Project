@@ -125,6 +125,7 @@ watchEffect(()=>{
           </div>
           <h1 class="text-2xl md:text-4xl font-bold text-white">MY NAME IS <span class="text-yellow-400">VOLKAN
               FILAZI</span></h1>
+              <VolkiButton>hahaha</VolkiButton>
           <h2 class="text-sm md:text-2xl text-center sm:text-center md:text-start font-bold text-white">IAM A WEB and
             ANDROID DEVELOPER
           </h2>
