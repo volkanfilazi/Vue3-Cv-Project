@@ -137,33 +137,28 @@ watchEffect(()=>{
           <button @click="introTwoShowing()"
             class="text-yellow-400 hover:text-white hover:transition-all hover:duration-500 top-0 mt-20">Do you need more
             info?</button>
-          <div class="relative w-full flex items-center justify-center">
-            <div @click="socialMediaSwipper()" class="w-[180px] cursor-pointer hover:border-yellow-400 group transition-all duration-500 h-14 absolute bg-[#0e152f] border-[1px] hover:bg-black border-gray-500 z-10 flex items-center justify-between p-3" :class="[{'border-yellow-400' : socialCheck},{'bg-black' : socialCheck}]">
-              <p class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="{'text-yellow-400' : socialCheck}" >Fallow Me</p>
-              <button class="w-10 h-10 border-[1px] flex items-center justify-center group-hover:border-yellow-400 transition-all duration-500 border-gray-500 rounded-full" :class="{'border-yellow-400' : socialCheck}">
-                <div class="w-3 h-3 bg-yellow-400 rounded-full relative">
-                  <div class="w-3 h-3 bg-yellow-400 rounded-full absolute animate-ping"></div>
-                </div>
-              </button>
-            </div>
-            <div class="flex gap-5 absolute p-2 transition-all duration-500" :class="{'translate-y-full transition-all duration-500' : socialCheck}">
-              <a class="w-10 h-10 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+            <div class="flex gap-5 p-2 transition-all duration-500">
+              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
                 href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
                 <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
-                  icon="ri:linkedin-fill" />
+                  icon="ri:linkedin-fill" width="36" height="36" />
               </a>
-              <a class="w-10 h-10 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
                 href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
                 <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
-                  icon="ic:outline-facebook" />
+                  icon="ic:outline-facebook" width="36" height="36" />
               </a>
-              <a class="w-10 h-10 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
                 href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
                 <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
-                  icon="ph:github-logo-fill" />
+                  icon="ph:github-logo-fill" width="36" height="36" />
+              </a>
+              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+                href="https://www.npmjs.com/~volkanfilazi">
+                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
+                  icon="tabler:brand-npm" width="36" height="36"  />
               </a>
             </div>
-          </div>
         </div>
       </Transition>
       <Transition>
