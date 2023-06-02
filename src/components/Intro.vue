@@ -144,12 +144,12 @@ watchEffect(()=>{
                   icon="ri:linkedin-fill" width="36" height="36" />
               </a>
               <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-                href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
+                href="https://www.facebook.com/">
                 <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
                   icon="ic:outline-facebook" width="36" height="36" />
               </a>
               <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-                href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
+                href="https://github.com/volkanfilazi">
                 <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
                   icon="ph:github-logo-fill" width="36" height="36" />
               </a>
