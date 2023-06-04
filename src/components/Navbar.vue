@@ -2,7 +2,9 @@
 import { useStorage } from '@vueuse/core'
 import { ref } from 'vue';
 import { useNotificationCard } from '../Store/NotificationCard';
+import { useRouter } from "vue-router";
 
+const router = useRouter()
 const notificationCard = useNotificationCard()
 const saveColor = useStorage("themeColor","yellow")
 const themeToogle = ref<boolean>(false)
@@ -54,7 +56,7 @@ function changeColor(colorValue: string){
 </script>
 <template>
   <div
-    class="flex w-full z-[100] min-h-[35px] items-center border-b-[1px] bg-[#0e152f] md:px-40 fixed md:z-40 justify-end text-black font-bold">
+    class="flex w-full z-[100] min-h-[35px] items-center border-b-[1px] bg-gray-800 md:px-40 fixed md:z-40 justify-end text-black font-bold">
     <div class="hidden pb-2 pt-2 sm:hidden md:flex md:justify-between md:w-full md:items-center relative">
 
       <div class="flex flex-col justify-center items-center">
@@ -80,6 +82,7 @@ function changeColor(colorValue: string){
         {'text-red-600' : saveColor === 'red'},
         {'text-yellow-400' : saveColor === 'yellow'}
         ]">
+        <button @click="router.push({ name: 'documents'})">doc</button>
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
           href="#intro">Intro</a>
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"

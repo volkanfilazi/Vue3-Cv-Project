@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { computed, ref, watch, watchEffect } from 'vue';
-import { useScroll, useWindowScroll, watchDebounced } from '@vueuse/core'
-
-
+import { ref, watchEffect } from 'vue';
+import { useScroll, watchDebounced } from '@vueuse/core'
 
 const projects = ref(0)
 const certificate = ref(0)
@@ -106,7 +104,7 @@ watchEffect(()=>{
   <div id="intro"
     class="flex relative flex-col h-full mb-10 md:mb-0 sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
     <div
-      class="text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-[#0e152f] h-1/3 w-12 mr-5 border-[1px] text-xl rounded-full p-4 shadow-md shadow-black">
+      class="text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-gray-800 h-1/3 w-12 mr-5 border-[1px] text-xl rounded-full p-4 shadow-md shadow-black">
       <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 0} " icon="mdi:home-outline" width="24" height="24" />
       <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 1} " icon="game-icons:skills" width="24" height="24" />
       <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 2} " icon="et:tools-2" width="24" height="24" />
@@ -118,7 +116,7 @@ watchEffect(()=>{
         <div v-if="introToogleOne"
           class="flex absolute text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
           <div
-            class="border-[1px] w-full sm:w-[300px] md:w-[500px] border-yellow-400 font-bold flex justify-center items-center h-[100px]">
+            class="border-[1px] w-full sm:w-[300px] md:w-[500px] border-white rounded-xl font-bold flex justify-center items-center h-[100px]">
             <p class="text-yellow-400 text-lg font-bold">&lt;code&gt;</p>
             <p class="text-white">{{ displayText }}<span class=" text-yellow-400 animate-ping">|</span></p>
             <p class="text-yellow-400 text-lg font-bold">&lt;/code&gt;</p>

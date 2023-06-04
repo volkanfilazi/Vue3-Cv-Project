@@ -82,10 +82,10 @@ function drawerFunc() {
     </div>
 
     <div
-      class="fixed top-0 left-0 flex flex-col z-40 w-64 sm-w-64 md:w-[500px] h-full transition-all duration-500 transform -translate-x-full bg-[#0e152f] border-r-[1px] text-white shadow-l"
+      class="fixed top-0 left-0 flex flex-col z-40 w-64 sm-w-64 md:w-[500px] h-full transition-all duration-500 transform -translate-x-full bg-gray-800 border-r-[1px] text-white shadow-l"
       :class="{ 'translate-x-0': drawerToogle }">
       <div
-        class="hidden px-6 py-4 sm:hidden md:flex flex-col z-40 bg-gray-900 text-white border-b-[2px] border-yellow-600 justify-center items-center">
+        class="hidden px-6 py-4 sm:hidden md:flex flex-col z-40 bg-gray-800 text-white border-b-[2px] border-yellow-600 justify-center items-center">
         <h2 class="text-lg font-semibold">Volkan Filazi</h2>
         <p class="text-gray-500">Front-end Web Developer</p>
         <p class="text-gray-500">Android Developer</p>

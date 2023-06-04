@@ -2,11 +2,7 @@
 import { ref } from 'vue';
 import VModal from '../components/V-Modal.vue'
 import { Icon } from '@iconify/vue';
-import { useStorage } from "@vueuse/core";
 import { useNotificationCard } from '../Store/NotificationCard';
-
-
-
 
 const popupOpenToogle = ref(false)
 const selectedImage1 = ref(false)
