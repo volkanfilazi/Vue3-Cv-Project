@@ -72,9 +72,7 @@ function introWhoAmI() {
 }
 const socialCheck = ref<boolean>(false)
 
-function socialMediaSwipper(){
-  socialCheck.value = !socialCheck.value
-}
+
 const sections = ref()
 
 const { y, directions, isScrolling } = useScroll(window)
@@ -109,7 +107,6 @@ watchEffect(()=>{
       <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 1} " icon="game-icons:skills" width="24" height="24" />
       <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 2} " icon="et:tools-2" width="24" height="24" />
       <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 3} " icon="material-symbols:group-work-outline" width="24" height="24" />
-      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 4} " icon="bytesize:portfolio" width="24" height="24" />
     </div>
     <div class="observed-sections w-full relative flex h-screen justify-center items-center">
       <Transition>

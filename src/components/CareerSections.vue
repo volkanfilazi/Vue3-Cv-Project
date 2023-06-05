@@ -46,7 +46,7 @@ function showWorking() {
 }
 </script>
 <template>
-  <div class="flex flex-col w-full p-5 justify-center items-center" v-motion-slide-visible-bottom>
+  <div class="flex flex-col w-full p-5 justify-center items-center">
     <div class="w-[200px] flex justify-end">
       <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
     </div>

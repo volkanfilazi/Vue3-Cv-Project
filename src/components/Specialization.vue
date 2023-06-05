@@ -1,10 +1,40 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { useRouter } from "vue-router";
+import vbutton from '../restaurantComponents/V-Model/V-Button.vue'
+import VLoadingScreen from '../restaurantComponents/V-Model/V-LoadingScreen.vue';
+import { ref } from 'vue';
+import { useShopStore } from '../Store/Shop';
 
+const shopStore = useShopStore()
+const loadingScreenMessage = ref<string>('')
+const router = useRouter()
+const loadingToogle = ref<boolean>(false)
+
+async function goToRestaurant(){
+  loadingScreenMessage.value = "Shop Project is Loading"
+  loadingToogle.value = true
+  await shopStore.getAllProducts()
+  await shopStore.getAllCategories()
+  setTimeout(() =>{
+    loadingToogle.value = false
+    router.push({ name: 'shop'})
+  },2500)
+}
+
+async function goToCryptoProject(){
+  loadingScreenMessage.value = "Crypto Project is Loading"
+  loadingToogle.value = true
+  setTimeout(() =>{
+    loadingToogle.value = false
+    router.push({ name: 'shop'})
+  },2500)
+}
 </script>
 <template>
-  <div id="specialization" class="observed-sections flex p-2 md:p-0 flex-col mt-20 w-full items-center justify-center transition-all duration-500 relative h-screen gap-5">
-    <div class="flex flex-col p-5 justify-center items-center" v-motion-slide-visible-bottom>
+  <div id="specialization"
+    class="observed-sections flex p-2 md:p-0 flex-col mt-20 w-full items-center justify-center transition-all duration-500 relative h-screen gap-5">
+    <div class="flex flex-col p-5 justify-center items-center">
       <div class="w-[300px] flex justify-end">
         <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
       </div>
@@ -13,62 +43,41 @@ import { Icon } from '@iconify/vue';
         <div class="border-l-[2px] border-b-[2px] w-5 h-5 border-yellow-400"></div>
       </div>
     </div>
-    <div class="w-full md:w-4/5 text-white h-full md:h-1/2 gap-2 flex justify-between" v-motion-slide-visible-bottom>
+    <div class="w-full md:w-4/5 text-white h-full md:h-1/2 gap-2 flex justify-between">
 
-      <div
-        class="group border-[1px] border-yellow-400 md:border-[0px] w-full md:w-1/3 items-center justify-center flex flex-col shadow-md shadow-black hover:shadow-none">
-        <div
-          class="text-center md:group-hover:mb-10 border-b-[1px] md:border-b-[0px] bg-[#222a33] md:group-hover:bg-black md:border-t-[1px] md:border-l-[1px] md:border-r-[1px] md:group-hover:border-b-[1px] border-yellow-400 h-1/2 w-full hover:bg-black transition-all duration-500">
-          <p class="mt-5 md:group-hover:text-yellow-400">MOBILE CODING</p>
-          <div class="flex h-full justify-between items-center ">
-            <Icon class="w-full text-white group-hover:text-yellow-400 transition-all duration-500" icon="streamline:programming-browser-code-2-code-browser-tags-angle-programming-bracket" width="96" height="96" />  
-          </div>
+      <div class="w-full group border-[1px] md:w-1/3 flex flex-col h-5/5 transition-all duration-300 hover:border-yellow-400">
+        <div class="h-2/5 flex items-center justify-center flex-col gap-5">
+          <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ Crypto ~</h1>
+          <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="guidance:shop" width="36" height="36" />
         </div>
-        <div class="flex flex-col md:flex-row h-1/2 items-center w-full">
-          <div
-            class="w-full md:w-full bg-[#222a33] md:border-b-[1px] md:group-hover:bg-black md:group-hover:text-yellow-400 md:border-[1px] border-yellow-400 text-center h-full hover:bg-black hover:text-yellow-400 transition-all duration-500">
-            <p class="h-1/4 mt-5">FRONTEND</p>
-            <ul class="h-full">
-              <li class="h-1/4">Java</li>
-              <li class="h-1/4">Kotlin</li>
-              <li class="h-1/4">XML</li>
-            </ul>
-          </div>
+        <div class="h-2/5 flex flex-col justify-center p-2">
+          <p class="text-yellow-400">Project Thema : <span class="text-white">Shop, Order, Filter
+              System, Login, Add Products </span></p>
+          <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
+              Tailwind</span></p>
+          <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue,
+              autoprefixer</span></p>
         </div>
+        <vbutton @click="goToCryptoProject()">Visit</vbutton>
       </div>
 
-      <div
-        class="group w-full border-[1px] border-yellow-400 md:border-[0px] md:w-1/3 items-center justify-center flex flex-col shadow-md shadow-black hover:shadow-none">
-        <div
-          class="text-center md:group-hover:mb-10 border-b-[1px] md:border-b-[0px] bg-[#222a33] md:group-hover:bg-black md:border-t-[1px] md:border-l-[1px] md:border-r-[1px] md:group-hover:border-b-[1px] border-yellow-400 h-1/2 w-full hover:bg-black transition-all duration-500">
-          <p class="mt-5 md:group-hover:text-yellow-400">WEB DESIGN</p>
-          <div class="flex flex-col h-full md:flex-row md:justify-between items-center">
-            <Icon class="w-1/2 text-white md:group-hover:text-yellow-400 transition-all duration-500" icon="streamline:programming-browser-code-2-code-browser-tags-angle-programming-bracket" width="96" height="96" />
-            <Icon class="w-1/2 text-white md:group-hover:text-yellow-400 transition-all duration-500" icon="material-symbols:settings" width="96" height="96" />
-          </div>
+      <div class="w-full group border-[1px] md:w-1/3 flex flex-col h-5/5 transition-all duration-300 hover:border-yellow-400">
+        <div class="h-2/5 flex items-center justify-center flex-col gap-5">
+          <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ Shop ~</h1>
+          <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="guidance:shop" width="36" height="36" />
         </div>
-        <div class="flex flex-col md:flex-row h-1/2 items-center w-full">
-          <div
-            class="w-full md:group-hover:mr-10 md:w-1/2 bg-[#222a33] border-b-[1px] md:group-hover:bg-black md:group-hover:text-yellow-400 md:border-[1px] border-yellow-400 text-center h-full hover:bg-black hover:text-yellow-400 transition-all duration-500">
-            <p class="h-1/4 md:mt-5">FRONTEND</p>
-            <ul class="h-full">
-              <li class="h-1/4">Vue3.js</li>
-              <li class="h-1/4">Tailwind</li>
-              <li class="h-1/4">CSS</li>
-            </ul>
-          </div>
-          <div
-            class="w-full md:w-1/2 bg-[#222a33] h-full text-center md:border-t-[1px] md:group-hover:bg-black md:group-hover:text-yellow-400 md:border-r-[1px] md:border-b-[1px] group-hover:border-l-[1px] border-yellow-400 hover:bg-black hover:text-yellow-400 transition-all duration-500">
-            <p class="h-1/4 md:mt-5">BACKEND</p>
-            <ul class="h-full">
-              <li class="h-1/4">Node.js</li>
-              <li class="h-1/4">Express</li>
-              <li class="h-1/4">MongoDB</li>
-            </ul>
-          </div>
+        <div class="h-2/5 flex flex-col justify-center p-2">
+          <p class="text-yellow-400">Project Thema : <span class="text-white">Shop, Order, Filter
+              System, Login, Add Products </span></p>
+          <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
+              Tailwind</span></p>
+          <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue,
+              autoprefixer</span></p>
         </div>
+        <vbutton @click="goToRestaurant()">Visit</vbutton>
       </div>
 
     </div>
   </div>
+  <VLoadingScreen :open="loadingToogle">{{ loadingScreenMessage}}</VLoadingScreen>
 </template>

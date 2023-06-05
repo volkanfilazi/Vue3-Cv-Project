@@ -56,7 +56,7 @@ function changeColor(colorValue: string){
 </script>
 <template>
   <div
-    class="flex w-full z-[100] min-h-[35px] items-center border-b-[1px] bg-gray-800 md:px-40 fixed md:z-40 justify-end text-black font-bold">
+    class="flex w-full z-[100] min-h-[35px] items-center border-b-[1px] bg-gray-800 md:px-40 md:z-40 justify-end text-black font-bold">
     <div class="hidden pb-2 pt-2 sm:hidden md:flex md:justify-between md:w-full md:items-center relative">
 
       <div class="flex flex-col justify-center items-center">
