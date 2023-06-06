@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue';
 import { useShopStore } from '../Store/Shop';
+import router from '../router/router';
+import { Icon } from '@iconify/vue';
+
+
 const shopStore = useShopStore()
 const searchInput = ref('')
 
@@ -18,8 +22,8 @@ watchEffect(async () => {
 
 </script>
 <template>
-  <div class="flex w-full p-5 gap-5 border-b-[1px] items-center bg-gray-600 px-10 text-black font-bold">
-    <div class="flex flex-col justify-center items-center">
+  <div class="flex w-5/5 p-5 gap-5 border-b-[1px] justify-center items-center bg-gray-600 px-10 text-black font-bold">
+    <div @click="router.push({ name: 'shop'})" class="flex flex-col justify-center w-1/5 cursor-pointer items-center">
       <div class="w-[160px] flex justify-end">
         <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
       </div>
@@ -29,14 +33,15 @@ watchEffect(async () => {
       </div>
     </div>
     <input
-      class="w-full border-[1px] h-10 rounded-lg p-1 outline-none focus:border-yellow-400"
+      class=" border-[1px] w-3/5 h-10 rounded-lg p-1 outline-none focus:border-yellow-400"
       placeholder="search a product..." type="search" v-model="searchInput">
 
-    <ul class="flex items-center text-yellow-400 gap-3">
-      <a
-        class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1">Login</a>
-        <RouterLink to="/">Center</RouterLink>
-        <a href="">Basket</a>
+    <ul class="flex w-1/5 items-center text-yellow-400 gap-3">
+        <RouterLink to="/">Developer Page</RouterLink>
+        <div class="relative p-2">
+          <div class="absolute font-bold top-0 right-0 text-white">{{ shopStore.calculatedTotalOrder}}</div>
+          <Icon icon="simple-line-icons:basket" color="white" width="24" height="24" />
+        </div>
     </ul>
   </div>
 </template>

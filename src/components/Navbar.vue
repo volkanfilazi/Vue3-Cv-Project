@@ -82,7 +82,6 @@ function changeColor(colorValue: string){
         {'text-red-600' : saveColor === 'red'},
         {'text-yellow-400' : saveColor === 'yellow'}
         ]">
-        <button @click="router.push({ name: 'documents'})">doc</button>
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
           href="#intro">Intro</a>
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"

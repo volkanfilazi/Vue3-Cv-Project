@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useShopStore } from '../Store/Shop';
+import { useStorage } from "@vueuse/core";
+import router from '../router/router';
+import Drawer from './Drawer.vue';
 
 const shopStore = useShopStore()
 let selectedCategory = ref<string>('')
@@ -9,6 +12,8 @@ let minPrice = ref<string>('')
 let maxPrice = ref<string>('')
 const selectedSorter = ref('')
 const resultTitle = ref('All Products')
+const selectedProductId = useStorage("id", Number)
+
 
 onMounted(async () => {
   await shopStore.getAllProducts()
@@ -63,30 +68,57 @@ async function priceRangeFilter() {
   const response = shopStore.allProducts.filter(rangePrice => rangePrice.price >= minPrice.value && rangePrice.price <= maxPrice.value)
   if (response.length > 0) {
     shopStore.allProducts = response
-  } else {
-    console.log("nothing");
   }
 }
 
+watchEffect(() => {
+  if (selectedSorter.value === 'sort by name A-Z') {
+    shopStore.sortAToZ()
+  }
+  if (selectedSorter.value === 'sort by name Z-A') {
+    shopStore.sortZToA()
+  }
+  if (selectedSorter.value === 'sort by price 100-0') {
+    shopStore.sortExpensiveToCheap()
+  }
+  if (selectedSorter.value === 'sort by price 0-100') {
+    shopStore.sortCheapToExpensive()
+  }
+
+})
+
+async function addCart(productId: number,title: string, price: string, count: string, image: string) {
+  const response = shopStore.addToCart(productId,title, price, count, image)
+  shopStore.getCarts()
+ 
+}
+
+function getId(id: number) {
+  selectedProductId.value = undefined
+  selectedProductId.value = id
+  router.push({ name: 'shopDetail', params: { id: selectedProductId.value } })
+}
 </script>
 
 <template>
+  <Drawer></Drawer>
   <div class="flex flex-col">
-
+    <div class="w-full bg-red-500 p-1 text-white text-center">
+      This website is only a demo version.No commercial activity
+    </div>
     <div class="w-full flex border-b-[1px] border-gray-300 md:pl-5 md:pr-5 md:p-3">
       <div class="w-1/3">
         {{ shopStore.allProductsClone.length }} results for <span class="text-orange-500 font-bold">{{ resultTitle
         }}</span>
       </div>
       <div class="w-2/3 flex items-center gap-10 md:pr-5 justify-end text-center">
-        <select v-model="selectedSorter">
-          <option disabled value="">Please select one</option>
+        <select v-model="selectedSorter" class="border-[1px] rounded-lg shadow-sm shadow-blue-500">
+          <option disabled value="">Select a Sort Type</option>
           <option>sort by name A-Z</option>
           <option>sort by name Z-A</option>
           <option>sort by price 0-100</option>
           <option>sort by price 100-0</option>
         </select>
-        <p class="text-center text-red-700 font-bold">Admin Panel</p>
       </div>
     </div>
 
@@ -125,15 +157,17 @@ async function priceRangeFilter() {
       <div class="w-full md:w-3/4"
         :class="{ 'grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4': shopStore.allProductsClone.length > 0 }">
         <div v-if="shopStore.allProductsClone.length > 0"
-          class="p-2 border-[1px] border-gray-300 h-5/5 flex items-center flex-col justify-center"
+          class="p-2 border-[1px] cursor-pointer border-gray-300 h-5/5 flex items-center flex-col justify-center"
           v-for="products in shopStore.allProductsClone">
           <img class="h-2/4 p-2" :src="products.image" alt="">
-          <div class="h-1/4 flex justify-center items-center">
-            <p>{{ products.title }}</p>
+          <div
+            class="h-1/4 cursor-pointer transition-all duration-200 hover:text-orange-600 flex justify-center items-center">
+            <p @click="getId(products.id)">{{ products.title }}</p>
           </div>
           <div class="h-1/4 flex justify-center items-center">
-            <p class="text-center border-[1px] cursor-pointer p-1 border-gray-400 hover:border-orange-600 rounded-lg">€ {{
-              products.price }}</p>
+            <p @click="addCart(products.id,products.title, products.price, '0', products.image)"
+              class="text-center border-[1px] cursor-pointer p-1 border-gray-400 hover:border-orange-600 rounded-lg">€ {{
+                products.price }}</p>
           </div>
         </div>
         <div class="text-xl w-[300px] h-[150px] bg-red-700 flex items-center justify-center rounded-xl text-white" v-else>

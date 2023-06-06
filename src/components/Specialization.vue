@@ -44,6 +44,22 @@ async function goToCryptoProject(){
       </div>
     </div>
     <div class="w-full md:w-4/5 text-white h-full md:h-1/2 gap-2 flex justify-between">
+      <div class="w-full group border-[1px] md:w-1/3 flex flex-col h-5/5 transition-all duration-300 hover:border-yellow-400">
+        <div class="h-2/5 flex items-center justify-center flex-col gap-5">
+          <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ Shop ~</h1>
+          <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="guidance:shop" width="36" height="36" />
+        </div>
+        <div class="h-2/5 flex flex-col justify-center p-2">
+          <p class="text-yellow-400">Project Thema : <span class="text-white">Shop, Order, Filter
+              System, Checkout, Networking </span></p>
+          <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
+              Tailwind, Typescript</span></p>
+          <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue, axios</span></p>
+        </div>
+        <div class="flex justify-center">
+          <vbutton @click="goToRestaurant()">Visit</vbutton>
+        </div>
+      </div>
 
       <div class="w-full group border-[1px] md:w-1/3 flex flex-col h-5/5 transition-all duration-300 hover:border-yellow-400">
         <div class="h-2/5 flex items-center justify-center flex-col gap-5">
@@ -52,30 +68,17 @@ async function goToCryptoProject(){
         </div>
         <div class="h-2/5 flex flex-col justify-center p-2">
           <p class="text-yellow-400">Project Thema : <span class="text-white">Shop, Order, Filter
-              System, Login, Add Products </span></p>
+              System, </span></p>
           <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
               Tailwind</span></p>
           <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue,
               autoprefixer</span></p>
         </div>
-        <vbutton @click="goToCryptoProject()">Visit</vbutton>
+        <div class="flex justify-center">
+          <vbutton :is-loading="true">Coming soon</vbutton>
+        </div>
       </div>
 
-      <div class="w-full group border-[1px] md:w-1/3 flex flex-col h-5/5 transition-all duration-300 hover:border-yellow-400">
-        <div class="h-2/5 flex items-center justify-center flex-col gap-5">
-          <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ Shop ~</h1>
-          <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="guidance:shop" width="36" height="36" />
-        </div>
-        <div class="h-2/5 flex flex-col justify-center p-2">
-          <p class="text-yellow-400">Project Thema : <span class="text-white">Shop, Order, Filter
-              System, Login, Add Products </span></p>
-          <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
-              Tailwind</span></p>
-          <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue,
-              autoprefixer</span></p>
-        </div>
-        <vbutton @click="goToRestaurant()">Visit</vbutton>
-      </div>
 
     </div>
   </div>
