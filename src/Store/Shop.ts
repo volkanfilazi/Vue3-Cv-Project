@@ -11,8 +11,8 @@ export const useShopStore = defineStore('shop', () => {
   const allCategories = ref<any>()
   const singleProduct = ref<any>()
   const cartData = ref([])
-  const calculatedTotalPrice = ref()
-  const calculatedTotalOrder = ref()
+  const calculatedTotalPrice = useStorage("totalPrice", Number)
+  const calculatedTotalOrder = useStorage("totalOrder", Number)
 
 
 
@@ -47,7 +47,7 @@ export const useShopStore = defineStore('shop', () => {
     }
   }
 
-  function addToCart(productsId: number,productsTitle: string, productPrice: string, productCounter: string, productImage: string) {
+  function addToCart(productsId: number, productsTitle: string, productPrice: string, productCounter: string, productImage: string) {
     const cartData = JSON.parse(localStorage.getItem('pompa') || '{}') || {};
     if (cartData[productsId.toString()]) {
       const existingProduct = cartData[productsId.toString()];
@@ -64,7 +64,7 @@ export const useShopStore = defineStore('shop', () => {
     }
     calculatedTotalOrder.value = totalOrder(cartData)
     calculatedTotalPrice.value = totalPrice(cartData);
-    
+
     localStorage.setItem('pompa', JSON.stringify(cartData));
     getCarts()
   }
@@ -76,7 +76,7 @@ export const useShopStore = defineStore('shop', () => {
       const productPrice = parseFloat(product.price);
       totalPrice += productPrice;
     }
-    
+
     return totalPrice;
   }
 
@@ -87,11 +87,11 @@ export const useShopStore = defineStore('shop', () => {
       const productOrder = parseFloat(product.count);
       totalOrder += productOrder;
     }
-    
+
     return totalOrder;
   }
-  
-  function deleteItem(productId: number){
+
+  function deleteItem(productId: number) {
     const cartData = JSON.parse(localStorage.getItem('pompa') || '{}') || {};
     delete cartData[productId]
     calculatedTotalPrice.value = totalPrice(cartData);
@@ -99,18 +99,29 @@ export const useShopStore = defineStore('shop', () => {
     localStorage.setItem('pompa', JSON.stringify(cartData));
     getCarts()
   }
-  
-  function updateItem(productId: number, newCount: string){
-    const cartData = JSON.parse(localStorage.getItem('pompa') || '{}') || {};
-    if(cartData[productId]){
-      cartData[productId].count = newCount
-      cartData[productId].price = parseFloat(cartData[productId].price) * parseInt(newCount);
 
+  function updateItem(productId: number, newCount: number) {
+    const cartData = JSON.parse(localStorage.getItem('pompa') || '{}') || {};
+    if (cartData[productId]) {
+      const currentCount = parseInt(cartData[productId].count);
+      const newCountValue = newCount;
+  
+      if (newCountValue >= currentCount) {
+        // Ürün miktarı artıyorsa, fiyatı güncelle
+        const pricePerItem = parseFloat(cartData[productId].price) / currentCount;
+        cartData[productId].price = (pricePerItem * newCountValue).toFixed(2);
+      } else {
+        // Ürün miktarı azalıyorsa, fiyatı güncelle
+        const pricePerItem = parseFloat(cartData[productId].price) / currentCount;
+        cartData[productId].price = (pricePerItem * newCountValue).toFixed(2);
+      }
+  
+      cartData[productId].count = newCount;
       localStorage.setItem('pompa', JSON.stringify(cartData));
+      calculatedTotalPrice.value = totalPrice(cartData);
+      getCarts();
     }
-    
-    calculatedTotalPrice.value = totalPrice(cartData);
-    getCarts()
+  
   }
 
   function getCarts() {
@@ -130,7 +141,7 @@ export const useShopStore = defineStore('shop', () => {
   }
 
   function sortAToZ() {
-    const sortedProducts = allProducts.value.sort((a, b) => {
+    const sortedProducts = allProductsClone.value.sort((a, b) => {
       const productA = a.title.toLowerCase();
       const productB = b.title.toLowerCase();
 
@@ -147,7 +158,7 @@ export const useShopStore = defineStore('shop', () => {
   }
 
   function sortZToA() {
-    const sortedProducts = allProducts.value.sort((a, b) => {
+    const sortedProducts = allProductsClone.value.sort((a, b) => {
       const productA = a.title.toLowerCase();
       const productB = b.title.toLowerCase();
 
@@ -164,7 +175,7 @@ export const useShopStore = defineStore('shop', () => {
   }
 
   function sortExpensiveToCheap() {
-    const sortedProducts = allProducts.value.sort((a, b) => {
+    const sortedProducts = allProductsClone.value.sort((a, b) => {
       const productA = parseFloat(a.price)
       const productB = parseFloat(b.price)
 
@@ -180,7 +191,7 @@ export const useShopStore = defineStore('shop', () => {
   }
 
   function sortCheapToExpensive() {
-    const sortedProducts = allProducts.value.sort((a, b) => {
+    const sortedProducts = allProductsClone.value.sort((a, b) => {
       const productA = parseFloat(a.price)
       const productB = parseFloat(b.price)
 
@@ -215,7 +226,5 @@ export const useShopStore = defineStore('shop', () => {
     deleteItem,
     updateItem,
     totalPrice,
-    calculatedTotalPrice,
-    calculatedTotalOrder
   }
 })

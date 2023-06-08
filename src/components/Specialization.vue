@@ -2,24 +2,17 @@
 import { Icon } from '@iconify/vue';
 import { useRouter } from "vue-router";
 import vbutton from '../restaurantComponents/V-Model/V-Button.vue'
-import VLoadingScreen from '../restaurantComponents/V-Model/V-LoadingScreen.vue';
 import { ref } from 'vue';
 import { useShopStore } from '../Store/Shop';
+import { useStorage } from "@vueuse/core";
 
 const shopStore = useShopStore()
 const loadingScreenMessage = ref<string>('')
 const router = useRouter()
-const loadingToogle = ref<boolean>(false)
+const loadingToogle = useStorage('laoading',Boolean)
 
-async function goToRestaurant(){
-  loadingScreenMessage.value = "Shop Project is Loading"
-  loadingToogle.value = true
-  await shopStore.getAllProducts()
-  await shopStore.getAllCategories()
-  setTimeout(() =>{
-    loadingToogle.value = false
-    router.push({ name: 'shop'})
-  },2500)
+async function goToShop(){
+  router.push({name : 'shop'})
 }
 
 async function goToCryptoProject(){
@@ -30,6 +23,8 @@ async function goToCryptoProject(){
     router.push({ name: 'shop'})
   },2500)
 }
+
+
 </script>
 <template>
   <div id="specialization"
@@ -57,7 +52,7 @@ async function goToCryptoProject(){
           <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue, axios</span></p>
         </div>
         <div class="flex justify-center">
-          <vbutton @click="goToRestaurant()">Visit</vbutton>
+          <vbutton @click="goToShop()">Visit</vbutton>
         </div>
       </div>
 
@@ -82,5 +77,5 @@ async function goToCryptoProject(){
 
     </div>
   </div>
-  <VLoadingScreen :open="loadingToogle">{{ loadingScreenMessage}}</VLoadingScreen>
+
 </template>

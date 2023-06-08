@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue';
 import { useShopStore } from '../Store/Shop';
-import { useStorage } from "@vueuse/core";
+import { get, useStorage } from "@vueuse/core";
 import router from '../router/router';
-import Drawer from './Drawer.vue';
+import { Icon } from '@iconify/vue';
 
 const shopStore = useShopStore()
 let selectedCategory = ref<string>('')
@@ -14,62 +14,45 @@ const selectedSorter = ref('')
 const resultTitle = ref('All Products')
 const selectedProductId = useStorage("id", Number)
 
-
 onMounted(async () => {
-  await shopStore.getAllProducts()
-  await shopStore.getAllCategories()
+  shopStore.getAllProducts()
+  const categorySelected = ref('electronics')
+  const repsonse = shopStore.allProducts.filter(products => products.category === categorySelected.value)
+  shopStore.allProductsClone = repsonse
 })
+
+
 async function getACategory(name: string) {
   selectedPrice.value = ''
   await shopStore.getAllProducts()
   const response = shopStore.allProducts.filter(products => products.category === name)
-  shopStore.allProducts = response
+  shopStore.allProductsClone = response
   selectedCategory.value = name
   if (name) {
     resultTitle.value = name
   }
 }
 
-async function getAllProducts() {
-  await shopStore.getAllProducts()
-  selectedCategory.value = "all"
-  if (selectedCategory.value === 'all') {
-    resultTitle.value = "All Products"
-  }
+
+
+async function addCart(productId: number, title: string, price: string, count: string, image: string) {
+  const response = shopStore.addToCart(productId, title, price, count, image)
+  shopStore.getCarts()
+
+}
+async function addCartAndSendtoBasket(productId: number, title: string, price: string, count: string, image: string) {
+  const response = shopStore.addToCart(productId, title, price, count, image)
+  shopStore.getCarts()
+  router.push({ name: 'basket' })
+
 }
 
-async function priceFilter(price: string) {
-  selectedCategory.value = ''
-  selectedPrice.value = price
-  await shopStore.getAllProducts()
-  if (price === '0-20') {
-    const response = shopStore.allProducts.filter(price => price.price <= '20')
-    shopStore.allProducts = response
-    console.log(response);
-  }
-  if (price === '20-50') {
-    const response = shopStore.allProducts.filter(price => price.price >= '20' && price.price <= '50')
-    shopStore.allProducts = response
-    console.log(response);
-  }
-  if (price === '50-1000') {
-    const response = shopStore.allProducts.filter(price => price.price >= '50' && price.price <= '1000')
-    shopStore.allProducts = response
-    console.log(response);
-  }
-  if (price === 'clear') {
-    await shopStore.getAllProducts()
-    minPrice.value = ''
-    maxPrice.value = ''
-  }
+function getId(id: number) {
+  selectedProductId.value = undefined
+  selectedProductId.value = id
+  router.push({ name: 'shopDetail', params: { id: selectedProductId.value } })
 }
 
-async function priceRangeFilter() {
-  const response = shopStore.allProducts.filter(rangePrice => rangePrice.price >= minPrice.value && rangePrice.price <= maxPrice.value)
-  if (response.length > 0) {
-    shopStore.allProducts = response
-  }
-}
 
 watchEffect(() => {
   if (selectedSorter.value === 'sort by name A-Z') {
@@ -84,99 +67,199 @@ watchEffect(() => {
   if (selectedSorter.value === 'sort by price 0-100') {
     shopStore.sortCheapToExpensive()
   }
-
 })
 
-async function addCart(productId: number,title: string, price: string, count: string, image: string) {
-  const response = shopStore.addToCart(productId,title, price, count, image)
-  shopStore.getCarts()
- 
-}
-
-function getId(id: number) {
-  selectedProductId.value = undefined
-  selectedProductId.value = id
-  router.push({ name: 'shopDetail', params: { id: selectedProductId.value } })
-}
 </script>
 
 <template>
-  <Drawer></Drawer>
-  <div class="flex flex-col">
-    <div class="w-full bg-red-500 p-1 text-white text-center">
-      This website is only a demo version.No commercial activity
-    </div>
-    <div class="w-full flex border-b-[1px] border-gray-300 md:pl-5 md:pr-5 md:p-3">
-      <div class="w-1/3">
-        {{ shopStore.allProductsClone.length }} results for <span class="text-orange-500 font-bold">{{ resultTitle
-        }}</span>
-      </div>
-      <div class="w-2/3 flex items-center gap-10 md:pr-5 justify-end text-center">
-        <select v-model="selectedSorter" class="border-[1px] rounded-lg shadow-sm shadow-blue-500">
-          <option disabled value="">Select a Sort Type</option>
-          <option>sort by name A-Z</option>
-          <option>sort by name Z-A</option>
-          <option>sort by price 0-100</option>
-          <option>sort by price 100-0</option>
-        </select>
+  <div class="w-full lg:w-5/6 px-2 md:px-0 h-[60px] flex justify-center items-center gap-5 bg-[#471d6b] text-gray-300">
+    <p>FREE SHIPPING</p>
+    <p>24/7 SUPPORT</p>
+    <p>MONEY BACK</p>
+    <p>5% CASHBACK</p>
+  </div>
+  <div class="w-full lg:w-5/6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 bg-orange-500">
+
+    <div class=" h-[270px] relative text-white items-center flex justify-center gap-5 cursor-pointer">
+      <div class="bg-auto relative lg:bg-no-repeat bg-center h-full w-full"
+        style="background-image: url('https://i.pinimg.com/originals/c9/79/b0/c979b0df5bdb8538117524e7fd4346c1.jpg')">
+        <div class="absolute text-red-800 p-10 space-y-4">
+          <div class="text-2xl">DO YOU BELEIVE MAGIC?</div>
+          <div class="text-2x1">10% OFF</div>
+          <button
+            class="border-[1px] hover:border-purple-600 p-2 transition-all duration-300 hover:text-purple-600">DISCOVER</button>
+        </div>
       </div>
     </div>
 
-    <div class="w-4/4 flex flex-col md:flex-row md:p-5 gap-1">
-      <div class="w-full md:w-1/4 flex p-10 md:p-0 flex-col">
-        <div class="gap-5 flex flex-row md:flex-col">
-          <div class="space-y-2">
-            <h1 class="font-bold text-lg">Categories</h1>
-            <p class="cursor-pointer" :class="{ 'text-red-700 font-bold': selectedCategory === 'all' }"
-              @click="getAllProducts">all</p>
-            <div v-for="category in shopStore.allCategories">
-              <p class="cursor-pointer" @click="getACategory(category)"
-                :class="{ 'text-red-700 font-bold': category === selectedCategory }">{{ category }}</p>
-            </div>
-          </div>
-          <div class="space-y-2">
-            <h1 class="font-bold text-lg">Price</h1>
-            <p class="cursor-pointer" @click="priceFilter('clear')">clear</p>
-            <p class="cursor-pointer" :class="{ 'text-red-700 font-bold': selectedPrice === '0-20' }"
-              @click="priceFilter('0-20')">0 - 20</p>
-            <p class="cursor-pointer" :class="{ 'text-red-700 font-bold': selectedPrice === '20-50' }"
-              @click="priceFilter('20-50')">20 - 50</p>
-            <p class="cursor-pointer" :class="{ 'text-red-700 font-bold': selectedPrice === '50-1000' }"
-              @click="priceFilter('50-1000')">50 - 1000</p>
-            <div class="space-x-2">
-              <input placeholder="min" class="p-1 w-14 border-[1px] border-black rounded-lg" min="0" type="number"
-                v-model="minPrice">
-              <input placeholder="max" class="p-1 w-14 border-[1px] border-black rounded-lg" type="number"
-                v-model="maxPrice">
-              <button class="border-[1px] p-1 border-black rounded-full" @click="priceRangeFilter()">Filter</button>
-            </div>
-          </div>
+    <div class="h-[270px] text-white items-center flex justify-center gap-5">
+      <div class="bg-auto relative bg-no-repeat bg-center h-full w-full"
+        style="background-image: url('https://t3.ftcdn.net/jpg/03/94/11/10/360_F_394111088_TCUFgYfGsRqOVDddr29BOXYd9N4j8yDR.jpg')">
+        <div class="absolute text-red-800 p-10 space-y-4">
+          <div class="text-2xl">MAKE UP YOURSELF</div>
+          <div class="text-2x1">50% OFF</div>
+          <button
+            class="border-[1px] border-red-800 hover:border-purple-600 p-2 transition-all duration-300 hover:text-purple-600">DISCOVER</button>
         </div>
       </div>
+    </div>
 
-      <div class="w-full md:w-3/4"
-        :class="{ 'grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4': shopStore.allProductsClone.length > 0 }">
-        <div v-if="shopStore.allProductsClone.length > 0"
-          class="p-2 border-[1px] cursor-pointer border-gray-300 h-5/5 flex items-center flex-col justify-center"
-          v-for="products in shopStore.allProductsClone">
-          <img class="h-2/4 p-2" :src="products.image" alt="">
-          <div
-            class="h-1/4 cursor-pointer transition-all duration-200 hover:text-orange-600 flex justify-center items-center">
-            <p @click="getId(products.id)">{{ products.title }}</p>
-          </div>
-          <div class="h-1/4 flex justify-center items-center">
-            <p @click="addCart(products.id,products.title, products.price, '0', products.image)"
-              class="text-center border-[1px] cursor-pointer p-1 border-gray-400 hover:border-orange-600 rounded-lg">€ {{
-                products.price }}</p>
-          </div>
-        </div>
-        <div class="text-xl w-[300px] h-[150px] bg-red-700 flex items-center justify-center rounded-xl text-white" v-else>
-          <p>Sorry there is nothing to show :/</p>
+    <div class="h-[270px] text-white items-center flex justify-center gap-5 group">
+      <div class="bg-auto relative lg:bg-no-repeat bg-center h-full w-full"
+        style="background-image: url('https://img.freepik.com/premium-photo/ring-with-diamonds-black-background-3d-rendering_34478-2539.jpg')">
+        <div class="absolute text-white p-10 space-y-4">
+          <div class="text-2xl">NATURAL ITEMS</div>
+          <div class="text-2x1">15% OFF</div>
+          <button
+            class="border-[1px] z-10 hover:border-purple-600 p-2 transition-all duration-300 hover:text-purple-600">DISCOVER</button>
         </div>
       </div>
     </div>
 
   </div>
+  <div class="flex lg:w-5/6 flex-col">
+    <div class="w-full flex-col md:flex-row flex border-b-[1px] bg-[#f6eeff] border-white md:pl-5 md:pr-5 md:p-3">
+      <div class="w-full md:w-1/3 text-center md:text-start">
+        {{ shopStore.allProductsClone.length }} results for <span class="text-purple-600 font-bold">{{ resultTitle
+        }}</span>
+      </div>
+      <div class="w-full md:w-2/3 justify-center flex items-center gap-10 md:pr-5 md:justify-end md:text-center">
+        <select v-model="selectedSorter" class="border-[1px] rounded-lg shadow-sm shadow-blue-500">
+          <option disabled value="">Select a Sort Type</option>
+          <option>sort by name A-Z</option>
+          <option>sort by name Z-A</option>
+          <option>expensive price</option>
+          <option>cheaper price</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col md:flex-row md:p-5 gap-1 bg-[#f6eeff]">
+      <div class="flex flex-col w-full px-1 md:px-[200px]">
+        <div class="flex items-center justify-center gap-10">
+          <button @click="getACategory('electronics')" class="bg-transparent" :class="{'bg-purple-700 text-white rounded-sm p-1' : selectedCategory === 'electronics'}">Electronics</button>
+          <button @click="getACategory('jewelery')" class="bg-transparent" :class="{'bg-purple-700 text-white rounded-sm p-1' : selectedCategory === 'jewelery'}">Jewelery</button>
+          <button @click="getACategory(`men's clothing`)" class="bg-transparent" :class="{'bg-purple-700 text-white rounded-sm p-1' : selectedCategory === `men's clothing`}">Men's Clothing</button>
+          <button @click="getACategory(`women's clothing`)" class="bg-transparent" :class="{'bg-purple-700 text-white rounded-sm p-1' : selectedCategory === `women's clothing`}">Women's Clothing</button>
+        </div>
+        <div v-if="shopStore.allProductsClone.length > 0" class="md:w-full mt-5 gap-3 grid grid-cols-1 w-full"
+          :class="{ 'grid lg:grid-cols-3': shopStore.allProductsClone.length > 0 }">
+          <div class="p-2 rounded-md bg-white h-[200px] relative md:mt-3 cursor-pointer flex"
+            v-for="products in shopStore.allProductsClone">
+            <div v-if="products.id > 0 && products.id < 5"
+              class="w-10 h-6 bg-purple-600 absolute -top-3 flex items-center justify-center text-white text-[13px] right-0">
+              <p>New</p>
+            </div>
+            <div v-if="products.id > 11 && products.id < 15"
+              class="w-10 h-6 bg-purple-500 absolute -top-3 flex items-center justify-center text-white text-[13px] right-0">
+              <p>Best</p>
+            </div>
+            <div class="w-1/2 flex gap-5">
+              <img class="p-3" :src="products.image" alt="">
+            </div>
+
+            <div class="w-1/2 flex flex-col h-full">
+              <div
+                class="product-title h-1/2 text-gray-600 flex items-center cursor-pointer transition-all duration-200 hover:text-orange-600">
+                <p @click="getId(products.id)">{{ products.title.substring(0, 20) }}</p>
+              </div>
+              <div class="h-1/2">
+                <p class="text-[18px] font-bold text-gray-700">€ {{ products.price }}</p>
+              </div>
+              <div class="min-w-[160px] h-1/3 flex items-end gap-1 p-1">
+                <button @click="addCart(products.id, products.title, products.price, '0', products.image)"
+                  class=" border-[1px] w-1/3 flex items-center justify-center cursor-pointer p-1 border-gray-400 group hover:bg-purple-500 transition-all duration-300 text-blue-500 font-bold">
+                  <Icon class="text-gray-500 transition-all duration-300 group-hover:text-white"
+                    icon="simple-line-icons:basket" width="24" height="24" />
+                </button>
+                <button @click="addCartAndSendtoBasket(products.id, products.title, products.price, '0', products.image)"
+                  class=" border-[1px] w-2/3 cursor-pointer p-1 border-blue-500 hover:bg-purple-500 transition-all duration-300 hover:text-white text-blue-500 font-serif font-bold">
+                  buy now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- skeleton -->
+        <div v-if="!shopStore.allProductsClone.length" class="md:w-3/4 gap-3 grid lg:grid-cols-3 ">
+          <div class="p-2 rounded-md bg-white h-[200px] relative md:mt-3 cursor-pointer flex" v-for="products in 6">
+            <div
+              class="w-10 h-6 skeleton absolute -top-3 flex items-center justify-center text-white text-[13px] right-0">
+              <p></p>
+            </div>
+            <div
+              class="w-10 h-6 skeleton absolute -top-3 flex items-center justify-center text-white text-[13px] right-0">
+              <p></p>
+            </div>
+            <div class="w-1/2 flex gap-5">
+              <img class="p-3 w-full skeleton">
+            </div>
+
+            <div class="w-1/2 flex flex-col ml-2 h-full">
+              <div
+                class="product-title h-1/2 text-gray-600 flex items-center cursor-pointer transition-all duration-200 hover:text-orange-600">
+                <p></p>
+                <p class="skeleton skeleton-text">{{ }}</p>
+              </div>
+              <div class="h-1/2">
+                <p class="text-[18px] font-bold text-gray-700 skeleton skeleton-text"></p>
+              </div>
+              <div class="min-w-[160px] h-1/3 flex items-end gap-1 p-1">
+                <button class=" border-[1px] h-10 skeleton w-1/3 flex items-center justify-center ">
+                </button>
+                <button class="skeleton border-[1px] skeleton h-10 w-2/3 ">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- skeleton -->
+      
+    </div>
+
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.skeleton {
+  opacity: .7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-text {
+  width: 100%;
+  height: .5em;
+  margin-bottom: .25rem;
+  border-radius: .125rem;
+}
+
+.skeleton-text:last-child {
+  margin-bottom: 0;
+  width: 80%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+
+
+@font-face {
+  font-family: 'rabikiso';
+  src: url('../assets/fonts/MerriweatherSans-Bold.ttf') format('truetype');
+}
+
+.product-title {
+  font-family: 'Franklin Gothic Medium',
+}
+
+.product-desc {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}</style>
