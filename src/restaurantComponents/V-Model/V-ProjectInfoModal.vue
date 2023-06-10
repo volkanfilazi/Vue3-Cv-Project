@@ -13,18 +13,33 @@ const prop = withDefaults(defineProps<Props>(), {
   open: false
 })
 
-const test = ref<any>('Hi,you have reached the life model virtual of volkan filazi')
-const test2 = ref<any>('If you want information about the project, you can use the commands below...')
-const programLanguages = ref<string>('Vue.js, HTML, Css, Tailwindcss, Js')
-const thema = ref<string>('I integrated a free API I found on the internet into my project, manipulated it with the local database and designed a store.')
+const test = ref<any>('Hi,you have reached the life model virtual of volkan filazi.If you want information about the project, you can use the commands below...')
+const programLanguages = ref<string>('Vue.js, HTML, Css, Tailwindcss, Js, Java, Kotlin')
+const whoIam = ref<string>('About 3 years i am learning software development.I have successfully completed 2 separate programming courses.')
+const errorHandling = ref<string>('Invalid command.Please dont forget to use / before command')
+
+const webCertificate = ref<string>('Web Development - CodingSchool.Wörthersee/Fh Kärnten')
+const mobileCertificate = ref<string>('Mobile App Development - CodingSchool.Wörthersee/Fh Kärnten')
+
 const displayText = ref<any>('')
 const displayText2 = ref<any>('')
+const displayText3 = ref<any>('');
+const displayText4 = ref<any>('');
+const displayText5 = ref<any>('');
+const displayText6 = ref<any>('')
+const displayText6Second = ref<any>('')
+
 const isTyping = ref<boolean>(false)
+const isTyping3 = ref<boolean>(false);
+const isTyping4 = ref<boolean>(false);
+const isTyping5 = ref<boolean>(false);
+const isTyping6 = ref<boolean>(false);
+
 let timer: NodeJS.Timeout | null = null;
 let timer3: NodeJS.Timeout | null = null;
 let timer4: NodeJS.Timeout | null = null;
-const displayText4 = ref<any>('');
-const isTyping4 = ref<boolean>(false);
+let timer5: NodeJS.Timeout | null = null;
+let timer6: NodeJS.Timeout | null = null;
 
 const questions = ref('')
 
@@ -35,15 +50,11 @@ function typeText() {
   }
   isTyping.value = true;
   let i = 0;
-  let a = 0;
 
   timer = setInterval(() => {
     if (i <= test.value.length) {
       displayText.value = test.value.substring(0, i);
       i++;
-    } else if (a <= test2.value.length) {
-      displayText2.value = test2.value.substring(0, a);
-      a++;
     } else {
       clearInterval(timer);
       isTyping.value = false;
@@ -51,8 +62,29 @@ function typeText() {
   }, 50);
 }
 
-const displayText3 = ref<any>('');
-const isTyping3 = ref<boolean>(false);
+function certificate() {
+  if (timer6) {
+    clearInterval(timer6);
+    timer6 = null;
+  }
+  isTyping6.value = true;
+  let i = 0;
+  let a = 0;
+
+  timer6 = setInterval(() => {
+    if (i <= webCertificate.value.length) {
+      displayText6.value = webCertificate.value.substring(0, i);
+      i++;
+    }  else if (a <= mobileCertificate.value.length) {
+      displayText6Second.value = mobileCertificate.value.substring(0, a);
+      a++;
+    }else {
+      clearInterval(timer6);
+      isTyping6.value = false;
+    }
+  }, 50);
+}
+
 
 watchEffect(() => {
   if (prop.open) {
@@ -64,6 +96,9 @@ watchEffect(() => {
     displayText2.value = '';
     displayText3.value = '';
     displayText4.value = '';
+    displayText5.value = '';
+    displayText6.value = '';
+    displayText6Second.value = '';
     questions.value = ''
     if (timer) {
       clearInterval(timer);
@@ -77,26 +112,71 @@ watchEffect(() => {
       clearInterval(timer4);
       timer4 = null;
     }
+    if (timer5) {
+      clearInterval(timer5);
+      timer5 = null;
+    }
+    if (timer6) {
+      clearInterval(timer6);
+      timer6 = null;
+    }
+
   }
 })
 
 function questionFunction() {
-  if (questions.value === '/p.languages') {
+  if (questions.value === `/p.languages`) {
     clearInterval(timer)
     clearInterval(timer4)
+    clearInterval(timer5)
+    clearInterval(timer6)
     displayText.value = '';
     displayText2.value = '';
     displayText4.value = '';
+    displayText5.value = '';
+    displayText6.value = '';
+    displayText6Second.value = '';
     programLanguagesAi();
     questions.value = ''
   }
-  if(questions.value === '/thema'){
+  else if (questions.value === '/whoIam') {
     clearInterval(timer);
-    clearInterval(timer3); 
+    clearInterval(timer3);
+    clearInterval(timer5);
+    clearInterval(timer6)
     displayText.value = '';
     displayText2.value = '';
     displayText3.value = '';
+    displayText5.value = '';
+    displayText6.value = '';
+    displayText6Second.value = '';
     themaAi()
+    questions.value = ''
+  }else if(questions.value === '/certificates'){
+    clearInterval(timer);
+    clearInterval(timer3);
+    clearInterval(timer4);
+    clearInterval(timer5);
+    displayText.value = '';
+    displayText2.value = '';
+    displayText4.value = '';
+    displayText3.value = '';
+    displayText5.value = '';
+    certificate()
+    questions.value = ''
+  }
+  else{
+    clearInterval(timer)
+    clearInterval(timer3)
+    clearInterval(timer4)
+    clearInterval(timer6)
+    displayText.value = '';
+    displayText2.value = '';
+    displayText3.value = '';
+    displayText4.value = '';
+    displayText6.value = '';
+    displayText6Second.value = '';
+    invalidMessage()
     questions.value = ''
   }
 }
@@ -118,18 +198,35 @@ function programLanguagesAi() {
   }, 50);
 }
 
-function themaAi(){
+function themaAi() {
   isTyping4.value = true;
   let i = 0;
 
   timer4 = setInterval(() => {
-    if (i <= thema.value.length) {
-      displayText4.value = thema.value.substring(0, i);
+    if (i <= whoIam.value.length) {
+      displayText4.value = whoIam.value.substring(0, i);
       i++;
     } else {
       if (timer4) {
         clearInterval(timer4);
         timer4 = null;
+      }
+    }
+  }, 50);
+}
+
+function invalidMessage() {
+  isTyping5.value = true;
+  let i = 0;
+
+  timer5 = setInterval(() => {
+    if (i <= errorHandling.value.length) {
+      displayText5.value = errorHandling.value.substring(0, i);
+      i++;
+    } else {
+      if (timer5) {
+        clearInterval(timer5);
+        timer5 = null;
       }
     }
   }, 50);
@@ -151,21 +248,27 @@ const emit = defineEmits<Emits>()
               @click="emit('close', true)">X</button>
           </div>
           <div>
-            <div class="w-[300px] md:w-[520px] min-h-[100px]">
-              <p class="text-green-500 w-[300px] md:w-[500px]">{{ displayText }}</p>
-              <p class="text-green-500 w-[300px] md:w-[400px]">{{ displayText2 }}</p>
-              <p class="text-green-500 w-[300px] md:w-[500px]">{{ displayText3 }}</p>
-              <p class="text-green-500 w-[300px] md:w-[500px]">{{ displayText4 }}</p>
+            <div class="w-[300px] md:w-[550px] min-h-[100px]">
+              <p class="text-green-500 w-[300px] md:w-[450px]">{{ displayText }}</p>
+              <p class="text-green-500 w-[300px] md:w-[450px]">{{ displayText2 }}</p>
+              <p class="text-green-500 w-[300px] md:w-[450px]">{{ displayText3 }}</p>
+              <p class="text-green-500 w-[300px] md:w-[450px]">{{ displayText4 }}</p>
+              <p class="text-green-500 w-[300px] md:w-[450px]">{{ displayText5 }}</p>
+              <p class="text-green-500 w-[300px] md:w-[450px]">{{ displayText6 }}</p>
+              <p class="text-green-500 w-[300px] md:w-[450px]">{{ displayText6Second }}</p>
             </div>
             <div class="flex gap-2" v-if="!isTyping">
               <div>
                 <p class="text-yellow-400">/p.languages</p>
-                <p class="text-yellow-400">/thema</p>
+                <p class="text-yellow-400">/whoIam</p>
+              </div>
+              <div>
+                <p class="text-yellow-400">/certificates</p>
               </div>
             </div>
             <div v-if="!isTyping" class="flex gap-2">
-              <input v-model="questions" type="text" class="border-[1px] text-white bg-transparent rounded-md">
-              <button @click="questionFunction()" class="text-white border-[1px] px-1">Ask</button>
+              <input v-model="questions" type="text" class="border-[1px] focus:border-green-500 outline-none text-white bg-transparent rounded-md">
+              <button @click="questionFunction()" class="text-white border-[1px] hover:border-green-500 transition-all duration hover:text-green-500 px-1">Ask</button>
             </div>
           </div>
         </div>
@@ -174,8 +277,8 @@ const emit = defineEmits<Emits>()
   </Teleport>
 </template>
 
-<style scoped>Ö
-.fade-enter-active,
+<style scoped>
+Ö .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.15s ease-out;
 }

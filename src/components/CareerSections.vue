@@ -46,58 +46,58 @@ function showWorking() {
 }
 </script>
 <template>
-  <div class="flex flex-col w-full p-5 justify-center items-center">
-    <div class="w-[200px] flex justify-end">
+  <div class="flex flex-col mt-10 md:mt-0 w-full justify-center items-center">
+    <div class="w-[100px] md:w-[200px] flex justify-end">
       <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
     </div>
-    <h1 class="text-white font-bold text-[30px]">Career</h1>
-    <div class="w-[200px] flex justify-start">
+    <h1 class="text-white font-bold text-[20px] md:text-[30px]">Career</h1>
+    <div class="w-[100px] md:w-[200px] flex justify-start">
       <div class="border-l-[2px] border-b-[2px] w-5 h-5 border-yellow-400"></div>
     </div>
   </div>
-  <div id="skills"
-    class="skills observed-sections flex flex-col mt-5 md:mt-0 justify-between h-full sm:h-full md:h-screen md:w-4/4 sm:flex-col md:flex-row w-full md:justify-center md:items-center z-10">
+  <div id="career"
+    class="skills observed-sections mt-5 flex flex-col md:mt-0 justify-between h-full sm:h-full mb-10 md:w-4/4 sm:flex-col md:flex-row w-full md:justify-center md:items-center z-10">
     <div class="flex flex-row justify-center sm:justify-center sm:flex-row md:justify-start md:flex-col">
       <button @click="showWebDesign()"
-        class="flex cursor-pointer flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col group h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent  bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-[1px] border-yellow-400': showWeb }">
-        <h2 class="text-white hidden sm:hidden md:flex">Skills</h2>
+        <h2 class="text-white hidden sm:hidden md:flex group-hover:text-yellow-400 transition-all duration-300">Skills</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
           <div class="flex items-center">
-            <Icon class="hidden sm:hidden md:flex" icon="iconoir:design-nib" color="white" width="25" height="25" />
-            <Icon icon="icon-park-outline:code-computer" color="white" width="50" height="50" />
-            <Icon class="hidden sm:hidden md:flex" icon="fluent:design-ideas-20-filled" color="white" width="25"
+            <Icon class="hidden sm:hidden group-hover:text-yellow-400 text-white transition-all duration-300 md:flex" icon="iconoir:design-nib" width="25" height="25" />
+            <Icon class="group-hover:text-yellow-400 text-white transition-all duration-300" icon="icon-park-outline:code-computer" width="50" height="50" />
+            <Icon class="hidden sm:hidden md:flex group-hover:text-yellow-400 text-white transition-all duration-300" icon="fluent:design-ideas-20-filled" width="25"
               height="25" />
           </div>
         </div>
       </button>
       <button @click="showApplication()"
-        class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col border-b-[1px] group h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-yellow-400': showApp }">
-        <h2 class="text-white hidden sm:hidden md:flex">Education</h2>
+        <h2 class="text-white hidden sm:hidden group-hover:text-yellow-400 transition-all duration-300 md:flex">Education</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
           <div class="flex items-center">
-            <Icon icon="zondicons:education" color="white" width="50" height="50" />
+            <Icon class="group-hover:text-yellow-400 text-white transition-all duration-300" icon="zondicons:education" width="50" height="50" />
           </div>
         </div>
       </button>
       <button @click="showEducation()"
-        class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] group sm:w-[60px] justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-yellow-400': showEdu }">
-        <h2 class="text-white hidden sm:hidden md:flex">Work</h2>
+        <h2 class="text-white hidden sm:hidden group-hover:text-yellow-400 transition-all duration-300 md:flex">Work</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
           <div class="flex items-center">
-            <Icon icon="ic:round-work-history" color="white" width="50" height="50" />
+            <Icon class="group-hover:text-yellow-400 text-white transition-all duration-300" icon="ic:round-work-history" width="50" height="50" />
           </div>
         </div>
       </button>
       <button @click="showWorking()"
-        class="flex cursor-pointer flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent hover:border-[1px] hover:border-yellow-400 bg-[#21214d] md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] group justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-yellow-400': showWork }">
-        <h2 class="text-white hidden sm:hidden md:flex">Hobbies</h2>
+        <h2 class="text-white hidden sm:hidden md:flex group-hover:text-yellow-400 transition-all duration-300">Hobbies</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
           <div class="flex items-center">
-            <Icon icon="bi:emoji-smile-fill" color="white" width="50" height="50" />
+            <Icon class="group-hover:text-yellow-400 text-white transition-all duration-300" icon="bi:emoji-smile-fill" width="50" height="50" />
           </div>
         </div>
       </button>
@@ -128,9 +128,7 @@ function showWorking() {
 </template>
 
 <style scoped>
-button:hover {
-  cursor: url('../image/icons8-hand-cursor-50.png'), auto;
-}
+
 
 /* we will explain what these classes do next! */
 .v-enter-active,
@@ -141,4 +139,6 @@ button:hover {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
-}</style>
+}
+
+</style>

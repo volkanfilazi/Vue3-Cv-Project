@@ -3,6 +3,8 @@ import { Icon } from '@iconify/vue';
 import { ref, watchEffect } from 'vue';
 import { useScroll, watchDebounced } from '@vueuse/core'
 
+
+
 const projects = ref(0)
 const certificate = ref(0)
 const experience = ref(0)
@@ -93,30 +95,35 @@ watchDebounced(y, () => {
   }
 }, { debounce: 50, maxWait: 100 })
 
-watchEffect(()=>{
-  console.log("alo",currentIndex.value)
+watchEffect(() => {
+  console.log("alo", currentIndex.value)
 })
 
 </script>
 <template>
   <div id="intro"
-    class="flex relative flex-col h-full mb-10 md:mb-0 sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
+    class="flex relative flex-col sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
     <div
       class="text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-gray-800 h-1/3 w-12 mr-5 border-[1px] text-xl rounded-full p-4 shadow-md shadow-black">
-      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 0} " icon="mdi:home-outline" width="24" height="24" />
-      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 1} " icon="game-icons:skills" width="24" height="24" />
-      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 2} " icon="et:tools-2" width="24" height="24" />
-      <Icon class="text-yellow-400!" :class="{'text-yellow-400' : currentIndex === 3} " icon="material-symbols:group-work-outline" width="24" height="24" />
+      <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 0 }" icon="mdi:home-outline" width="24"
+        height="24" />
+        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 1 }" icon="et:tools-2" width="24"
+          height="24" />
+          <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 2 }" icon="material-symbols:language" width="24"
+          height="24" />
+          <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 3 }"
+            icon="material-symbols:group-work-outline" width="24" height="24" />
+      <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 4 }" icon="game-icons:skills"
+        width="24" height="24" />
     </div>
-    <div class="observed-sections w-full relative flex h-screen justify-center items-center">
-      <Transition>
-        <div v-if="introToogleOne"
-          class="flex absolute text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
+    <div class="observed-sections w-full flex mt-14 md:mt-0 md:h-screen justify-center items-center">
+        <div
+          class="flex text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
           <div
-            class="border-[1px] w-full sm:w-[300px] md:w-[500px] border-white rounded-xl font-bold flex justify-center items-center h-[100px]">
-            <p class="text-yellow-400 text-lg font-bold">&lt;code&gt;</p>
+            class="border-[1px] text-sm md:text-md w-full sm:w-[300px] md:w-[500px] border-white rounded-xl font-bold flex justify-center items-center h-[100px]">
+            <p class="text-yellow-400 md:text-lg font-bold">&lt;code&gt;</p>
             <p class="text-white">{{ displayText }}<span class=" text-yellow-400 animate-ping">|</span></p>
-            <p class="text-yellow-400 text-lg font-bold">&lt;/code&gt;</p>
+            <p class="text-yellow-400 md:text-lg font-bold">&lt;/code&gt;</p>
           </div>
           <h1 class="text-2xl md:text-4xl font-bold text-white">MY NAME IS <span class="text-yellow-400">VOLKAN
               FILAZI</span></h1>
@@ -132,88 +139,29 @@ watchEffect(()=>{
           <button @click="introTwoShowing()"
             class="text-yellow-400 hover:text-white hover:transition-all hover:duration-500 top-0 mt-20">Do you need more
             info?</button>
-            <div class="flex gap-5 p-2 transition-all duration-500">
-              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-                href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
-                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
-                  icon="ri:linkedin-fill" width="36" height="36" />
-              </a>
-              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-                href="https://www.facebook.com/">
-                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
-                  icon="ic:outline-facebook" width="36" height="36" />
-              </a>
-              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-                href="https://github.com/volkanfilazi">
-                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
-                  icon="ph:github-logo-fill" width="36" height="36" />
-              </a>
-              <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-                href="https://www.npmjs.com/~volkanfilazi">
-                <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
-                  icon="tabler:brand-npm" width="36" height="36"  />
-              </a>
-            </div>
-        </div>
-      </Transition>
-      <Transition>
-        <div v-if="introToogleTwo"
-          class="flex absolute text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
-          <h1>Thank you for scan to the website in detail.</h1>
-          <p>I have never worked in a software company before, but I am an experienced developer with my own projects.</p>
-          <p>Of course, proving something is more important than claiming.</p>
-          <p>You can find my projects below</p>
-          <a class="w-10 h-10 flex cursor-pointer justify-center items-center transition-all duration-300 bg-white rounded-full hover:bg-yellow-400"
-            href="https://github.com/volkanfilazi">
-            <Icon icon="ph:github-logo-fill" color="black" />
-          </a>
-          <div class="flex gap-5">
-            <button @click="introGoBack"
-              class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Go
-              Back</button>
-            <button @click="introWhoAmI"
-              class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Who
-              am i?</button>
+          <div class="flex gap-5 p-2 transition-all duration-500">
+            <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+              href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
+              <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" icon="ri:linkedin-fill"
+                width="36" height="36" />
+            </a>
+            <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+              href="https://www.facebook.com/">
+              <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
+                icon="ic:outline-facebook" width="36" height="36" />
+            </a>
+            <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+              href="https://github.com/volkanfilazi">
+              <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500"
+                icon="ph:github-logo-fill" width="36" height="36" />
+            </a>
+            <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+              href="https://www.npmjs.com/~volkanfilazi">
+              <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" icon="tabler:brand-npm"
+                width="36" height="36" />
+            </a>
           </div>
-        </div>
-      </Transition>
-      <Transition>
-        <div v-if="introToogleThree"
-          class="flex absolute text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
-          <h1 class="w-full">About Me</h1>
-          <p>As a passionate web designer, I am excited
-            to apply for my first professional opportunity
-            in this field. I have always been drawn to the
-            creative process of designing websites, and
-            I am confident that my skills and enthusiasm
-            make me a strong candidate for any web
-            design position.
-            I have a strong understanding of HTML,
-            CSS, JavaScript,Vue3 and I have
-            experience using popular design tools like
-            Adobe Photoshop and Sketch. I am also
-            constantly learning and staying up to date
-            with new technologies and trends in the
-            field, which allows me to create modern and
-            visually appealing websites.
-            My ability to work well in a team and my
-            attention to detail are also strengths that I
-            believe would make me a valuable asset to
-            any organization. I am a quick learner and
-            am always willing to take on new challenges
-            to expand my skill set.
-            Thank you for considering my application. I
-            look forward to the opportunity to further
-            discuss how I can contribute to your team.</p>
-
-          <div class="flex gap-5">
-
-            <button @click="introGoBack"
-              class="border-[1px] hover:text-yellow-400 hover:transition-all hover:duration-500 hover:border-white border-yellow-400 p-2">Go
-              Back</button>
-          </div>
-        </div>
-      </Transition>
+        </div>      
     </div>
 
   </div>
@@ -229,5 +177,28 @@ watchEffect(()=>{
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+div[role="progressbar"] {
+  --size: 12rem;
+  --fg: rgb(250, 204, 21);
+  --bg: rgb(255, 255, 255);
+  --pgPercentage: var(--value);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(closest-side, rgb(31, 41, 55) 80%, transparent 0 99.9%, white 0),
+    conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: calc(var(--size) / 5);
+  color: var(--fg);
+}
+
+div[role="progressbar"]::before {
+  counter-reset: percentage var(--value);
+  content: counter(percentage) '%';
 }
 </style>

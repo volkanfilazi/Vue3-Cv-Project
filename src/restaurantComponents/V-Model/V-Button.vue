@@ -3,7 +3,7 @@ import { ref, watchEffect } from 'vue';
 
 
 export interface Props {
-  isLoading: boolean
+  isLoading?: boolean
 }
 const prop = withDefaults(defineProps<Props>(), {
   isLoading: false

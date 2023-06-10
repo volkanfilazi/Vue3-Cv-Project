@@ -7,6 +7,7 @@ import { useStorage } from "@vueuse/core";
 export const useShopStore = defineStore('shop', () => {
   const allProducts = ref<Products[]>([])
   const allProductsClone = ref<Products[]>([])
+  const allProductsSecondClone = ref<Products[]>([])
   const filterProdcutsByTitle = ref<Products[]>([])
   const allCategories = ref<any>()
   const singleProduct = ref<any>()
@@ -20,6 +21,7 @@ export const useShopStore = defineStore('shop', () => {
     try {
       let response = await axios.get<Products[]>(`https://fakestoreapi.com/products`)
       allProducts.value = response.data
+      allProductsSecondClone.value = response.data
       return response.data
     } catch (error) {
 
@@ -226,5 +228,6 @@ export const useShopStore = defineStore('shop', () => {
     deleteItem,
     updateItem,
     totalPrice,
+    allProductsSecondClone
   }
 })
