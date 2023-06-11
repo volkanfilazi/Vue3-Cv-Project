@@ -1,13 +1,115 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import VSettingsModal from './V-Modal/V-SettingsModal.vue';
+import { ref } from 'vue';
+import router from '../router/router';
+import { useStorage } from "@vueuse/core";
+import VLanguageModal from './V-Modal/V-LanguageModal.vue'
+import i18n from '../i18n';
+
+
+const settingsOpenToogle = ref<boolean>(false)
+const gameHistoryOpenToogle = ref<boolean>(false)
+const languageOpenToogle = ref<boolean>(false)
+const history = ref<any[]>([])
+const scoreHistory = useStorage('history', [])
+const saveLanguage = useStorage('language', String)
+
+function changeLanguage(lang: string) {
+  
+  saveLanguage.value = lang
+  i18n.global.locale = lang
+}
+
+function settingsOpenPopup() {
+  settingsOpenToogle.value = true
+}
+
+function settingsclosePopup() {
+  settingsOpenToogle.value = false
+}
+
+function showHistory() {
+  history.value = scoreHistory.value
+  gameHistoryOpenToogle.value = true
+}
+
+function closeHistory() {
+  gameHistoryOpenToogle.value = false
+}
+
+function languageOpenButton() {
+  languageOpenToogle.value = true
+}
+
+function languageCloseButton() {
+  languageOpenToogle.value = false
+}
+
+function clearHistory() {
+  scoreHistory.value = [];
+  history.value = []
+}
 </script>
 
 <template>
-  <div class="w-full h-20 grid grid-cols-3 items-center bg-red-500">
-        <div class="flex justify-center">
-          <Icon icon="material-symbols:language" color="white" width="24" height="24" />
-        </div>
-        <p class="font-bold text-white text-center">Intelligence Square</p>
-        <p class="text-white text-center">New Game</p>
+  <div class="w-full h-20 grid grid-cols-3 items-center bg-red-500" :dir="$i18n.locale == 'eng' ? 'ger' : 'eng'">
+    <div @click="languageOpenButton()" class="flex group justify-center cursor-pointer">
+      <Icon class="hover:text-black transition-all duration-300 text-white" icon="material-symbols:language" width="24"
+        height="24" />
+
+    </div>
+    <div class="cursor-pointer group" @click="router.push({ name: 'intelligenceSquare' })">
+      <p class="font-bold transition-all duration-300 group-hover:text-black text-white text-center">Intelligence Square
+      </p>
+    </div>
+    <div class="flex gap-2 justify-center cursor-pointer">
+      <div @click="showHistory()" class="group">
+        <Icon class="group-hover:text-black transition-all duration-300 text-white" icon="material-symbols:history"
+          width="24" height="24" />
       </div>
+      <div @click="settingsOpenPopup()" class="group">
+        <Icon class="group-hover:text-black transition-all duration-300 text-white"
+          icon="material-symbols:settings-outline" width="24" height="24" />
+      </div>
+    </div>
+  </div>
+  <VSettingsModal :open="settingsOpenToogle" @close="settingsclosePopup()">
+    <div class="flex flex-col gap-2 text-white">
+      <button @click="router.push({ name: 'intelligenceSquare' }), settingsOpenToogle = false"
+        class="bg-red-500 p-1 rounded-md">Homepage</button>
+      <button @click="router.push({ name: 'intelligenceCategory' }), settingsOpenToogle = false"
+        class="bg-red-500 p-1 rounded-md">New Game</button>
+    </div>
+  </VSettingsModal>
+  <VSettingsModal :open="gameHistoryOpenToogle" @close="closeHistory()">
+    <div class="flex items-center flex-col gap-2">
+      <div @click="clearHistory" class="flex justify-start w-full">
+        <button
+          class="border-[2px] p-1 border-red-500 transition-all duration-300 hover:bg-red-500 hover:text-white">Clear
+          History</button>
+      </div>
+      <h1 class="text-center font-bold">Result History</h1>
+      <div class="flex gap-1 border-[1px] border-black" v-for="item in history" :key="item">
+        <div v-for="itemx in item" class="border-[1px]">
+          <p class="border-[1px] text-center p-1 text-white min-w-[50px]"
+            :class="[{ 'bg-red-500': itemx === 'X' }, { 'bg-green-500': itemx === 'O' }, { 'bg-orange-500': itemx === 'PASS' }]">
+            {{ itemx }}</p>
+        </div>
+      </div>
+    </div>
+  </VSettingsModal>
+  <VLanguageModal :open="languageOpenToogle" @close="languageCloseButton">
+    <div class="flex items-center ">
+    <div class="w-full flex items-center justify-center gap-10">
+      <div for="eng" @click="changeLanguage('eng')">
+        <Icon icon="openmoji:flag-england" width="72" height="72" />
+      </div>
+      <div @click="changeLanguage('ger')">
+        <Icon icon="openmoji:flag-germany" width="72" height="72" />
+      </div>
+    </div>
+  </div>
+  <p class="text-center mt-5">saved</p>
+  </VLanguageModal>
 </template>

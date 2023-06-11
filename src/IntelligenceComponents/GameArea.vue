@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useIntelligenceStore } from '../Store/Intelligence';
 import router from '../router/router';
+import VGameOverModal from '../IntelligenceComponents/V-Modal/V-GameOverModal.vue'
+import { useStorage } from "@vueuse/core";
 
 const intelligenceStore = useIntelligenceStore()
 const showQuestion = ref<any[]>([])
@@ -10,6 +12,11 @@ const intervalId = ref(null)
 const startingCountDown = ref<number>(5)
 const answerInput = ref<string>('')
 const score = ref<any[]>([])
+const scoreHistory = useStorage('history',[])
+const afterPass = ref<boolean>(false)
+
+const questionQuantity = ref<number>(5)
+
 
 function timeCounter() {
   const interval = setInterval(() => {
@@ -27,6 +34,11 @@ function timeCounter() {
 }
 
 function showNextQuestion() {
+  startingCountDown.value = 5;
+  clearInterval(intervalId.value);
+  if (currentIndex.value > 0) {
+    showQuestion.value[currentIndex.value - 1] = false;
+  }
   showQuestion.value[currentIndex.value] = true;
   currentIndex.value++;
   startingCountDown.value = 5;
@@ -39,23 +51,44 @@ function showNextQuestion() {
 }
 
 function checkAnswer(question: string) {
-  answerInput.value = ''
   const response = intelligenceStore.dataCopy.filter((item) => item.question === question)
   if (answerInput.value === response[0].answer) {
     score.value.push('O')
-  } else {
+    answerInput.value = ''
+  }
+  else {
     score.value.push('X')
+    answerInput.value = ''
+  }
+  if (currentIndex.value < intelligenceStore.dataCopy.length) {
+    showNextQuestion();
   }
 }
 
-onMounted(() => {
-  if (currentIndex.value < intelligenceStore.dataCopy.length) {
-    timeCounter()
+function passButtonCheck(){
+  answerInput.value = ''
+  if(afterPass.value = true){
+    score.value.push('PASS')
   }
-  showNextQuestion();
-
+  
+  if (score.value.length < questionQuantity.value) {
+    showNextQuestion();
+  }
+  if(score.value.length === questionQuantity.value){
+    startingCountDown.value = 0;
+  }
+}
+watchEffect(() =>{
+  if(score.value.length >= questionQuantity.value){
+    scoreHistory.value.push(score.value)
+  }
+})
+onMounted(() => {
   if (intelligenceStore.dataCopy.length <= 0) {
-    router.push({ name: 'intelligenceCategory' })
+    router.push({ name: 'intelligenceCategory' });
+  } else {
+    timeCounter();
+    showNextQuestion();
   }
 });
 
@@ -64,12 +97,12 @@ onMounted(() => {
 <template>
   <div class="h-full w-full items-center flex flex-col">
 
-    <h1 class="font-bold" v-if="score.length === 5">GAME OVER</h1>
+    <h1 class="font-bold" v-if="score.length === questionQuantity">GAME OVER</h1>
     <h1 class="font-bold mt-5">SCORE</h1>
     <div class="flex gap-2 mt-5">
       <div v-for="item in score">
-        <p class="border-[1px] p-2 text-white"
-          :class="[{ 'bg-red-500': item === 'X' }, { 'bg-green-500': item === 'O' }]">
+        <p class="border-[1px] text-center min-w-[50px] p-2 text-white"
+          :class="[{ 'bg-red-500': item === 'X' }, { 'bg-green-500': item === 'O' },{ 'bg-orange-500': item === 'PASS' }]">
           {{ item }}</p>
       </div>
     </div>
@@ -99,13 +132,24 @@ onMounted(() => {
         </div>
 
         <div :class="{ 'hidden': !showQuestion[index] }" class="h-1/2 flex items-center justify-center">
-          <button @click="checkAnswer(item.question)" class="mt-10 border-[2px] p-2 rounded-md border-red-600">
-            <span v-if="answerInput.length <= 0">Pass</span> 
-            <span v-else>Answer</span>
-          </button>
+          <button :disabled="score.length === questionQuantity" v-if="answerInput.length <= 0" @click="passButtonCheck()" class="mt-10 border-[2px] p-2 rounded-md border-red-600">Pass</button>
+          <button :disabled="score.length === questionQuantity" v-else @click="checkAnswer(item.question)" class="mt-10 border-[2px] p-2 rounded-md border-red-600">Answer</button>
         </div>
 
       </div>
     </div>
   </div>
+  <VGameOverModal :open="score.length === questionQuantity">
+    <p class="text-center font-bold">Game is Over</p>
+    <p class="text-center font-bold">Results</p>
+    <div v-for="item in score">
+        <p class="border-[1px] text-center min-w-[50px] p-2 text-white"
+          :class="[{ 'bg-red-500': item === 'X' }, { 'bg-green-500': item === 'O' },{ 'bg-orange-500': item === 'PASS' }]">
+          {{ item }}</p>
+      </div>
+    <div class="flex justify-center items-center mt-5 gap-1">
+      <button @click="router.push({name: 'intelligenceCategory'})" class="p-1 border-red-500 border-[2px] transition-all duration-300 hover:bg-red-500 hover:text-white">Play Again</button>
+      <button @click="router.push({name: 'intelligenceSquare'})" class="p-1 border-red-500 border-[2px] transition-all duration-300 hover:bg-red-500 hover:text-white">Home Page</button>
+    </div>  
+  </VGameOverModal>
 </template>

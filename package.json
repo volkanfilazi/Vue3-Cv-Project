@@ -24,6 +24,7 @@
     "volki-components-three": "^0.0.1",
     "vue": "^3.3.4",
     "vue-dynamic-input-component": "^0.0.2",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.2",
     "vue-scrollactive": "^0.9.3",
     "vue3-particles": "^2.9.3"
