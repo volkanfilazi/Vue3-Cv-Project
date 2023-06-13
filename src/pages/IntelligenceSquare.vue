@@ -1,11 +1,20 @@
 <script setup lang="ts">
+import { useStorage } from '@vueuse/core';
 import intelligenceNavbar from '../IntelligenceComponents/IntelligenceNavbar.vue'
 import intelligenceStart from '../IntelligenceComponents/IntelligenceStart.vue'
+
+const darkModeOn = useStorage('darkmode',Boolean)
+
 </script>
 
 <template>
-  <div class="w-full h-screen flex justify-center">
-    <div class="w-full md:w-1/2 h-full bg-gray-300 flex flex-col items-center gap-2">
+  <div class="w-full min-h-screen h-full flex justify-center">
+    <div class="w-full md:w-1/2 bg-gray-300 flex flex-col items-center gap-2" 
+    :style="[{backgroundColor : darkModeOn ? 'black' : ''},
+    {borderRight : darkModeOn ? 'solid' : 'none'},
+    {borderLeft : darkModeOn ? 'solid' : 'none'},
+    {borderColor : darkModeOn ? 'white' : 'initial'}
+    ]">
       <intelligenceNavbar></intelligenceNavbar>
       <intelligenceStart></intelligenceStart>
     </div>

@@ -124,7 +124,7 @@ function changeColor(colorValue: string) {
       <input type="checkbox" id="menu-toggle" class="relative sr-only peer" checked>
       <label class="text-center text-yellow-400 w-20" for="menu-toggle">Menu</label>
       <ul
-        class="flex absolute right-0 peer-checked:hidden flex-col mt-7 text-yellow-400 gap-1 px-5 bg-[#0e152f] border-b-[1px] border-l-[1px] border-white">
+        class="flex absolute right-0 peer-checked:hidden flex-col mt-7 text-yellow-400 gap-1 px-5 bg-[#1f2937] border-b-[1px] border-l-[1px] border-white">
         <li><a href="#intro">Intro</a></li>
         <li><a href="#tools">Tools</a></li>
         <li><a href="#languages">Languages</a></li>

@@ -1,4 +1,12 @@
 {
   "homeMessage": "Answer certain categories of questions and discover your intelligence",
-  "homeMessageSecond": "If you are ready go ahead"
+  "homeMessageSecond": "If you are ready go ahead",
+  "start": "Start",
+  "choose": "Choose a Category",
+  "beforeInfoOne": "Just answer the questions",
+  "beforeInfoTwo": "2 tips are waiting for you",
+  "beforeInfoThree": "First letter of answer",
+  "beforeInfoFour": "Character lenght",
+  "gameStart": "Game is starting",
+  "clickToStart": "Click for the start"
 }

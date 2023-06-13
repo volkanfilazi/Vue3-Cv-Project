@@ -12,8 +12,6 @@ const selectedProductId = useStorage('id', Number);
 const shopStore = useShopStore()
 watchEffect(async () => {
   const response = await shopStore.getSingleProduct(selectedProductId.value)
-  console.log(response);
-
 })
 
 function addCart(productId: number, title: string, price: string, count: string, image: string) {

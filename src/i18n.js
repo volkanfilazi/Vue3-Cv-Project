@@ -3,7 +3,7 @@ import eng from './locales/eng.json'
 import ger from './locales/ger.json'
 import { useStorage } from '@vueuse/core'
 
-const saveLanguage = useStorage('language','')
+const saveLanguage = useStorage('language',String)
 
 function loadLocaleMessage(){
   const locales = [{ eng: eng}, {ger: ger}]

@@ -5,6 +5,10 @@ import Navbar from '../restaurantComponents/NavBar.vue';
 import Drawer from '../restaurantComponents/Drawer.vue';
 import Footer from '../restaurantComponents/Footer.vue';
 
+onMounted(() =>{
+  window.scrollTo(0, 0);
+})
+
 </script>
 
 <template>

@@ -30,7 +30,7 @@ const emit = defineEmits<Emits>()
     <Transition name="fade">
       <div v-show="prop.open" class="fixed flex justify-center items-center left-0 top-0 right-0 bottom-0 z-50">
         <div class="absolute w-full h-full bg-black opacity-75" @click.self="emit('close', true)"></div>
-        <div class="settings-popup border-[1px] border-gray-600 h-[400px] overflow-y-auto scroll-auto bg-white p-2 rounded-lg z-10">
+        <div class="settings-popup border-[1px] border-gray-600 h-[500px] overflow-y-auto scroll-auto bg-white p-2 rounded-lg z-10">
           <div class="w-full flex justify-end">
             <button
               class="bg-transparent border-[1px] hover:bg-yellow-400 pl-2 pr-2 transition-all ease-in duration-200 hover:text-black rounded-lg text-black"

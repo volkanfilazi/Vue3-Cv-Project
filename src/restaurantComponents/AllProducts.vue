@@ -72,7 +72,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="w-full lg:w-5/6 px-2 md:px-0 h-[60px] flex justify-center items-center gap-5 bg-[#471d6b] text-gray-300">
+  <div class="w-full text-sm md:text-[15px] lg:w-5/6 px-2 md:px-0 h-[60px] flex justify-center items-center gap-5 bg-[#471d6b] text-gray-300">
     <p>FREE SHIPPING</p>
     <p>24/7 SUPPORT</p>
     <p>MONEY BACK</p>
@@ -136,7 +136,7 @@ watchEffect(() => {
 
     <div class="w-full flex flex-col md:flex-row md:p-5 gap-1  bg-[#f6eeff]">
       <div class="flex flex-col w-full px-1 md:px-[200px]">
-        <div class="flex items-center justify-center gap-10">
+        <div class="flex items-center justify-center gap-2 text-sm mb-3 md:text-[15px] md:mb-0 md:gap-10">
           <button @click="getACategory('electronics')" class="bg-transparent"
             :class="{ ' text-purple-700 font-bold rounded-sm p-1': selectedCategory === 'electronics' }">Electronics</button>
           <button @click="getACategory('jewelery')" class="bg-transparent"

@@ -6,22 +6,14 @@ import { ref } from 'vue';
 import { useShopStore } from '../Store/Shop';
 import { useStorage } from "@vueuse/core";
 
-const shopStore = useShopStore()
-const loadingScreenMessage = ref<string>('')
 const router = useRouter()
-const loadingToogle = useStorage('laoading', Boolean)
 
 async function goToShop() {
   router.push({ name: 'shop' })
 }
 
-async function goToCryptoProject() {
-  loadingScreenMessage.value = "Crypto Project is Loading"
-  loadingToogle.value = true
-  setTimeout(() => {
-    loadingToogle.value = false
-    router.push({ name: 'shop' })
-  }, 2500)
+async function goToIntelligenceSquare() {
+  router.push({ name: 'intelligenceSquare' })
 }
 
 
@@ -38,43 +30,63 @@ async function goToCryptoProject() {
         <div class="border-l-[2px] border-b-[2px] w-5 h-5 border-yellow-400"></div>
       </div>
     </div>
-    <div class="w-full md:w-4/5 text-white text-sm md:text-lg md:h-1/2 gap-2 flex md:justify-between">
+    <div class="w-full md:w-4/5 text-white text-sm md:text-lg md:h-1/2 flex flex-col gap-2 md:flex md:flex-row md:justify-between">
+      
       <div
-        class="w-full h-[450px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-full transition-all duration-300 hover:border-yellow-400">
-        <div class="h-2/5 flex items-center justify-center flex-col gap-5">
+        class="w-full h-[300px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-full transition-all duration-300 hover:border-yellow-400">
+
+        <div class="h-2/5 sm:h-1/3 flex items-center justify-center flex-col gap-5">
           <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ Shop ~</h1>
           <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="guidance:shop" width="36"
             height="36" />
         </div>
-        <div class="h-2/5 flex flex-col justify-center p-2">
+
+        <div class="h-2/5 sm:h-2/3 md:justify-center flex flex-col p-2">
           <p class="text-yellow-400">Project Thema : <span class="text-white">Shop, Order, Filter
               System, Checkout, Networking </span></p>
           <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
               Tailwind, Typescript</span></p>
           <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue, axios</span></p>
         </div>
-        <div class="flex h-1/5 justify-center mb-5 md:mb-0">
+
+        <div class="flex h-1/5 justify-center items-center md:mb-0">
           <vbutton @click="goToShop()">Visit</vbutton>
         </div>
       </div>
 
       <div
-        class="w-full h-[450px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-full transition-all duration-300 hover:border-yellow-400">
-        <div class="h-2/5 flex items-center justify-center flex-col gap-5">
+        class="w-full h-[300px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-full transition-all duration-300 hover:border-yellow-400">
+        <div class="h-2/5 sm:h-1/3 flex items-center justify-center flex-col gap-5">
           <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ Intelligence Square ~</h1>
-          <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="guidance:shop" width="36"
+          <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="carbon:ibm-watson-knowledge-studio" width="36"
             height="36" />
         </div>
-        <div class="h-2/5 flex flex-col justify-center p-2">
-          <p class="text-yellow-400">Project Thema : <span class="text-white">Shop, Order, Filter
-              System, </span></p>
+        <div class="h-2/5 sm:h-2/3 md:justify-center flex flex-col p-2">
+          <p class="text-yellow-400">Project Thema : <span class="text-white">Knowledge Competition, Multiple categories, Local Backend </span></p>
           <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
               Tailwind</span></p>
-          <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue,
-              autoprefixer</span></p>
+          <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue</span></p>
         </div>
-        <div class="h-1/5 flex mb-5 md:mb-0 justify-center">
-          <vbutton :is-loading="true">Coming soon</vbutton>
+        <div class="flex h-1/5 justify-center items-center md:mb-0">
+          <vbutton @click="goToIntelligenceSquare()">Visit</vbutton>
+        </div>
+      </div>
+
+      <div
+        class="w-full h-[300px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-full transition-all duration-300 hover:border-yellow-400">
+        <div class="h-2/5 sm:h-1/3 flex items-center justify-center flex-col gap-5">
+          <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ Encryption ~</h1>
+          <Icon class="transition-all duration-300 group-hover:text-yellow-400" icon="carbon:ibm-cloud-hyper-protect-crypto-services" width="36"
+            height="36" />
+        </div>
+        <div class="h-2/5 sm:h-2/3 md:justify-center flex flex-col p-2">
+          <p class="text-yellow-400">Project Thema : <span class="text-white">Strengthen Passwords</span></p>
+          <p class="text-yellow-400">Languages and Frameworks : <span class="text-white">Vue.js, HTML, CSS,
+              Tailwind</span></p>
+          <p class="text-yellow-400">Used Packages : <span class="text-white">@iconify/vue, jwt, decode</span></p>
+        </div>
+        <div class="flex h-1/5 justify-center items-center md:mb-0">
+          <vbutton disabled>Coming Soon</vbutton>
         </div>
       </div>
 

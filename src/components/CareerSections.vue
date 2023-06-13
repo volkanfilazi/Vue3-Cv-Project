@@ -56,10 +56,10 @@ function showWorking() {
     </div>
   </div>
   <div id="career"
-    class="skills observed-sections mt-5 flex flex-col md:mt-0 justify-between h-full sm:h-full mb-10 md:w-4/4 sm:flex-col md:flex-row w-full md:justify-center md:items-center z-10">
-    <div class="flex flex-row justify-center sm:justify-center sm:flex-row md:justify-start md:flex-col">
+    class="skills observed-sections mt-5 md:mt-16 min-h-[700px] flex flex-col h-full sm:h-full mb-10 md:w-4/4 md:flex-row w-full md:justify-center md:items-center z-10">
+    <div class="flex flex-row justify-center sm:justify-center gap-1 md:gap-0 sm:flex-row md:justify-start md:flex-col">
       <button @click="showWebDesign()"
-        class="flex cursor-pointer flex-col group h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent  bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col group h-[60px] w-[100px] sm:h-[60px] sm:w-[100px] justify-center items-center border-[1px] border-transparent  bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-[1px] border-yellow-400': showWeb }">
         <h2 class="text-white hidden sm:hidden md:flex group-hover:text-yellow-400 transition-all duration-300">Skills</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
@@ -72,7 +72,7 @@ function showWorking() {
         </div>
       </button>
       <button @click="showApplication()"
-        class="flex cursor-pointer flex-col border-b-[1px] group h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col border-b-[1px] group h-[60px] w-[100px] sm:h-[60px] sm:w-[100px] justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-yellow-400': showApp }">
         <h2 class="text-white hidden sm:hidden group-hover:text-yellow-400 transition-all duration-300 md:flex">Education</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
@@ -82,7 +82,7 @@ function showWorking() {
         </div>
       </button>
       <button @click="showEducation()"
-        class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[60px] sm:h-[60px] group sm:w-[60px] justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col border-b-[1px] h-[60px] w-[100px] sm:h-[60px] group sm:w-[100px] justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-yellow-400': showEdu }">
         <h2 class="text-white hidden sm:hidden group-hover:text-yellow-400 transition-all duration-300 md:flex">Work</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">
@@ -92,7 +92,7 @@ function showWorking() {
         </div>
       </button>
       <button @click="showWorking()"
-        class="flex cursor-pointer flex-col h-[60px] w-[60px] sm:h-[60px] sm:w-[60px] group justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
+        class="flex cursor-pointer flex-col h-[60px] w-[100px] sm:h-[60px] sm:w-[100px] group justify-center items-center border-[1px] border-transparent bg-gray-900 md:h-[150px] md:w-[150px] transition-all duration-500"
         :class="{ 'transition-all duration-500 bg-black border-yellow-400': showWork }">
         <h2 class="text-white hidden sm:hidden md:flex group-hover:text-yellow-400 transition-all duration-300">Hobbies</h2>
         <div class="flex gap-1 h-2/3 w-full items-center justify-center">

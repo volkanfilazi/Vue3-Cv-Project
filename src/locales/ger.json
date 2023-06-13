@@ -1,4 +1,12 @@
 {
   "homeMessage": "Beantworten Sie bestimmte Fragenkategorien und entdecken Sie Ihre Intelligenz",
-  "homeMessageSecond": "Wenn Sie bereit sind, fahren Sie fort"
+  "homeMessageSecond": "Wenn Sie bereit sind, fahren Sie fort",
+  "start": "Start",
+  "choose": "Wähle eine Kategorie",
+  "beforeInfoOne": "Beantworten Sie einfach die Fragen",
+  "beforeInfoTwo": "2 Tipps warten auf Sie",
+  "beforeInfoThree": "Erster Antwortbrief",
+  "beforeInfoFour": "Zeichenlänge",
+  "gameStart": "Das Spiel beginnt",
+  "clickToStart": "Klicken Sie zum Starten"
 }

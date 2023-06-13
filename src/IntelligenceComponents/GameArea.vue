@@ -5,11 +5,13 @@ import router from '../router/router';
 import VGameOverModal from '../IntelligenceComponents/V-Modal/V-GameOverModal.vue'
 import { useStorage } from "@vueuse/core";
 
+const darkModeOn = useStorage('darkmode',Boolean)
+
 const intelligenceStore = useIntelligenceStore()
 const showQuestion = ref<any[]>([])
 const currentIndex = ref(0)
 const intervalId = ref(null)
-const startingCountDown = ref<number>(5)
+const startingCountDown = ref<number>(10)
 const answerInput = ref<string>('')
 const score = ref<any[]>([])
 const scoreHistory = useStorage('history',[])
@@ -34,25 +36,25 @@ function timeCounter() {
 }
 
 function showNextQuestion() {
-  startingCountDown.value = 5;
+  startingCountDown.value = 10;
   clearInterval(intervalId.value);
   if (currentIndex.value > 0) {
     showQuestion.value[currentIndex.value - 1] = false;
   }
   showQuestion.value[currentIndex.value] = true;
   currentIndex.value++;
-  startingCountDown.value = 5;
+  startingCountDown.value = 10;
   if (currentIndex.value < intelligenceStore.dataCopy.length) {
     intervalId.value = setTimeout(() => {
       showQuestion.value[currentIndex.value - 1] = false;
       showNextQuestion();
-    }, 5000);
+    }, 10000);
   }
 }
 
 function checkAnswer(question: string) {
   const response = intelligenceStore.dataCopy.filter((item) => item.question === question)
-  if (answerInput.value === response[0].answer) {
+  if (answerInput.value.toLowerCase() === response[0].answer.toLowerCase()) {
     score.value.push('O')
     answerInput.value = ''
   }
@@ -62,6 +64,9 @@ function checkAnswer(question: string) {
   }
   if (currentIndex.value < intelligenceStore.dataCopy.length) {
     showNextQuestion();
+  }
+  if(score.value.length === questionQuantity.value){
+    startingCountDown.value = 0;
   }
 }
 
@@ -99,7 +104,7 @@ onMounted(() => {
 
     <h1 class="font-bold" v-if="score.length === questionQuantity">GAME OVER</h1>
     <h1 class="font-bold mt-5">SCORE</h1>
-    <div class="flex gap-2 mt-5">
+    <div class="flex gap-2 min-h-[50px] mt-5">
       <div v-for="item in score">
         <p class="border-[1px] text-center min-w-[50px] p-2 text-white"
           :class="[{ 'bg-red-500': item === 'X' }, { 'bg-green-500': item === 'O' },{ 'bg-orange-500': item === 'PASS' }]">
@@ -112,7 +117,12 @@ onMounted(() => {
     <div class="items-center w-full px-2 sm:px-5 md:px-10 mt-10 grid grid-cols-1">
       <div v-for="(item, index) in intelligenceStore.dataCopy" :key="index" class="">
         <div :class="{ 'hidden': !showQuestion[index] }"
-          class="h-[300px] bg-white text-center relative p-2 rounded-md flex items-center justify-center">
+          class="h-[150px] text-sm md:text-md md:h-[300px] bg-white text-center relative p-2 rounded-md flex items-center justify-center" 
+          :style="[
+            {backgroundColor : darkModeOn ? 'black' : ''},
+            {border : darkModeOn ? 'solid' : 'none'},
+            {borderColor: darkModeOn ? 'white' : ''}
+          ]">
           <p class="font-bold text-lg sm:text-2x1 md:text-3xl">{{ item.question }}</p>
           <div class="flex absolute -top-5 right-0 gap-2">
             <div class="bg-red-500 w-10 h-10 rounded-full text-white font-bold flex items-center justify-center">
@@ -127,6 +137,11 @@ onMounted(() => {
           <div class="flex mt-10 items-center relative w-full justify-center">
             <input id="answerInp"
               class="rounded-md border-[1px] transition-all duration-300 pl-2 focus:border-red-500 h-10 w-full outline-none"
+              :style="[
+            {backgroundColor : darkModeOn ? 'black' : ''},
+            {border : darkModeOn ? 'solid' : 'none'},
+            {borderColor: darkModeOn ? 'white' : ''}
+          ]"
               :maxlength="item.answer.length" v-model="answerInput" type="text">
           </div>
         </div>

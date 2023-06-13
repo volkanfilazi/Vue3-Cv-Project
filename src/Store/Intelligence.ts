@@ -13,6 +13,10 @@ export const useIntelligenceStore = defineStore('intelligence', () => {
       category: 'Spor',
       image: 'solar:football-bold-duotone'
     },
+    {
+      category: 'Software',
+      image: 'carbon:cics-program'
+    },
   ])
 
   const mainData = ref([
@@ -75,6 +79,36 @@ export const useIntelligenceStore = defineStore('intelligence', () => {
       category: 'Spor',
       question: `Which sport is known as "The Gentleman's Game"?`,
       answer: 'Cricket'
+    },
+    {
+      id:11,
+      category: 'Software',
+      question: `What is the abbreviation for the database language?`,
+      answer: 'Sql'
+    },
+    {
+      id:12,
+      category: 'Software',
+      question: `What is the tool that converts the source code of a software into an executable program?`,
+      answer: 'Compiler'
+    },
+    {
+      id:13,
+      category: 'Software',
+      question: `What is the process of finding and fixing errors or defects in a software called?`,
+      answer: 'Debugging'
+    },
+    {
+      id:14,
+      category: 'Software',
+      question: `What is the term for a software program that maliciously disrupts or damages computer systems?`,
+      answer: 'Malware'
+    },
+    {
+      id:15,
+      category: 'Software',
+      question: `What is the practice of using multiple programming languages or technologies in a single software project called?`,
+      answer: 'Polyglot'
     }
   ])
 
@@ -82,7 +116,6 @@ export const useIntelligenceStore = defineStore('intelligence', () => {
     return {
       categories,  
       mainData,
-      dataCopy
-        
+      dataCopy  
     }
 })

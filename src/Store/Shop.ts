@@ -42,7 +42,6 @@ export const useShopStore = defineStore('shop', () => {
     try {
       let response = await axios.get<any>(`https://fakestoreapi.com/products/categories`)
       allCategories.value = response.data
-      console.log(response.data);
       return response.data
     } catch (error) {
 
@@ -132,7 +131,6 @@ export const useShopStore = defineStore('shop', () => {
       try {
         cartData.value = JSON.parse(cartDataString);
       } catch (error) {
-        console.error('Error parsing cart data:', error);
       }
     }
   }
