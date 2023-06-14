@@ -6,13 +6,14 @@ import { Icon } from '@iconify/vue';
   <div id="tools"
     class="observed-sections target md:mt-[300px] mt-10 flex p-2 md:p-0 flex-col justify-center w-full items-center relative sm:h-full gap-5 transition-all duration-200">
     <div class="flex flex-col md:mt-0 w-full justify-center items-center">
-      <div class="w-[150px] md:w-[180px] flex justify-end">
-        <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
-      </div>
       <h1 class="text-white font-bold text-[20px] md:text-[30px]">Languages</h1>
-      <div class="w-[150px] md:w-[180px] flex justify-start">
-        <div class="border-l-[2px] border-b-[2px] w-5 h-5 border-yellow-400"></div>
-      </div>
+    </div>
+    <div class="flex gap-2">
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+      <div class="w-4 h-4 rounded-full bg-yellow-400"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
     </div>
 
     <div
@@ -40,7 +41,7 @@ import { Icon } from '@iconify/vue';
 div[role="progressbar"] {
   --size: 12rem;
   --fg: rgb(250, 204, 21);
-  --bg: rgb(255, 255, 255);
+  --bg: rgb(46, 46, 46);
   --pgPercentage: var(--value);
   width: var(--size);
   height: var(--size);
@@ -48,7 +49,7 @@ div[role="progressbar"] {
   display: grid;
   place-items: center;
   background:
-    radial-gradient(closest-side, rgb(31, 41, 55) 80%, transparent 0 99.9%, white 0),
+    radial-gradient(closest-side, rgb(31, 41, 55) 95%, transparent 0 99.9%, rgb(31, 30, 30) 0),
     conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
   font-family: Helvetica, Arial, sans-serif;
   font-size: calc(var(--size) / 5);

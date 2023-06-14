@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Navbar from './components/Navbar.vue'
 import Intro from './components/Intro.vue'
-import CareerSections from './components/CareerSections.vue'
 import Tools from './components/Tools.vue'
 import Footer from './components/Footer.vue'
 import Specialization from './components/Specialization.vue'
@@ -10,6 +9,7 @@ import VProjectInfoModal from './restaurantComponents/V-Model/V-ProjectInfoModal
 import { ref, watchEffect } from 'vue'
 import { Icon } from '@iconify/vue';
 import { useScroll, watchDebounced } from '@vueuse/core'
+import MyResume from './components/MyResume.vue'
 
 const projectInfoToogle = ref(false)
 
@@ -49,14 +49,14 @@ watchDebounced(y, () => {
     <div class="w-full h-full flex md:px-0 lg:px-20 xl:px-40">
       <div class="w-full flex relative h-full flex-col md:w-full bg-gray-800">
         <button @click="openProjectInfoToogle"
-          class="absolute z-20 cursor-pointer p-1 text-white right-[45%]  md:right-40 top-2 md:top-20 hover:border-yellow-400 transition-all duration-300 border-[1px] rounded-md">
+          class="absolute z-20 cursor-pointer p-1 text-white right-[45%] md:right-40 top-5 md:top-20 hover:border-yellow-400 transition-all duration-300 border-[1px] rounded-md">
           <Icon class="text-yellow-400" icon="mdi:robot" width="36" height="36" />
         </button>
         <Intro id="intro"></Intro>
         <Tools id="tools"></Tools>
         <Languages id="languages"></Languages>
         <Specialization id="specialization"></Specialization>
-        <CareerSections></CareerSections>
+        <MyResume id="myresume"></MyResume>
         <VProjectInfoModal :open="projectInfoToogle" @close="closeProjectInfoToogle()"></VProjectInfoModal>
         <div
           class="text-white z-50 fixed md:hidden bottom-0 flex justify-between bg-gray-800 h-[50px] w-full mr-5 border-t-[1px] text-xl p-4 shadow-md shadow-black">
@@ -68,7 +68,7 @@ watchDebounced(y, () => {
             icon="material-symbols:language" width="24" height="24" /></a>
           <a href="#specialization"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 3 }"
             icon="material-symbols:group-work-outline" width="24" height="24" /></a>
-          <a href="#career"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 4 }" icon="game-icons:skills"
+          <a href="#myresume"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 4 }" icon="game-icons:skills"
             width="24" height="24" /></a>
         </div>
       </div>

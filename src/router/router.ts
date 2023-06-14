@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import BeforeApp from '../BeforeApp.vue';
-import RestaurantPortfolio from '../pages/RestaurantPortfolio.vue';
-import RestaurantDetailPage from '../pages/RestaurantDetailPage.vue';
-import RestaurantBasket from '../pages/RestaurantBasket.vue';
+import ShopPortfolio from '../pages/ShopPortfolio.vue';
+import ShopDetailPage from '../pages/ShopDetailPage.vue';
+import ShopBasket from '../pages/ShopBasket.vue';
 import IntelligenceSquare from '../pages/IntelligenceSquare.vue';
 import IntelligenceCategory from '../pages/IntelligenceCategory.vue';
 import IntelligenceGameArea from '../pages/IntelligenceGameArea.vue';
 
 const routes = [
   { path: '/', name:'beforeApp', component: BeforeApp},
-  { path: '/shop', name: 'shop', component: RestaurantPortfolio},
-  { path: '/shop/:id', name: 'shopDetail', component: RestaurantDetailPage},
-  { path: '/basket', name: 'basket', component: RestaurantBasket},
+  { path: '/shop', name: 'shop', component: ShopPortfolio},
+  { path: '/shop/:id', name: 'shopDetail', component: ShopDetailPage},
+  { path: '/basket', name: 'basket', component: ShopBasket},
   { path: '/intelligencesquare', name: 'intelligenceSquare', component: IntelligenceSquare},
   { path: '/intelligencecategory', name: 'intelligenceCategory', component: IntelligenceCategory},
   { path: '/intelligencegamearea', name: 'intelligenceGameArea', component: IntelligenceGameArea},

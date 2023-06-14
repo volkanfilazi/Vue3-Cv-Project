@@ -75,20 +75,40 @@ watchDebounced(y, () => {
     class="flex relative flex-col sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
     <div
       class="text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-gray-800 h-1/3 w-12 mr-5 border-[1px] text-xl rounded-full p-4 shadow-md shadow-black">
-      <a href="#intro"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 0 }" icon="mdi:home-outline" width="24"
-        height="24" /></a>
-      <a href="#tools"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 1 }" icon="et:tools-2" width="24"
-        height="24" /></a>
-      <a href="#languages"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 2 }" icon="material-symbols:language"
-        width="24" height="24" /></a>
-      <a href="#specialization"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 3 }"
-        icon="material-symbols:group-work-outline" width="24" height="24" /></a>
-      <a href="#career"><Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 4 }" icon="game-icons:skills"
-        width="24" height="24" /></a>
+      <a href="#intro">
+        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 0 }" icon="mdi:home-outline"
+          width="24" height="24" />
+      </a>
+      <a href="#tools">
+        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 1 }" icon="et:tools-2" width="24"
+          height="24" />
+      </a>
+      <a href="#languages">
+        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 2 }" icon="material-symbols:language"
+          width="24" height="24" />
+      </a>
+      <a href="#specialization">
+        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 3 }"
+          icon="material-symbols:group-work-outline" width="24" height="24" />
+      </a>
+      <a href="#myresume">
+        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 4 }" icon="game-icons:skills"
+          width="24" height="24" />
+      </a>
     </div>
-    <div class="observed-sections w-full flex mt-14 md:mt-0 md:h-screen justify-center items-center">
+    <div class="observed-sections w-full flex gap-5 flex-col mt-14 md:mt-0 md:h-screen justify-center items-center">
+      <div class="flex flex-col mt-10 md:mt-0 w-full justify-center items-center">
+        <h1 class="text-white font-bold text-[20px] md:text-[30px]">Intro</h1>
+      </div>
+      <div class="flex gap-2">
+        <div class="w-4 h-4 rounded-full bg-yellow-400"></div>
+        <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+        <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+        <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+        <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+      </div>
       <div
-        class="flex text-white flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
+        class="flex text-white mt-5 flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
         <div
           class="border-[1px] text-sm md:text-md w-full sm:w-full md:w-[500px] border-white rounded-xl font-bold flex justify-center items-center h-[100px]">
           <p class="text-yellow-400 md:text-lg font-bold">&lt;code&gt;</p>
@@ -167,5 +187,4 @@ div[role="progressbar"] {
 div[role="progressbar"]::before {
   counter-reset: percentage var(--value);
   content: counter(percentage) '%';
-}
-</style>
+}</style>

@@ -6,13 +6,14 @@ import { Icon } from '@iconify/vue';
   <div id="tools"
     class="observed-sections target flex p-2 md:p-0 flex-col justify-center w-full items-center relative sm:h-full gap-5 transition-all duration-200">
     <div class="flex flex-col mt-10 md:mt-0 w-full justify-center items-center">
-      <div class="w-[100px] md:w-[150px] flex justify-end">
-        <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
-      </div>
       <h1 class="text-white font-bold text-[20px] md:text-[30px]">Tools</h1>
-      <div class="w-[100px] md:w-[150px] flex justify-start">
-        <div class="border-l-[2px] border-b-[2px] w-5 h-5 border-yellow-400"></div>
-      </div>
+    </div>
+    <div class="flex gap-2">
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+      <div class="w-4 h-4 rounded-full bg-yellow-400"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
+      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
     </div>
     <div
       class="w-full md:w-4/5 border-[1px] p-5 gap-5 grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">

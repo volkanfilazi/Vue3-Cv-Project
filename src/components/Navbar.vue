@@ -91,7 +91,7 @@ function changeColor(colorValue: string) {
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
           href="#specialization">Specialization</a>
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
-          href="#career">Career</a>
+          href="#myresume">Resume</a>
         <div class="cursor-pointer border-[1px] border-transparent hover:border-white p-1"
           @click="themeToogle = !themeToogle">
           <li>Theme</li>
@@ -128,8 +128,8 @@ function changeColor(colorValue: string) {
         <li><a href="#intro">Intro</a></li>
         <li><a href="#tools">Tools</a></li>
         <li><a href="#languages">Languages</a></li>
-        <li><a href="#career">Career</a></li>
         <li><a href="#specialization">Specialization</a></li>
+        <li><a href="#myresume">Resume</a></li>
       </ul>
     </div>
   </div>
