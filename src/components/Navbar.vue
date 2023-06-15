@@ -2,7 +2,9 @@
 import { useStorage } from '@vueuse/core'
 import { onMounted, ref } from 'vue';
 import { Icon } from '@iconify/vue';
+import { useNavbarStore } from '../Store/Navbar.store';
 
+const navbarStore = useNavbarStore()
 const darkmode = useStorage("darkmode", false)
 const themeCardMessage = ref<boolean>(false)
 const themeCardMessageText = ref<string>('')
@@ -25,16 +27,10 @@ const themeCardMessageText = ref<string>('')
       </div>
 
       <ul class="flex items-center gap-3 text-white" :style="{color : darkmode ? 'black' : ''}">
-        <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
-          href="#intro">Intro</a>
-        <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
-          href="#tools">Tools</a>
-        <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
-          href="#languages">Languages</a>
-        <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
-          href="#specialization">Specialization</a>
-        <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
-          href="#myresume">Resume</a>
+        <div v-for="navbar in navbarStore.navbarElements">
+          <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
+          :href="navbar.link">{{ navbar.name }}</a>
+        </div>
         <Icon class="cursor-pointer text-black" v-if="darkmode" @click="darkmode = false" icon="teenyicons:moon-solid" width="24" height="24" />
         <Icon class="cursor-pointer text-yellow-400" v-if="!darkmode" @click="darkmode = true" icon="ph:sun-fill" width="22" height="22" />
       </ul>
@@ -44,11 +40,9 @@ const themeCardMessageText = ref<string>('')
       <label class="text-center text-yellow-400 w-20" for="menu-toggle">Menu</label>
       <ul
         class="flex absolute right-0 peer-checked:hidden flex-col mt-7 text-yellow-400 gap-1 px-5 bg-[#1f2937] border-b-[1px] border-l-[1px] border-white">
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#tools">Tools</a></li>
-        <li><a href="#languages">Languages</a></li>
-        <li><a href="#specialization">Specialization</a></li>
-        <li><a href="#myresume">Resume</a></li>
+       <div v-for="navbar in navbarStore.navbarElements">
+        <li><a :href="navbar.link">{{ navbar.name }}</a></li>
+       </div>
       </ul>
     </div>
   </div>

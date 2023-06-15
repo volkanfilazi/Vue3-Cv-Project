@@ -2,7 +2,11 @@
 import { Icon } from '@iconify/vue';
 import { ref, watchEffect } from 'vue';
 import { useScroll, useStorage, watchDebounced } from '@vueuse/core'
+import { useIntroRightNavs } from '../Store/IntroRightNav.store';
+import { useIntroSocialMedia } from '../Store/IntroSocialMedia.store';
 
+const IntroSocialMedia = useIntroSocialMedia()
+const introRightNavElements = useIntroRightNavs()
 const projects = ref(0)
 const certificate = ref(0)
 const experience = ref(0)
@@ -26,7 +30,7 @@ function progressAnimation() {
   }, 40);
 }
 
-function alo() {
+function introAnimation() {
   let i = 0;
   let lastIndex = 3;
   const timer = setInterval(() => {
@@ -46,7 +50,7 @@ function alo() {
 }
 
 progressAnimation()
-alo()
+introAnimation()
 
 const sections = ref()
 
@@ -76,26 +80,12 @@ watchDebounced(y, () => {
     <div
       class="text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-gray-800 h-1/3 w-12 mr-5 border-[1px] text-xl rounded-full p-4 shadow-md shadow-black" 
       :style="{backgroundColor : darkmode ? 'red' : ''}">
-      <a href="#intro">
-        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 0 }" icon="mdi:home-outline"
+      <div v-for="(rightNav, index) in introRightNavElements.rightNavElements" :key="index">
+        <a :href="rightNav.linkPath">
+        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === index }" :icon="rightNav.image"
           width="24" height="24" />
       </a>
-      <a href="#tools">
-        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 1 }" icon="et:tools-2" width="24"
-          height="24" />
-      </a>
-      <a href="#languages">
-        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 2 }" icon="material-symbols:language"
-          width="24" height="24" />
-      </a>
-      <a href="#specialization">
-        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 3 }"
-          icon="material-symbols:group-work-outline" width="24" height="24" />
-      </a>
-      <a href="#myresume">
-        <Icon class="text-yellow-400!" :class="{ 'text-yellow-400': currentIndex === 4 }" icon="game-icons:skills"
-          width="24" height="24" />
-      </a>
+      </div>
     </div>
     <div class="observed-sections w-full flex gap-5 flex-col mt-14 md:mt-0 md:h-screen justify-center items-center">
       <div class="flex flex-col mt-10 md:mt-0 w-full justify-center items-center">
@@ -128,30 +118,14 @@ watchDebounced(y, () => {
           <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ languages }}</span> program languages</p>
         </div>
         <div class="flex gap-5 p-2 transition-all duration-500">
-          <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
+          <div v-for="social in IntroSocialMedia.socialMediElements">
+            <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
           :class="({'hover:!border-red-600' : darkmode})"
-            href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="ri:linkedin-fill"
+            :href="social.link">
+            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" :icon="social.icon"
               width="36" height="36" />
-          </a>
-          <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-          :class="({'hover:!border-red-600' : darkmode})"
-            href="https://www.facebook.com/">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="ic:outline-facebook"
-              width="36" height="36" />
-          </a>
-          <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-          :class="({'hover:!border-red-600' : darkmode})"
-            href="https://github.com/volkanfilazi">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="ph:github-logo-fill"
-              width="36" height="36" />
-          </a>
-          <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-          :class="({'hover:!border-red-600' : darkmode})"
-            href="https://www.npmjs.com/~volkanfilazi">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="tabler:brand-npm"
-              width="36" height="36" />
-          </a>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -160,7 +134,6 @@ watchDebounced(y, () => {
 </template>
 
 <style scoped>
-/* we will explain what these classes do next! */
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
