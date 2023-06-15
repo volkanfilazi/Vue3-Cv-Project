@@ -37,13 +37,13 @@ async function goToIntelligenceSquare() {
       <div v-for="items in specializationStore.specializationArray"
       
         class="w-full h-[300px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-full transition-all duration-300 hover:border-yellow-400"
-        :class="[{ 'hover:border-red-700': darkmode },{ 'border-black': darkmode }]">
+        :class="[{ 'hover:!border-red-700': darkmode },{ 'border-black': darkmode }]">
 
         <div class="h-2/5 sm:h-1/3 flex items-center justify-center flex-col gap-5">
           <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl"
-            :class="[{ 'group-hover:text-red-700': darkmode }, { 'text-black': darkmode }]">~ {{ items.name }} ~</h1>
+            :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode }]">~ {{ items.name }} ~</h1>
           <Icon class="transition-all duration-300 group-hover:text-yellow-400"
-            :class="[{ 'group-hover:text-red-700': darkmode }, { 'text-black': darkmode },]" icon="guidance:shop" width="36"
+            :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode },]" icon="guidance:shop" width="36"
             height="36" />
         </div>
         <div class="h-2/5 sm:h-2/3 md:justify-center flex flex-col p-2">

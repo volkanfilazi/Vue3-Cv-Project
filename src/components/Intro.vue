@@ -129,27 +129,27 @@ watchDebounced(y, () => {
         </div>
         <div class="flex gap-5 p-2 transition-all duration-500">
           <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-          :class="({'hover:border-red-600' : darkmode})"
+          :class="({'hover:!border-red-600' : darkmode})"
             href="https://www.linkedin.com/in/volkan-filazi-ba49b0239/">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:text-red-600' : darkmode})" icon="ri:linkedin-fill"
+            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="ri:linkedin-fill"
               width="36" height="36" />
           </a>
           <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-          :class="({'hover:border-red-600' : darkmode})"
+          :class="({'hover:!border-red-600' : darkmode})"
             href="https://www.facebook.com/">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:text-red-600' : darkmode})" icon="ic:outline-facebook"
+            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="ic:outline-facebook"
               width="36" height="36" />
           </a>
           <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-          :class="({'hover:border-red-600' : darkmode})"
+          :class="({'hover:!border-red-600' : darkmode})"
             href="https://github.com/volkanfilazi">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:text-red-600' : darkmode})" icon="ph:github-logo-fill"
+            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="ph:github-logo-fill"
               width="36" height="36" />
           </a>
           <a class="w-16 h-16 flex group cursor-pointer justify-center items-center transition-all duration-500 border-[2px] border-gray-500 rounded-full hover:border-yellow-400"
-          :class="({'hover:border-red-600' : darkmode})"
+          :class="({'hover:!border-red-600' : darkmode})"
             href="https://www.npmjs.com/~volkanfilazi">
-            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:text-red-600' : darkmode})" icon="tabler:brand-npm"
+            <Icon class="text-gray-500 group-hover:text-yellow-400 transition-all duration-500" :class="({'group-hover:!text-red-600' : darkmode})" icon="tabler:brand-npm"
               width="36" height="36" />
           </a>
         </div>

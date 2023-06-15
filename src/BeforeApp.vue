@@ -56,7 +56,7 @@ watchDebounced(y, () => {
       <div class="w-full flex relative h-full flex-col md:w-full bg-gray-800" :style="{backgroundColor : darkmode ? '#f9f8f8' : ''}">
         <button @click="openProjectInfoToogle"
           class="absolute z-20 cursor-pointer p-1 text-white right-[45%] md:right-40 top-5 md:top-20 hover:border-yellow-400 transition-all duration-300 border-[1px] rounded-md"
-          :class="[{'hover:border-red-500' : darkmode},{'border-black' : darkmode}]">
+          :class="[{'hover:!border-red-500' : darkmode},{'border-black' : darkmode}]">
           <Icon class="text-yellow-400" icon="mdi:robot" width="36" height="36" 
           :style="{color : darkmode ? 'red' : ''}"/>
         </button>
