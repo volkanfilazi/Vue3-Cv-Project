@@ -24,7 +24,7 @@ onMounted(() => {
 })
 
 function darkLightMode() {
-  darkModeOn.value = !darkModeOn.value
+  darkModeOn.value = darkmodeOn.value
 }
 
 function changeLanguage(lang: string) {
@@ -94,8 +94,8 @@ function clearHistory() {
         class="bg-red-500 p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300">New Game</button>
       <button @click="darkLightMode"
         class="bg-black text-white p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300"
-        :class="[{ 'bg-black': !darkModeOn }, { 'bg-yellow-400': darkModeOn }, { 'text-gray-900': darkModeOn }]">
-        <span v-if="!darkModeOn">Dark Mode</span>
+        :class="[{ 'bg-black': darkmodeOn }, { 'bg-yellow-400': darkModeOn }, { 'text-gray-900': darkModeOn }]">
+        <span v-if="darkmodeOn">Dark Mode</span>
         <span v-if="darkModeOn">Light Mode</span>
       </button>
         <button @click="router.push({ name: 'beforeApp' }), settingsOpenToogle = false"
