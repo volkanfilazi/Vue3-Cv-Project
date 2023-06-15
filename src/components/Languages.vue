@@ -26,7 +26,7 @@ const darkmode = useStorage("darkmode", Boolean)
       class="w-full md:w-4/5  md:p-5 gap-5 grid grid-flow-row grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       <div v-for="languages in languagesStore.languagesArray"
         class="flex border-[1px] p-5 md:p-10 hover:border-yellow-400 transition-all duration-300 flex-col items-center space-y-2"
-        :class="[{'border-black' : darkmode},{'hover:border-red-600' : darkmode}]">
+        :class="[{'border-black' : darkmode},{'hover:!border-red-600' : darkmode}]">
         <h1 class="font-bold text-yellow-400" :style="{color : darkmode ? 'black' : ''}">{{ languages.name }}</h1>
         <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
           style="--back:black;--progColor:yellow"

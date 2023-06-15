@@ -36,7 +36,7 @@ const themeCardMessageText = ref<string>('')
         <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
           href="#myresume">Resume</a>
         <Icon class="cursor-pointer text-black" v-if="darkmode" @click="darkmode = false" icon="teenyicons:moon-solid" width="24" height="24" />
-        <Icon class="cursor-pointer text-red-500" v-if="!darkmode" @click="darkmode = true" icon="ph:sun-fill" width="22" height="22" />
+        <Icon class="cursor-pointer text-yellow-400" v-if="!darkmode" @click="darkmode = true" icon="ph:sun-fill" width="22" height="22" />
       </ul>
     </div>
     <div class="flex flex-col lg:hidden text-black">
