@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
-
-
 const darkModeOn = useStorage('darkmode',Boolean)
-
 </script>
 
 <template>
@@ -13,6 +10,3 @@ const darkModeOn = useStorage('darkmode',Boolean)
   </div>
 </template>
 
-<style scoped>
-
-</style>

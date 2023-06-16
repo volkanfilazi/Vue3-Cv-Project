@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
 import { useStorage } from '@vueuse/core';
 import { useLanguagesStore } from '../Store/Languages.store'
 
@@ -21,7 +20,6 @@ const darkmode = useStorage("darkmode", Boolean)
       <div class="w-4 h-4 rounded-full bg-gray-500"></div>
       <div class="w-4 h-4 rounded-full bg-gray-500"></div>
     </div>
-
     <div
       class="w-full md:w-4/5  md:p-5 gap-5 grid grid-flow-row grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       <div v-for="languages in languagesStore.languagesArray"

@@ -1,34 +1,19 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import VSettingsModal from './V-Modal/V-SettingsModal.vue';
-import { computed, onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { useRouter } from "vue-router";
 import { useStorage } from "@vueuse/core";
-import VLanguageModal from './V-Modal/V-LanguageModal.vue'
-import i18n from '../i18n';
 
 const router = useRouter()
 const settingsOpenToogle = ref<boolean>(false)
 const gameHistoryOpenToogle = ref<boolean>(false)
-const languageOpenToogle = ref<boolean>(false)
 const history = ref<any[]>([])
 const scoreHistory = useStorage('history', [])
-const saveLanguage = useStorage('language', String)
 const darkModeOn = useStorage('darkmode', Boolean)
-
-onMounted(() => {
-  if (!saveLanguage.value) {
-    i18n.global.locale = 'eng'
-  }
-})
 
 function darkLightMode() {
   darkModeOn.value = !darkModeOn.value
-}
-
-function changeLanguage(lang: string) {
-  saveLanguage.value = lang
-  i18n.global.locale = lang
 }
 
 function settingsOpenPopup() {
@@ -48,14 +33,6 @@ function closeHistory() {
   gameHistoryOpenToogle.value = false
 }
 
-function languageOpenButton() {
-  languageOpenToogle.value = true
-}
-
-function languageCloseButton() {
-  languageOpenToogle.value = false
-}
-
 function clearHistory() {
   scoreHistory.value = [];
   history.value = []
@@ -66,23 +43,17 @@ function clearHistory() {
   <div class="w-full h-20 grid grid-cols-3 items-center bg-red-500"
     :style="[{ backgroundColor: darkModeOn ? 'black' : '' }, { borderBottom: darkModeOn ? 'solid' : 'none' }, { borderColor: darkModeOn ? 'white' : 'initial' }]"
     :dir="$i18n.locale == 'eng' ? 'ger' : 'eng'">
-    <div @click="languageOpenButton()" class="flex group justify-center cursor-pointer">
-      <Icon class="hover:text-black transition-all duration-300 text-white" icon="material-symbols:language" width="24"
-        height="24" />
+    <div @click="showHistory()" class="group flex justify-center cursor-pointer">
+      <Icon class="group-hover:text-black transition-all duration-300 text-white" icon="material-symbols:history"
+        width="24" height="24" />
     </div>
     <div class="cursor-pointer group" @click="router.push({ name: 'intelligenceSquare' })">
       <p class="font-bold transition-all duration-300 group-hover:text-black text-white text-center">Intelligence Square
       </p>
     </div>
-    <div class="flex gap-2 justify-center cursor-pointer">
-      <div @click="showHistory()" class="group">
-        <Icon class="group-hover:text-black transition-all duration-300 text-white" icon="material-symbols:history"
-          width="24" height="24" />
-      </div>
-      <div @click="settingsOpenPopup()" class="group">
-        <Icon class="group-hover:text-black transition-all duration-300 text-white"
-          icon="material-symbols:settings-outline" width="24" height="24" />
-      </div>
+    <div @click="settingsOpenPopup()" class="group flex justify-center cursor-pointer">
+      <Icon class="group-hover:text-black transition-all duration-300 text-white" icon="material-symbols:settings-outline"
+        width="24" height="24" />
     </div>
   </div>
   <VSettingsModal :open="settingsOpenToogle" @close="settingsclosePopup()">
@@ -93,11 +64,11 @@ function clearHistory() {
         class="bg-red-500 p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300">New Game</button>
       <button @click="darkLightMode"
         class="bg-black text-white p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300"
-        :class="[{ 'bg-black': darkModeOn },{ 'text-white': darkModeOn }, { 'bg-yellow-400': !darkModeOn }, { 'text-gray-900': !darkModeOn }]">
+        :class="[{ 'bg-black': darkModeOn }, { 'text-white': darkModeOn }, { 'bg-yellow-400': !darkModeOn }, { 'text-gray-900': !darkModeOn }]">
         <span v-if="darkModeOn">Dark Mode</span>
         <span v-if="!darkModeOn">Light Mode</span>
       </button>
-        <button @click="router.push({ name: 'beforeApp' }), settingsOpenToogle = false"
+      <button @click="router.push({ name: 'beforeApp' }), settingsOpenToogle = false"
         class="bg-red-500 p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300">Developer Page</button>
     </div>
   </VSettingsModal>
@@ -118,18 +89,4 @@ function clearHistory() {
       </div>
     </div>
   </VSettingsModal>
-  <VLanguageModal :open="languageOpenToogle" @close="languageCloseButton">
-    <div class="w-full flex h-2/3 items-center justify-center gap-10">
-      <div for="eng" class="border-[2px] px-1 border-transparent" :style="[
-        { borderColor: saveLanguage === 'eng' ? 'black' : '' },
-        { boxShadow: saveLanguage === 'eng' ? '3px 2px 2px black' : '' }
-      ]" @click="changeLanguage('eng')">
-        <Icon icon="openmoji:flag-england" width="64" height="64" />
-      </div>
-      <div class="border-[2px] px-1 border-transparent"
-        :style="[{ borderColor: saveLanguage === 'ger' ? 'black' : '' }, { boxShadow: saveLanguage === 'ger' ? '3px 2px 2px black' : '' }]"
-        @click="changeLanguage('ger')">
-        <Icon icon="openmoji:flag-germany" width="64" height="64" />
-      </div>
-  </div>
-</VLanguageModal></template>
+</template>

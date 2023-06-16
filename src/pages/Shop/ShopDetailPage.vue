@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
-import { useShopStore } from '../Store/Shop';
+import { useShopStore } from '../../Store/Shop';
 import { useStorage } from "@vueuse/core";
-import NavBar from '../restaurantComponents/NavBar.vue';
-import router from '../router/router';
-import Drawer from '../restaurantComponents/Drawer.vue';
+import NavBar from '../../restaurantComponents/NavBar.vue';
+import router from '../../router/router';
+import Drawer from '../../restaurantComponents/Drawer.vue';
 
 
 

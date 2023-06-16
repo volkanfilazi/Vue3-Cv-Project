@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import intelligenceNavbar from '../IntelligenceComponents/IntelligenceNavbar.vue'
-import gameArea from '../IntelligenceComponents/GameArea.vue'
+import intelligenceNavbar from '../../IntelligenceComponents/IntelligenceNavbar.vue'
+import gameArea from '../../IntelligenceComponents/GameArea.vue'
 import { useStorage } from '@vueuse/core';
 const darkModeOn = useStorage('darkmode',Boolean)
 

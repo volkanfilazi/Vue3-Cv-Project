@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import BeforeApp from '../BeforeApp.vue';
-import ShopPortfolio from '../pages/ShopPortfolio.vue';
-import ShopDetailPage from '../pages/ShopDetailPage.vue';
-import ShopBasket from '../pages/ShopBasket.vue';
-import IntelligenceSquare from '../pages/IntelligenceSquare.vue';
-import IntelligenceCategory from '../pages/IntelligenceCategory.vue';
-import IntelligenceGameArea from '../pages/IntelligenceGameArea.vue';
+import BeforeApp from '../pages/Cv/CvMain.vue';
+import ShopPortfolio from '../pages/Shop/ShopPortfolio.vue';
+import ShopDetailPage from '../pages/Shop/ShopDetailPage.vue';
+import ShopBasket from '../pages/Shop/ShopBasket.vue';
+import IntelligenceSquare from '../pages/IntelligenceSquare/IntelligenceSquare.vue';
+import IntelligenceCategory from '../pages/IntelligenceSquare/IntelligenceCategory.vue';
+import IntelligenceGameArea from '../pages/IntelligenceSquare/IntelligenceGameArea.vue';
 
 const routes = [
   { path: '/', name:'beforeApp', component: BeforeApp},
@@ -24,7 +24,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   window.scrollTo(0, 0);
-
   next();
 });
 

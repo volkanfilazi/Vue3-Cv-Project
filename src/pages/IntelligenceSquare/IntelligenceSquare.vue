@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
-import intelligenceNavbar from '../IntelligenceComponents/IntelligenceNavbar.vue'
-import intelligenceStart from '../IntelligenceComponents/IntelligenceStart.vue'
+import intelligenceNavbar from '../../IntelligenceComponents/IntelligenceNavbar.vue'
+import intelligenceStart from '../../IntelligenceComponents/IntelligenceStart.vue'
 
 const darkModeOn = useStorage('darkmode',Boolean)
 
