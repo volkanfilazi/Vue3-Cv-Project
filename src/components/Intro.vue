@@ -4,55 +4,17 @@ import { ref, watchEffect } from 'vue';
 import { useScroll, useStorage, watchDebounced } from '@vueuse/core'
 import { useIntroRightNavs } from '../Store/IntroRightNav.store';
 import { useIntroSocialMedia } from '../Store/IntroSocialMedia.store';
+import { useIntroAnimationStore } from '../Store/IntroAnimations.store';
 
+const animationStore = useIntroAnimationStore()
 const IntroSocialMedia = useIntroSocialMedia()
 const introRightNavElements = useIntroRightNavs()
-const projects = ref(0)
-const certificate = ref(0)
-const experience = ref(0)
-const languages = ref(0)
 const darkmode = useStorage("darkmode", Boolean)
-const test = ref<any>('Creative, patient and innovative')
 const displayText = ref<any>('')
-
-function progressAnimation() {
-  let i = 0;
-  const timer = setInterval(() => {
-    projects.value = i;
-    certificate.value = (i * 2) / 10;
-    experience.value = (i * 3) / 10;
-    languages.value = (i * 3) / 10;
-
-    i++;
-    if (i > 10) {
-      clearInterval(timer);
-    }
-  }, 40);
-}
-
-function introAnimation() {
-  let i = 0;
-  let lastIndex = 3;
-  const timer = setInterval(() => {
-    if (i < test.value.length) {
-      displayText.value = test.value.substring(0, i + 1);
-      lastIndex = i;
-    } else if (lastIndex > 0) {
-      displayText.value = test.value.substring(0, lastIndex);
-      lastIndex--;
-    } else {
-      displayText.value = '';
-      i = 0;
-      lastIndex = 0;
-    }
-    i++;
-  }, 200);
-}
-
-progressAnimation()
-introAnimation()
-
 const sections = ref()
+
+animationStore.progressAnimation()
+animationStore.introAnimation(displayText)
 
 const { y, directions, isScrolling } = useScroll(window)
 
@@ -75,7 +37,7 @@ watchDebounced(y, () => {
 
 </script>
 <template>
-  <div id="intro"
+  <div
     class="flex relative flex-col sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
     <div
       class="text-white fixed right-0 hidden md:flex flex-col justify-between items-center bg-gray-800 h-1/3 w-12 mr-5 border-[1px] text-xl rounded-full p-4 shadow-md shadow-black" 
@@ -111,10 +73,10 @@ watchDebounced(y, () => {
         <h2 class="text-sm md:text-2xl text-center sm:text-center md:text-start font-bold text-white" :style="{color : darkmode ? 'black' : ''}">{{ $t('iamaweb') }}
         </h2>
         <div class="flex flex-col sm:flex-col md:flex-row text-white gap-3" :style="{color : darkmode ? 'black' : ''}">
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ projects }}</span> {{ $t('projects') }}</p>
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ certificate }}</span> {{ $t('certificate') }}</p>
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ experience }}</span> {{ $t('yearsexperience') }}</p>
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ languages }}</span> {{ $t('programlanguages') }}</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ animationStore.projects }}</span> {{ $t('projects') }}</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ animationStore.certificate }}</span> {{ $t('certificate') }}</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ animationStore.experience }}</span> {{ $t('yearsexperience') }}</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ animationStore.languages }}</span> {{ $t('programlanguages') }}</p>
         </div>
         <div class="flex gap-5 p-2 transition-all duration-500">
           <div v-for="social in IntroSocialMedia.socialMediElements">

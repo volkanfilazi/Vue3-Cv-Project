@@ -5,7 +5,6 @@ import { computed, onMounted, ref } from 'vue';
 import { useRouter } from "vue-router";
 import { useStorage } from "@vueuse/core";
 import VLanguageModal from './V-Modal/V-LanguageModal.vue'
-import { useDark } from "@vueuse/core";
 import i18n from '../i18n';
 
 const router = useRouter()
