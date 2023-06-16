@@ -22,8 +22,8 @@ async function goToIntelligenceSquare() {
   <div id="specialization"
     class="observed-sections flex p-2 md:p-0 flex-col mt-20 w-full items-center justify-center transition-all duration-500 relative md:h-screen gap-5">
     <div class="flex flex-col md:mt-0 w-full justify-center items-center">
-      <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{ color: darkmode ? 'black' : '' }">My
-        Specialization</h1>
+      <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{ color: darkmode ? 'black' : '' }">
+        {{ $t('myspecialization') }}</h1>
     </div>
     <div class="flex gap-2">
       <div class="w-4 h-4 rounded-full bg-gray-500"></div>

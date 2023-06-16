@@ -10,7 +10,7 @@ const careerStore = useCareerStore()
     class="observed-sections target mt-10 flex h-full p-2 mb-10 md:p-0 flex-col justify-center w-full items-center relative sm:h-full gap-5 transition-all duration-200">
 
     <div class="flex flex-col md:mt-0 w-full justify-center items-center">
-      <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{color : darkmode ? 'black' : ''}">My Resume</h1>
+      <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{color : darkmode ? 'black' : ''}">{{ $t('myresume') }}</h1>
     </div>
 
     <div class="flex gap-2">
