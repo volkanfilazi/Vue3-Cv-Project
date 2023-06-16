@@ -4,6 +4,8 @@ import ger from './locales/ger.json'
 import { useStorage } from '@vueuse/core'
 
 const saveLanguage = useStorage('language',String)
+const cvSaveLanguage = useStorage('cvLanguage', String)
+
 
 function loadLocaleMessage(){
   const locales = [{ eng: eng}, {ger: ger}]
@@ -17,7 +19,7 @@ function loadLocaleMessage(){
 }
 
 export default createI18n({
-  locale: saveLanguage.value,
-  fallbackLocale: saveLanguage.value,
+  locale: cvSaveLanguage.value,
+  fallbackLocale: cvSaveLanguage.value,
   messages: loadLocaleMessage()
 })

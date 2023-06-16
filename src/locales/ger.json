@@ -8,5 +8,27 @@
   "beforeInfoThree": "Erster Antwortbrief",
   "beforeInfoFour": "Zeichenlänge",
   "gameStart": "Das Spiel beginnt",
-  "clickToStart": "Klicken Sie zum Starten"
+  "clickToStart": "Klicken Sie zum Starten",
+
+  "intro": "Einführung",
+  "myname": "ICH HEISSE",
+  "iamaweb": "Ich bin Web und Android Entwickler",
+  "projects": "Projekte",
+  "certificate": "Zertifikat",
+  "yearsexperience": "Jahre Erfahrung",
+  "programlanguages": "Programmsprachen",
+
+  "tools": "Werkzeug",
+  
+  "languages": "Sprachen",
+
+  "myspecialization": "Meine Spezialisierung",
+
+  "myresume": "Mein Lebenslauf",
+
+  "Intro": "Einführung",
+  "Tools": "Werkzeug",
+  "Languages": "Sprachen",
+  "Specialization": "Spezialisierung",
+  "Resume": "Lebenslauf"
 }

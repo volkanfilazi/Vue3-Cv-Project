@@ -8,5 +8,28 @@
   "beforeInfoThree": "First letter of answer",
   "beforeInfoFour": "Character lenght",
   "gameStart": "Game is starting",
-  "clickToStart": "Click for the start"
+  "clickToStart": "Click for the start",
+
+  "intro": "Intro",
+  "myname": "MY NAME IS",
+  "iamaweb": "IAM A WEB and ANDROID DEVELOPER",
+  "projects": "projects",
+  "certificate": "certificate",
+  "yearsexperience": "years experience",
+  "programlanguages": "program languages",
+
+  "tools": "Tools",
+  
+  "languages": "Languages",
+
+  "myspecialization": "My Specialization",
+
+  "myresume": "My Resume",
+
+  "Intro": "Intro",
+  "Tools": "Tools",
+  "Languages": "Languages",
+  "Specialization": "Specialization",
+  "Resume": "Resume"
+
 }

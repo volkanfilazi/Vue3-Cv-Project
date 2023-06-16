@@ -89,7 +89,7 @@ watchDebounced(y, () => {
     </div>
     <div class="observed-sections w-full flex gap-5 flex-col mt-14 md:mt-0 md:h-screen justify-center items-center">
       <div class="flex flex-col mt-10 md:mt-0 w-full justify-center items-center">
-        <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{color : darkmode ? 'black' : 'white'}">Intro</h1>
+        <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{color : darkmode ? 'black' : 'white'}">{{ $t('intro') }}</h1>
       </div>
       <div class="flex gap-2">
         <div class="w-4 h-4 rounded-full bg-yellow-400" :style="{backgroundColor : darkmode ? 'red' : ''}"></div>
@@ -106,16 +106,15 @@ watchDebounced(y, () => {
           <p class="text-white md:text-lg font-bold" :style="{color : darkmode ? 'black' : 'white'}">{{ displayText }}<span class=" text-yellow-400 animate-ping">|</span></p>
           <p class="text-yellow-400 md:text-lg font-bold" :style="{color : darkmode ? 'red' : ''}">&lt;/code&gt;</p>
         </div>
-        <h1 class="text-2xl md:text-4xl font-bold text-white" :style="{color : darkmode ? 'black' : ''}">MY NAME IS <span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">VOLKAN
+        <h1 class="text-2xl md:text-4xl font-bold text-white" :style="{color : darkmode ? 'black' : ''}">{{ $t('myname') }}<span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}"> VOLKAN
             FILAZI</span></h1>
-        <h2 class="text-sm md:text-2xl text-center sm:text-center md:text-start font-bold text-white" :style="{color : darkmode ? 'black' : ''}">IAM A WEB and
-          ANDROID DEVELOPER
+        <h2 class="text-sm md:text-2xl text-center sm:text-center md:text-start font-bold text-white" :style="{color : darkmode ? 'black' : ''}">{{ $t('iamaweb') }}
         </h2>
         <div class="flex flex-col sm:flex-col md:flex-row text-white gap-3" :style="{color : darkmode ? 'black' : ''}">
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ projects }}</span> projects</p>
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ certificate }}</span> certificate</p>
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ experience }}</span> years experience</p>
-          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ languages }}</span> program languages</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ projects }}</span> {{ $t('projects') }}</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ certificate }}</span> {{ $t('certificate') }}</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ experience }}</span> {{ $t('yearsexperience') }}</p>
+          <p><span class="text-yellow-400" :style="{color : darkmode ? 'red' : ''}">+{{ languages }}</span> {{ $t('programlanguages') }}</p>
         </div>
         <div class="flex gap-5 p-2 transition-all duration-500">
           <div v-for="social in IntroSocialMedia.socialMediElements">
