@@ -43,7 +43,7 @@ async function goToIntelligenceSquare() {
           <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl"
             :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode }]">~ {{ items.name }} ~</h1>
           <Icon class="transition-all duration-300 group-hover:text-yellow-400"
-            :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode },]" icon="guidance:shop" width="36"
+            :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode },]" :icon="items.image" width="36"
             height="36" />
         </div>
         <div class="h-2/5 sm:h-2/3 md:justify-center flex flex-col p-2">

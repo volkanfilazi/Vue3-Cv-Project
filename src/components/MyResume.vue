@@ -6,7 +6,7 @@ const darkmode = useStorage("darkmode", Boolean)
 const careerStore = useCareerStore()
 </script>
 <template>
-  <div id="tools"
+  <div
     class="observed-sections target mt-10 flex h-full p-2 mb-10 md:p-0 flex-col justify-center w-full items-center relative sm:h-full gap-5 transition-all duration-200">
 
     <div class="flex flex-col md:mt-0 w-full justify-center items-center">
