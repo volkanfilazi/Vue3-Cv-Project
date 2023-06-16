@@ -10,11 +10,12 @@ const navbarStore = useNavbarStore()
 const darkmode = useStorage("darkmode", false)
 const themeCardMessage = ref<boolean>(false)
 const themeCardMessageText = ref<string>('')
-const cvSaveLanguage = useStorage('cvLanguage', 'eng')
+const cvSaveLanguage = useStorage('cvLanguage', String)
 
 onMounted(() => {
   if (!cvSaveLanguage.value) {
-    i18n.global.locale = 'eng'
+    cvSaveLanguage.value = 'eng'
+    i18n.global.locale = cvSaveLanguage.value
   }
 })
 
