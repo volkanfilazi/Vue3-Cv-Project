@@ -16,7 +16,7 @@ const sections = ref()
 animationStore.progressAnimation()
 animationStore.introAnimation(displayText)
 
-const { y, directions, isScrolling } = useScroll(window)
+const { y } = useScroll(window)
 
 watchEffect(() => {
   if (y.value !== -1)
@@ -33,7 +33,6 @@ watchDebounced(y, () => {
     })
   }
 }, { debounce: 50, maxWait: 100 })
-
 
 </script>
 <template>
@@ -90,7 +89,6 @@ watchDebounced(y, () => {
         </div>
       </div>
     </div>
-
   </div>
 </template>
 

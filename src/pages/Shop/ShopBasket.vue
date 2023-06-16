@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import Navbar from '../restaurantComponents/NavBar.vue';
-import { useShopStore } from '../Store/Shop';
-import router from '../router/router';
+import { useShopStore } from '../../Store/Shop';
+import router from '../../router/router';
 import { useStorage } from "@vueuse/core";
 import { Icon } from '@iconify/vue';
 import { ref, watchEffect } from 'vue';
-import Footer from '../components/Footer.vue';
+import Footer from '../../components/Footer.vue';
 
 
 

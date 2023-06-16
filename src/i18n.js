@@ -3,7 +3,6 @@ import eng from './locales/eng.json'
 import ger from './locales/ger.json'
 import { useStorage } from '@vueuse/core'
 
-const saveLanguage = useStorage('language',String)
 const cvSaveLanguage = useStorage('cvLanguage', String)
 
 

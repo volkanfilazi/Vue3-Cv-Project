@@ -1,21 +1,13 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { useRouter } from "vue-router";
-import vbutton from '../restaurantComponents/V-Model/V-Button.vue'
+import VButton from './V-Base/V-Button.vue';
 import { useSpecializationStore } from '../Store/Specialization';
 import { useStorage } from '@vueuse/core';
 
 const specializationStore = useSpecializationStore()
 const darkmode = useStorage("darkmode", Boolean)
 const router = useRouter()
-
-async function goToShop() {
-  router.push({ name: 'shop' })
-}
-
-async function goToIntelligenceSquare() {
-  router.push({ name: 'intelligenceSquare' })
-}
 
 </script>
 <template>
@@ -55,9 +47,9 @@ async function goToIntelligenceSquare() {
               :style="{ color: darkmode ? 'black' : '' }">{{ items.packages }}</span></p>
         </div>
         <div class="flex h-1/5 justify-center items-center md:mb-0">
-          <vbutton v-if="items.name === 'Shop'" @click="goToShop()">Visit</vbutton>
-          <vbutton v-if="items.name === 'Intelligence Square'" @click="goToIntelligenceSquare()">Visit</vbutton>
-          <vbutton v-if="items.name === 'Encryption'" disabled>Coming Soon</vbutton>
+          <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Visit</VButton>
+          <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">Visit</VButton>
+          <VButton v-if="items.name === 'Encryption'" disabled>Coming Soon</VButton>
       </div>
     </div>
   </div>
