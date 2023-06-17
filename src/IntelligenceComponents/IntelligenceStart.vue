@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useStorage } from "@vueuse/core";
 import { useRouter } from "vue-router";
 const router = useRouter()
 
+const darkModeOn = useStorage('darkmode',Boolean)
 function rotateToCategoryPage(){
   router.push({ name: 'intelligenceCategory'})
 }
@@ -9,7 +11,7 @@ function rotateToCategoryPage(){
 
 <template>
   <div class="h-full justify-center items-center gap-5 flex flex-col">
-    <div class="border-[1px] bg-red-600 p-2 text-white font-bold rounded-md">
+    <div class="border-[1px] bg-red-600 p-2 text-white font-bold rounded-md" :style="{backgroundColor : darkModeOn ? 'transparent' : ''}">
       <p> {{ $t('homeMessage') }}</p>
       <p class="text-center">{{ $t('homeMessageSecond') }}</p>
     </div>

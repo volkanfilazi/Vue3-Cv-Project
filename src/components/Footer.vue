@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core';
 
-const darkmode = useStorage("darkmode", Boolean)
+const darkmode = useStorage("cvDarkmode", Boolean)
 
 </script>
 <template>

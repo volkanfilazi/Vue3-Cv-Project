@@ -15,7 +15,7 @@ import { useIntroRightNavs } from '../../Store/IntroRightNav.store'
 
 const IntroRightNav = useIntroRightNavs()
 const projectInfoToogle = ref(false)
-const darkmode = useStorage("darkmode", Boolean)
+const darkmode = useStorage("cvDarkmode", Boolean)
 
 function openProjectInfoToogle() {
   projectInfoToogle.value = true

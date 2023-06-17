@@ -44,15 +44,15 @@ function clearHistory() {
     :style="[{ backgroundColor: darkModeOn ? 'black' : '' }, { borderBottom: darkModeOn ? 'solid' : 'none' }, { borderColor: darkModeOn ? 'white' : 'initial' }]"
     :dir="$i18n.locale == 'eng' ? 'ger' : 'eng'">
     <div @click="showHistory()" class="group flex justify-center cursor-pointer">
-      <Icon class="group-hover:text-black transition-all duration-300 text-white" icon="material-symbols:history"
+      <Icon class="group-hover:text-black transition-all duration-300 text-white" :class="{'group-hover:!text-red-400' : darkModeOn}" icon="material-symbols:history"
         width="24" height="24" />
     </div>
     <div class="cursor-pointer group" @click="router.push({ name: 'intelligenceSquare' })">
-      <p class="font-bold transition-all duration-300 group-hover:text-black text-white text-center">Intelligence Square
+      <p class="font-bold transition-all duration-300 group-hover:text-black text-white text-center" :class="{'group-hover:!text-red-400' : darkModeOn}">Intelligence Square
       </p>
     </div>
     <div @click="settingsOpenPopup()" class="group flex justify-center cursor-pointer">
-      <Icon class="group-hover:text-black transition-all duration-300 text-white" icon="material-symbols:settings-outline"
+      <Icon class="group-hover:text-black transition-all duration-300 text-white" :class="{'group-hover:!text-red-400' : darkModeOn}" icon="material-symbols:settings-outline"
         width="24" height="24" />
     </div>
   </div>
@@ -64,9 +64,9 @@ function clearHistory() {
         class="bg-red-500 p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300">New Game</button>
       <button @click="darkLightMode"
         class="bg-black text-white p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300"
-        :class="[{ 'bg-black': darkModeOn }, { 'text-white': darkModeOn }, { 'bg-yellow-400': !darkModeOn }, { 'text-gray-900': !darkModeOn }]">
-        <span v-if="darkModeOn">Dark Mode</span>
-        <span v-if="!darkModeOn">Light Mode</span>
+        :class="[{ 'bg-black': !darkModeOn }, { 'text-white': !darkModeOn }, { 'bg-yellow-400': darkModeOn }, { '!text-black': darkModeOn }]">
+        <span v-if="!darkModeOn">Dark Mode</span>
+        <span v-if="darkModeOn">Light Mode</span>
       </button>
       <button @click="router.push({ name: 'beforeApp' }), settingsOpenToogle = false"
         class="bg-red-500 p-1 h-16 rounded-md hover:opacity-80 transition-all duration-300">Developer Page</button>

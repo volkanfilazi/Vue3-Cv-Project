@@ -6,7 +6,7 @@ import { useSpecializationStore } from '../Store/Specialization';
 import { useStorage } from '@vueuse/core';
 
 const specializationStore = useSpecializationStore()
-const darkmode = useStorage("darkmode", Boolean)
+const darkmode = useStorage("cvDarkmode", Boolean)
 const router = useRouter()
 
 </script>
