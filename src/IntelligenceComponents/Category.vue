@@ -4,12 +4,15 @@ import { useIntelligenceStore } from '../Store/Intelligence';
 import { Icon } from '@iconify/vue';
 import VPopup from './V-Modal/V-Popup.vue';
 import { useRouter } from "vue-router";
+import { useStorage } from '@vueuse/core';
 
 const router = useRouter()
 const intelligenceStore = useIntelligenceStore()
 const popupToogle = ref<boolean>(false)
 const categoryStartingCountDown = ref<number>(10)
 const interval = ref(null)
+const darkModeOn = useStorage('darkmode', Boolean)
+
 
 intelligenceStore.dataCopy = intelligenceStore.mainData
 
@@ -52,13 +55,19 @@ onMounted(() => {
 <template>
   <div class="h-full p-2 md:p-0 w-full justify-center flex flex-col">
     <div class="flex justify-center">
-      <h1 class="text-center bg-white p-2 rounded-lg">{{ $t('choose') }}</h1>
+      <h1 class="text-center bg-white text-black p-2 border-[1px] rounded-lg" 
+      :style="[
+        {backgroundColor : darkModeOn ? 'transparent' : 'white'},
+        {color : darkModeOn ? 'white' : 'black'},
+        {borderColor : darkModeOn ? 'white' : ''}]">{{ $t('choose') }}</h1>
     </div>
-    <div class="items-center mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="items-center mt-10 grid md:grid-cols-3 lg:grid-cols-3 gap-5">
       <div v-for="item in intelligenceStore.categories" class="flex items-center justify-center">
         <div @click="selectedCategory(item.category)"
-          class="w-[200px] h-[200px] cursor-pointer transition-all duration-500 hover:shadow-sm hover:shadow-gray-600 bg-white flex items-center justify-center flex-col">
-          <p class="">{{ item.category }}</p>
+          class="w-full h-[100px] md:w-[200px] md:h-[200px] cursor-pointer transition-all duration-500 hover:shadow-sm border-[1px] bg-white hover:shadow-gray-600  flex items-center justify-center flex-col"
+          :class="{'hover:!shadow-white' : darkModeOn}"
+          :style="[{borderColor : darkModeOn ? 'white' : ''},{background : darkModeOn ? 'transparent' : ''}]">
+          <p class="text-black" :style="{color: darkModeOn ? 'white' : ''}">{{ item.category }}</p>
           <Icon class="text-red-400" :icon="item.image" width="48" height="48" />
         </div>
       </div>

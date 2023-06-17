@@ -7,7 +7,7 @@ import i18n from '../i18n';
 import VNavIcon from './V-Base/V-NavIcon.vue';
 
 const navbarStore = useNavbarStore()
-const darkmode = useStorage("darkmode", false)
+const darkmode = useStorage("cvDarkmode", false)
 const themeCardMessage = ref<boolean>(false)
 const themeCardMessageText = ref<string>('')
 const cvSaveLanguage = useStorage('cvLanguage', String)

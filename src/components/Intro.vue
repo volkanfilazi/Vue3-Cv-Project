@@ -9,7 +9,7 @@ import { useIntroAnimationStore } from '../Store/IntroAnimations.store';
 const animationStore = useIntroAnimationStore()
 const IntroSocialMedia = useIntroSocialMedia()
 const introRightNavElements = useIntroRightNavs()
-const darkmode = useStorage("darkmode", Boolean)
+const darkmode = useStorage("cvDarkmode", Boolean)
 const displayText = ref<any>('')
 const sections = ref()
 

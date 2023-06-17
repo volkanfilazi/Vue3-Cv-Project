@@ -4,7 +4,7 @@ import { useStorage } from '@vueuse/core';
 import { useToolsStore } from '../Store/Tools.store'
 
 const toolsStore = useToolsStore()
-const darkmode = useStorage("darkmode", Boolean)
+const darkmode = useStorage("cvDarkmode", Boolean)
 
 </script>
 <template>

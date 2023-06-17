@@ -2,7 +2,7 @@
 import { useStorage } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
 
-const darkmode = useStorage("darkmode", Boolean)
+const darkmode = useStorage("cvDarkmode", Boolean)
 
 export interface Props {
   isLoading?: boolean

@@ -3,7 +3,7 @@ import { useStorage } from '@vueuse/core';
 import { useLanguagesStore } from '../Store/Languages.store'
 
 const languagesStore = useLanguagesStore()
-const darkmode = useStorage("darkmode", Boolean)
+const darkmode = useStorage("cvDarkmode", Boolean)
 
 </script>
 <template>
