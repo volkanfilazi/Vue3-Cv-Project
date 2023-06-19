@@ -6,6 +6,7 @@ import ShopBasket from '../pages/Shop/ShopBasket.vue';
 import IntelligenceSquare from '../pages/IntelligenceSquare/IntelligenceSquare.vue';
 import IntelligenceCategory from '../pages/IntelligenceSquare/IntelligenceCategory.vue';
 import IntelligenceGameArea from '../pages/IntelligenceSquare/IntelligenceGameArea.vue';
+import MyTubeHomepage from '../pages/Mytube/MyTubeHomepage.vue';
 
 const routes = [
   { path: '/', name:'beforeApp', component: BeforeApp},
@@ -15,6 +16,7 @@ const routes = [
   { path: '/intelligencesquare', name: 'intelligenceSquare', component: IntelligenceSquare},
   { path: '/intelligencecategory', name: 'intelligenceCategory', component: IntelligenceCategory},
   { path: '/intelligencegamearea', name: 'intelligenceGameArea', component: IntelligenceGameArea},
+  { path: '/mytube', name: 'mytubeHomepage', component: MyTubeHomepage},
 ];
 
 const router = createRouter({

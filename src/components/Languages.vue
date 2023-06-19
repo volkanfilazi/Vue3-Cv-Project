@@ -13,13 +13,6 @@ const darkmode = useStorage("cvDarkmode", Boolean)
       <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{ color: darkmode ? 'black' : 'white' }">
         {{ $t('languages') }}</h1>
     </div>
-    <div class="flex gap-2">
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-yellow-400" :style="{backgroundColor : darkmode ? 'red' : ''}"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-    </div>
     <div
       class="w-full md:w-4/5  md:p-5 gap-5 grid grid-flow-row grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       <div v-for="languages in languagesStore.languagesArray"

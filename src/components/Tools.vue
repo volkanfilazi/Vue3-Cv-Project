@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue';
 import { useStorage } from '@vueuse/core';
 import { useToolsStore } from '../Store/Tools.store'
 
+
 const toolsStore = useToolsStore()
 const darkmode = useStorage("cvDarkmode", Boolean)
 
@@ -13,13 +14,6 @@ const darkmode = useStorage("cvDarkmode", Boolean)
     <div class="flex flex-col mt-10 md:mt-0 w-full justify-center items-center">
       <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{ color: darkmode ? 'black' : '' }">{{
         $t('tools') }}</h1>
-    </div>
-    <div class="flex gap-2">
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-yellow-400" :style="{ backgroundColor: darkmode ? 'red' : '' }"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
     </div>
     <div
       class="w-full md:w-4/5 border-[1px] p-5 gap-5 grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
