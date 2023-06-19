@@ -17,13 +17,6 @@ const router = useRouter()
       <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{ color: darkmode ? 'black' : '' }">
         {{ $t('myspecialization') }}</h1>
     </div>
-    <div class="flex gap-2">
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-yellow-400" :style="{ backgroundColor: darkmode ? 'red' : '' }"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-    </div>
     <div
       class="w-full md:w-4/5 text-white text-sm md:text-lg md:mt-5 md:h-1/2 flex flex-col gap-2 md:flex md:flex-row md:justify-between">
       <div v-for="items in specializationStore.specializationArray"

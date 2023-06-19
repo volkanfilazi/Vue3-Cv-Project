@@ -11,13 +11,6 @@ const careerStore = useCareerStore()
     <div class="flex flex-col md:mt-0 w-full justify-center items-center">
       <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{color : darkmode ? 'black' : ''}">{{ $t('myresume') }}</h1>
     </div>
-    <div class="flex gap-2">
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-gray-500"></div>
-      <div class="w-4 h-4 rounded-full bg-yellow-400" :style="{backgroundColor : darkmode ? 'red' : ''}"></div>
-    </div>  
     <div class="w-full md:w-4/5 p-1 md:p-5 gap-5 grid h-full grid-flow-row">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div v-for="education in careerStore.careerArray">
