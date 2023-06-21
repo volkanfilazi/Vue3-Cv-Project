@@ -25,7 +25,7 @@ watchEffect(() => {
 <template>
   <div class="min-h-screen">
     <div
-    class="flex flex-col md:flex-row md:w-full p-3 gap-5 border-b-[1px] justify-between items-center bg-gray-600 text-black font-bold">
+    class="flex flex-col md:flex-row md:w-full p-3 gap-5 justify-between items-center bg-[#471d6b] text-black font-bold">
     <div @click="router.push({ name: 'shop' })" class="flex flex-col justify-center cursor-pointer items-center">
       <div class="w-[160px] flex justify-end">
         <div class="border-r-[2px] border-t-[2px] w-5 h-5 border-yellow-400"></div>
