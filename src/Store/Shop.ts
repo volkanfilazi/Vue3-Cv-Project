@@ -206,6 +206,27 @@ export const useShopStore = defineStore('shop', () => {
     allProductsClone.value = sortedProducts
   }
 
+  const upperImagesArray = [
+    {
+      id: 0,
+      url: 'https://i.pinimg.com/originals/c9/79/b0/c979b0df5bdb8538117524e7fd4346c1.jpg',
+      title: 'DO YOU BELIEVE MAGIC?',
+      secondTitle: '10% OFF'
+    },
+    {
+      id: 1,
+      url: 'https://t3.ftcdn.net/jpg/03/94/11/10/360_F_394111088_TCUFgYfGsRqOVDddr29BOXYd9N4j8yDR.jpg',
+      title: 'MAKE UP YOURSELF',
+      secondTitle: '50% OFF'
+    },
+    {
+      id: 2,
+      url: 'https://img.freepik.com/premium-photo/ring-with-diamonds-black-background-3d-rendering_34478-2539.jpg',
+      title: 'NATURAL ITEMS',
+      secondTitle: '15% OFF'
+    }
+  ]
+
   return {
     getAllProducts,
     getSingleProduct,
@@ -226,6 +247,7 @@ export const useShopStore = defineStore('shop', () => {
     deleteItem,
     updateItem,
     totalPrice,
-    allProductsSecondClone
+    allProductsSecondClone,
+    upperImagesArray
   }
 })
