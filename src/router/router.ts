@@ -7,9 +7,11 @@ import IntelligenceSquare from '../pages/IntelligenceSquare/IntelligenceSquare.v
 import IntelligenceCategory from '../pages/IntelligenceSquare/IntelligenceCategory.vue';
 import IntelligenceGameArea from '../pages/IntelligenceSquare/IntelligenceGameArea.vue';
 import MyTubeHomepage from '../pages/Mytube/MyTubeHomepage.vue';
+import SecondCvMain from '../pages/SecondCv/SecondCvMain.vue';
 
 const routes = [
   { path: '/', name:'beforeApp', component: BeforeApp},
+  { path: '/secondcv', name:'secondCv', component: SecondCvMain},
   { path: '/shop', name: 'shop', component: ShopPortfolio},
   { path: '/shop/:id', name: 'shopDetail', component: ShopDetailPage},
   { path: '/basket', name: 'basket', component: ShopBasket},
