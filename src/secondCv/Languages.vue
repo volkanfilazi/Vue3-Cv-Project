@@ -18,7 +18,7 @@ const languagesStore = useLanguagesStore()
         <h1 class="font-bold text-yellow-400">{{ languages.name }}</h1>
         <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
           style="--back:rgb(5 46 22 / var(--tw-bg-opacity));--progColor:yellow"
-          :style="{ '--value': languages.value }">
+          :style="[{ '--value': languages.value }]">
         </div>
       </div>
     </div>
