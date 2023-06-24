@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import { useIntroSocialMedia } from '../../Store/IntroSocialMedia.store';
 import Intro from '../../secondCv/Intro.vue'
 import Tools from '../../secondCv/Tools.vue'
+import Languages from '../../secondCv/Languages.vue';
+
 const IntroSocialMedia = useIntroSocialMedia()
 
 const intro = ref(true)
@@ -75,28 +77,9 @@ function resumeTrigger(){
         <Tools></Tools>
       </div>
 
-      <div class=" translate-x-full opacity-0 fixed transition-all duration-500 w-full h-full bg-lime-800"
+      <div class=" translate-x-full opacity-0 fixed transition-all duration-500 w-full h-full bg-green-950"
         :class="[{ '!translate-x-0': languages }, { '!opacity-100': languages }]">
-        <div class="flex flex-col h-full md:flex-row w-3/3 md:h-full">
-          <div class="flex items-center w-full md:w-1/4">
-            <h1 class="text-white w-full text-center p-5 md:-rotate-90 font-bold tracking-widest text-3xl md:text-5xl">
-              ABOUT
-              ME</h1>
-          </div>
-          <div class="md:w-3/4 flex flex-col gap-5 items-center justify-center text-white">
-            <h1 class="text-2xl md:text-4xl font-bold text-white">{{ $t('myname') }}<span class="text-yellow-400"> VOLKAN
-                FILAZI</span></h1>
-            <h2 class="text-sm md:text-2xl text-center sm:text-center md:text-start font-bold text-white">{{ $t('iamaweb')
-            }}
-            </h2>
-            <div class="flex flex-col gap-5 mt-5 md:justify-center md:flex-row">
-              <p class="text-yellow-400">+10 <span class="text-white">asdasd</span></p>
-              <p class="text-yellow-400">+2 <span class="text-white">certificate</span></p>
-              <p class="text-yellow-400">+3 <span class="text-white">years experience</span></p>
-              <p class="text-yellow-400">+3 <span class="text-white">program languages</span></p>
-            </div>
-          </div>
-        </div>
+        <languages></languages>
       </div>
 
 
