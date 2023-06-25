@@ -5,6 +5,9 @@ import Languages from '../../secondCv/Languages.vue';
 import Specialization from '../../secondCv/Specialization.vue'
 import Resume from '../../secondCv/Resume.vue'
 import { useSliderStore } from '../../Store/SecondCv/SliderToogles.store';
+import router from '../../router/router';
+import VOtherProjectAnimation from '../../secondCv/V-OtherProjectAnimation.vue';
+
 
 const sliderStore = useSliderStore()
 </script>
@@ -16,17 +19,17 @@ const sliderStore = useSliderStore()
 
       <button @click="sliderStore.toolsTrigger()" class="bg-purple-900 p-2 h-full text-white">Tools</button>
 
-      <button @click="sliderStore.languagesTrigger()" class="bg-lime-800 p-2 h-full text-white">Languages</button>
+      <button @click="sliderStore.languagesTrigger()" class="bg-blue-950 p-2 h-full text-white">Languages</button>
 
-      <button @click="sliderStore.specializationTrigger()" class="bg-orange-800 p-2 h-full text-white">Specialization</button>
+      <button @click="sliderStore.specializationTrigger()" class="bg-orange-950 p-2 h-full text-white">Specialization</button>
 
       <button @click="sliderStore.resumeTrigger()" class="bg-gray-700 p-2 h-full text-white">Resume</button>
     </div>
 
     <div class="flex flex-col md:flex-row w-full h-3/4">
-
       <div class="md:translate-x-full md:opacity-0 md:fixed transition-all duration-300 w-full h-full bg-red-800 md:bg-red-800"
-        :class="[{ 'md:!translate-x-0': sliderStore.intro === true }, { 'md:!opacity-100': sliderStore.intro === true }]">
+      :class="[{ 'md:!translate-x-0': sliderStore.intro === true }, { 'md:!opacity-100': sliderStore.intro === true }]">
+      <VOtherProjectAnimation @click="router.push({name: 'beforeApp'})">Resume 1</VOtherProjectAnimation>
         <Intro></Intro>
       </div>
 
@@ -35,12 +38,12 @@ const sliderStore = useSliderStore()
         <Tools></Tools>
       </div>
 
-      <div class="md:translate-x-full md:opacity-0 md:fixed transition-all duration-500 w-full h-full bg-red-800 md:bg-green-950"
+      <div class="md:translate-x-full md:opacity-0 md:fixed transition-all duration-500 w-full h-full bg-red-800 md:bg-blue-950"
         :class="[{ 'md:!translate-x-0': sliderStore.languages }, { 'md:!opacity-100': sliderStore.languages }]">
         <Languages></Languages>
       </div>
 
-      <div class="md:translate-x-full md:opacity-0 md:fixed transition-all duration-500 w-full h-full bg-red-800 md:bg-orange-800"
+      <div class="md:translate-x-full md:opacity-0 md:fixed transition-all duration-500 w-full h-full bg-red-800 md:bg-orange-950"
         :class="[{ 'md:!translate-x-0': sliderStore.specialization }, { 'md:!opacity-100': sliderStore.specialization }]">
         <Specialization></Specialization>
       </div>

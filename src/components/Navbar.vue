@@ -33,7 +33,8 @@ function changeLanguage(lang: string) {
       <VNavIcon>Volkan Filazi</VNavIcon>
       <ul class="flex items-center gap-3 text-white" :style="{ color: darkmode ? 'black' : '' }">
         <div v-for="navbar in navbarStore.navbarElements">
-          <a class="scroll-smooth cursor-pointer border-[1px] border-transparent hover:border-white hover:transition-all hover:duration-300 p-1"
+          <a class="scroll-smooth cursor-pointer transition-all duration-300 border-b-[1px] border-transparent hover:border-yellow-400 hover:transition-all hover:duration-300 p-1"
+          :class="{'hover:!border-black' : darkmode}"
             :href="navbar.link">{{ $t(navbar.name) }}</a>
         </div>
         <Icon class="cursor-pointer" @click="changeLanguage('ger')" v-if="cvSaveLanguage === 'eng'"

@@ -17,7 +17,7 @@ const languagesStore = useLanguagesStore()
         class="flex p-5 md:p-10 h-full transition-all duration-300 flex-col items-center space-y-2">
         <h1 class="font-bold text-yellow-400">{{ languages.name }}</h1>
         <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
-          style="--back:rgb(5 46 22 / var(--tw-bg-opacity));--progColor:yellow"
+          style="--back:rgb(23 37 84 / var(--tw-bg-opacity));--progColor:yellow"
           :style="[{ '--value': languages.value }]">
         </div>
       </div>
