@@ -11,9 +11,6 @@ import { ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 import BottomNavigation from '../../components/BottomNavigation.vue'
 import VAIButton from '../../components/V-Base/V-AIButton.vue'
-import VAnotherProjectAnimation from '../../components/V-Base/V-AnotherProjectAnimation.vue'
-import router from '../../router/router';
-
 
 const projectInfoToogle = ref(false)
 const darkmode = useStorage("cvDarkmode", Boolean)
@@ -28,12 +25,11 @@ function closeProjectInfoToogle() {
 </script>
 
 <template>
-  <div id="test" class="h-full flex-col bg-gray-700 flex" :style="{ backgroundColor: darkmode ? 'white' : '' }">
+  <div id="test" class="h-full flex-col relative bg-gray-700 flex" :style="{ backgroundColor: darkmode ? 'white' : '' }">
     <Navbar></Navbar>
     <div class="w-full h-full flex md:px-0 lg:px-20 xl:px-40">
       <div class="w-full flex relative h-full flex-col md:w-full bg-gray-800"
-        :style="{ backgroundColor: darkmode ? '#f9f8f8' : '' }">
-        <VAnotherProjectAnimation @click="router.push({name: 'secondCv'})">Resume 2</VAnotherProjectAnimation>
+      :style="{ backgroundColor: darkmode ? '#f9f8f8' : '' }">
         <VAIButton @click="openProjectInfoToogle"></VAIButton>
         <Intro id="intro"></Intro>
         <Tools id="tools"></Tools>

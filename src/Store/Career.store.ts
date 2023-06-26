@@ -44,7 +44,7 @@ export const useCareerStore = defineStore('career', () => {
           name: 'Upwork',
           date: '03/2022 - Now',
           title: 'Freelance Web Developer',
-          description: 'I have experience in sales and production.I am very good at communicating with customers.'
+          description: 'I work on entry level projects for a short time.'
         },
         {
           id: '6',

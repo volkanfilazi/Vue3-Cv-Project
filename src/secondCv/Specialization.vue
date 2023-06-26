@@ -33,10 +33,10 @@ const router = useRouter()
           <p class="text-yellow-400">Used Packages : <span class="text-white">{{ items.packages }}</span></p>
         </div>
         <div class="flex h-1/5 justify-center items-center md:mb-0">
-          <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Visit</VButton>
-          <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">
-            Visit
-          </VButton>
+          <VButton v-if="items.name === 'Second Cv'" @click="router.push({ name: 'secondCv' })">Live</VButton>
+          <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Live</VButton>
+          <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">Live</VButton>
+          <a href="https://github.com/volkanfilazi/DeskBookingSystem"><VButton v-if="items.name === 'Desk Booking System'">Github</VButton></a>
           <VButton v-if="items.name === 'Encryption'" disabled>Coming Soon</VButton>
         </div>
       </div>

@@ -12,24 +12,32 @@ const router = useRouter()
 </script>
 <template>
   <div id="specialization"
-    class="observed-sections flex p-2 md:p-0 flex-col mt-20 w-full items-center justify-center transition-all duration-500 relative md:h-screen gap-5">
-    <div class="flex flex-col md:mt-0 w-full justify-center items-center">
-      <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{ color: darkmode ? 'black' : '' }">
+    class="observed-sections flex md:p-2 flex-col mt-20 md:mt-40 w-full items-center justify-center transition-all duration-500 relative min-h-screen gap-5">
+    <div class="flex md:mt-0 w-full items-center">
+      <div class="w-full h-[1px] bg-white shadow-sm shadow-black" :class="[{'!bg-black' : darkmode},{'!shadow-red-500' : darkmode}]"></div>
+      <div class="flex">
+        <h1 class="text-white shadow-sm shadow-yellow-400 rounded-lg text-center border-[1px] p-1 font-bold text-[20px] md:text-[30px]" 
+        :style="[{ color: darkmode ? 'black' : '' },{ borderColor: darkmode ? 'black' : '' }]" :class="{'!shadow-red-500' : darkmode}">
         {{ $t('myspecialization') }}</h1>
+      </div>
+      <hr class="text-white w-full opacity-0">
     </div>
     <div
-      class="w-full md:w-4/5 text-white text-sm md:text-lg md:mt-5 md:h-1/2 flex flex-col gap-2 md:flex md:flex-row md:justify-between">
-      <div v-for="items in specializationStore.specializationArray"
-      
-        class="w-full h-[300px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-full transition-all duration-300 hover:border-yellow-400"
-        :class="[{ 'hover:!border-red-700': darkmode },{ 'border-black': darkmode }]">
+      class="w-full md:w-4/5 p-1 md:p-0 text-white text-sm md:text-lg md:mt-5 gap-2 md:h-1/2 grid grid-cols-1 md:grid-cols-3">
+      <div v-for="(items, index) in specializationStore.specializationArray"
+        class="w-full group border-[1px] flex flex-col md:h-[500px] transition-all duration-300 hover:border-yellow-400"
+        :class="[{ 'hover:!border-red-700': darkmode }, { 'border-black': darkmode }]">
 
         <div class="h-2/5 sm:h-1/3 flex items-center justify-center flex-col gap-5">
+          <div class="flex w-full items-center gap-1 px-2">
+              <p :class="{ '!text-black': darkmode }">Hosting : </p>
+              <div class="w-4 h-4 bg-green-500 rounded-full" :class="[{ '!bg-red-500': items.status === 'Offline' },{ '!bg-yellow-500': items.status === 'Continues' }]"></div>
+          </div>
           <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl"
             :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode }]">~ {{ items.name }} ~</h1>
           <Icon class="transition-all duration-300 group-hover:text-yellow-400"
-            :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode },]" :icon="items.image" width="36"
-            height="36" />
+            :class="[{ 'group-hover:!text-red-700': darkmode }, { 'text-black': darkmode },]" :icon="items.image"
+            width="36" height="36" />
         </div>
         <div class="h-2/5 sm:h-2/3 md:justify-center flex flex-col p-2">
           <p class="text-yellow-400" :style="{ color: darkmode ? 'red' : '' }">Project Thema : <span class="text-white"
@@ -40,10 +48,14 @@ const router = useRouter()
               :style="{ color: darkmode ? 'black' : '' }">{{ items.packages }}</span></p>
         </div>
         <div class="flex h-1/5 justify-center items-center md:mb-0">
-          <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Visit</VButton>
-          <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">Visit</VButton>
+          <VButton v-if="items.name === 'Second Cv'" @click="router.push({ name: 'secondCv' })">Live</VButton>
+          <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Live</VButton>
+          <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">Live</VButton>
+          <a href="https://github.com/volkanfilazi/DeskBookingSystem"><VButton v-if="items.name === 'Desk Booking System'">Github</VButton></a>
           <VButton v-if="items.name === 'Encryption'" disabled>Coming Soon</VButton>
+        </div>
+
       </div>
     </div>
   </div>
-</div></template>
+</template>

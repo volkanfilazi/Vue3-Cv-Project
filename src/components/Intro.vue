@@ -27,9 +27,17 @@ animationStore.introAnimation(displayText)
     class="flex relative flex-col sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
     <RightNavigation></RightNavigation>
     <div class="observed-sections w-full flex gap-5 flex-col mt-14 md:mt-0 md:h-screen justify-center items-center">
-      <div class="flex flex-col mt-10 md:mt-0 w-full justify-center items-center">
-        <h1 class="text-white font-bold text-[20px] md:text-[30px]" :style="{ color: darkmode ? 'black' : 'white' }">{{
-          $t('intro') }}</h1>
+      <div class="flex md:mt-0 w-full items-center mt-5">
+        <div class="w-full h-[1px] bg-white shadow-sm shadow-black"
+          :class="[{ '!bg-black': darkmode }, { '!shadow-red-500': darkmode }]"></div>
+        <div class="flex">
+          <h1
+            class="text-white shadow-sm shadow-yellow-400 rounded-lg text-center border-[1px] p-1 font-bold text-[20px] md:text-[30px]"
+            :style="[{ color: darkmode ? 'black' : '' }, { borderColor: darkmode ? 'black' : '' }]"
+            :class="{ '!shadow-red-500': darkmode }">
+            {{ $t('intro') }}</h1>
+        </div>
+        <hr class="text-white w-full opacity-0">
       </div>
       <div
         class="flex text-white mt-5 flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
@@ -41,10 +49,11 @@ animationStore.introAnimation(displayText)
           }}<span class=" text-yellow-400 animate-ping">|</span></p>
           <p class="text-yellow-400 md:text-lg font-bold" :style="{ color: darkmode ? 'red' : '' }">&lt;/code&gt;</p>
         </div>
-        <h1 class="text-2xl md:text-4xl font-bold text-white" :style="{ color: darkmode ? 'black' : '' }">{{ $t('myname')
+        <h1 class="text-2xl font-serif md:text-4xl font-bold text-white" :style="{ color: darkmode ? 'black' : '' }">{{
+          $t('myname')
         }}<span class="text-yellow-400" :style="{ color: darkmode ? 'red' : '' }"> VOLKAN
             FILAZI</span></h1>
-        <h2 class="text-sm md:text-2xl text-center sm:text-center md:text-start font-bold text-white"
+        <h2 class="text-sm font-serif md:text-2xl text-center sm:text-center md:text-start font-bold text-white"
           :style="{ color: darkmode ? 'black' : '' }">{{ $t('iamaweb') }}
         </h2>
         <div class="flex flex-col sm:flex-col md:flex-row text-white gap-3" :style="{ color: darkmode ? 'black' : '' }">
@@ -54,7 +63,8 @@ animationStore.introAnimation(displayText)
           }}</span> {{ $t('certificate') }}</p>
           <p><span class="text-yellow-400" :style="{ color: darkmode ? 'red' : '' }">+{{ animationStore.experience
           }}</span> {{ $t('yearsexperience') }}</p>
-          <p><span class="text-yellow-400" :style="{ color: darkmode ? 'red' : '' }">+{{ animationStore.languages }}</span>
+          <p><span class="text-yellow-400" :style="{ color: darkmode ? 'red' : '' }">+{{ animationStore.languages
+          }}</span>
             {{ $t('programlanguages') }}</p>
         </div>
         <div class="flex gap-5 p-2 transition-all duration-500">
