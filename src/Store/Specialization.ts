@@ -9,6 +9,7 @@ export const useSpecializationStore = defineStore('specialization', () => {
       {
         status: 'Online',
         liked: false,
+        numberOfLikes: 50,
         name: 'Shop',
         image: 'guidance:shop',
         thema: 'Shop, Order, Filter System, Checkout, Networking',
@@ -18,6 +19,7 @@ export const useSpecializationStore = defineStore('specialization', () => {
       {
         status: 'Online',
         liked: false,
+        numberOfLikes: 28,
         name: 'Intelligence Square',
         image: 'carbon:ibm-watson-knowledge-studio',
         thema: 'Knowledge Competition, Multiple categories, Local Backend',
@@ -27,6 +29,7 @@ export const useSpecializationStore = defineStore('specialization', () => {
       {
         status: 'Online',
         liked: false,
+        numberOfLikes: 20,
         name: 'Second Cv',
         image: 'mdi:resume',
         thema: 'Resume, Tools, Languages, Specialization',
@@ -36,6 +39,7 @@ export const useSpecializationStore = defineStore('specialization', () => {
       {
         status: 'Continues',
         liked: false,
+        numberOfLikes: 5,
         name: 'Encryption',
         image: 'carbon:ibm-cloud-hyper-protect-crypto-services',
         thema: 'Strengthen Passwords',
@@ -45,6 +49,7 @@ export const useSpecializationStore = defineStore('specialization', () => {
       {
         status: 'Offline',
         liked: false,
+        numberOfLikes: 12,
         name: 'Desk Booking System',
         image: 'tabler:brand-booking',
         thema: 'Login System, Desk Reservation, Admin Panel, Offices , Desks, Users',
