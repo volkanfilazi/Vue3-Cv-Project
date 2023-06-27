@@ -13,15 +13,15 @@ const router = useRouter()
 <template>
   <div id="specialization"
     class="observed-sections flex md:p-2 flex-col mt-20 md:mt-40 w-full items-center justify-center transition-all duration-500 relative min-h-screen gap-5">
-    <div class="flex md:mt-0 w-full items-center">
-      <div class="w-full h-[1px] bg-white shadow-sm shadow-black" :class="[{'!bg-black' : darkmode},{'!shadow-red-500' : darkmode}]"></div>
-      <div class="flex">
-        <h1 class="text-white shadow-sm shadow-yellow-400 rounded-lg text-center border-[1px] p-1 font-bold text-[20px] md:text-[30px]" 
-        :style="[{ color: darkmode ? 'black' : '' },{ borderColor: darkmode ? 'black' : '' }]" :class="{'!shadow-red-500' : darkmode}">
-        {{ $t('myspecialization') }}</h1>
+    <div class="flex md:mt-0 w-full items-center justify-center mt-5">
+          <h1
+            class="text-white rounded-lg text-center p-1 font-bold text-[20px] md:text-[30px]"
+            :style="[{ color: darkmode ? 'black' : '' }, { borderColor: darkmode ? 'black' : '' }]"
+            :class="{ '!shadow-red-500': darkmode }">
+            {{ $t('myspecialization') }}</h1>
       </div>
-      <hr class="text-white w-full opacity-0">
-    </div>
+      <input class="outline-none bg-transparent focus:text-yellow-400 focus:border-yellow-400 px-3 border-[1px] rounded-md w-1/2 p-1" placeholder="Search a project name" type="text"
+      :class="[{'!border-black' : darkmode},{'!text-black' : darkmode}]">
     <div
       class="w-full md:w-4/5 p-1 md:p-0 text-white text-sm md:text-lg md:mt-5 gap-2 md:h-1/2 grid grid-cols-1 md:grid-cols-3">
       <div v-for="(items, index) in specializationStore.specializationArray"
@@ -54,7 +54,6 @@ const router = useRouter()
           <a href="https://github.com/volkanfilazi/DeskBookingSystem"><VButton v-if="items.name === 'Desk Booking System'">Github</VButton></a>
           <VButton v-if="items.name === 'Encryption'" disabled>Coming Soon</VButton>
         </div>
-
       </div>
     </div>
   </div>
