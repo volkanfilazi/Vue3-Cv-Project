@@ -26,18 +26,13 @@ animationStore.introAnimation(displayText)
   <div
     class="flex relative flex-col sm:mt-20 md:mt-0 sm:flex-col md:h-full md:z-10 md:flex-row md:justify-center md:items-center">
     <RightNavigation></RightNavigation>
-    <div class="observed-sections w-full flex gap-5 flex-col mt-14 md:mt-0 md:h-screen justify-center items-center">
-      <div class="flex md:mt-0 w-full items-center mt-5">
-        <div class="w-full h-[1px] bg-white shadow-sm shadow-black"
-          :class="[{ '!bg-black': darkmode }, { '!shadow-red-500': darkmode }]"></div>
-        <div class="flex">
+    <div class="observed-sections w-full flex gap-2 flex-col mt-14 md:mt-0 md:h-screen justify-center items-center">
+      <div class="flex md:mt-0 w-full items-center justify-center mt-5">
           <h1
-            class="text-white shadow-sm shadow-yellow-400 rounded-lg text-center border-[1px] p-1 font-bold text-[20px] md:text-[30px]"
+            class="text-white rounded-lg text-center p-1 font-bold text-[20px] md:text-[30px]"
             :style="[{ color: darkmode ? 'black' : '' }, { borderColor: darkmode ? 'black' : '' }]"
             :class="{ '!shadow-red-500': darkmode }">
             {{ $t('intro') }}</h1>
-        </div>
-        <hr class="text-white w-full opacity-0">
       </div>
       <div
         class="flex text-white mt-5 flex-col items-center sm:items-center md:justify-center md:items-center w-full space-y-10 p-2 sm:w-full md:w-1/2">
