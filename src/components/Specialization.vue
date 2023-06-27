@@ -69,9 +69,9 @@ function likeUpdate(index) {
               :style="{ color: darkmode ? 'black' : '' }">{{ items.packages }}</span></p>
         </div>
         <div class="flex h-1/5 justify-center items-center md:mb-0">
-          <VButton v-if="items.name === 'Second Cv'" @click="router.push({ name: 'secondCv' })">Live</VButton>
-          <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Live</VButton>
-          <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">Live
+          <VButton v-if="items.name === 'Second Cv'" @click="router.push({ name: 'secondCv' })">Live Preview</VButton>
+          <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Live Preview</VButton>
+          <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">Live Preview
           </VButton>
           <a href="https://github.com/volkanfilazi/DeskBookingSystem">
             <VButton v-if="items.name === 'Desk Booking System'">Github</VButton>
