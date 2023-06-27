@@ -16,8 +16,10 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Features
 
-- A CV project that includes my personal skills.
-- Some of my projects i have created before.
+- A portfolio project made to show my skills.
+- Other projects integrated into the project are supported by real web hosting.
+- Using vue3 html tailwindcss and typescript in the project.
+- The project was split with the vue3 component feature in a way that users can understand
 
 ## Installation
 
