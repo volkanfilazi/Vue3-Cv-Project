@@ -10,15 +10,15 @@ const router = useRouter()
 </script>
 
 <template>
-  <div class="flex flex-col h-full md:flex-row w-3/3 md:h-full">
+  <div class="flex flex-col h-full md:flex-row md:items-center w-3/3 md:h-full">
     <div class="flex items-center w-full md:w-1/4">
       <h1 class="text-white w-full text-center p-5 md:-rotate-90 font-bold tracking-widest text-3xl md:text-5xl">
         Specialization</h1>
     </div>
 
-    <div class="md:w-3/4 flex flex-col h-full md:flex-row gap-2 items-center justify-center text-white">
+    <div class="w-full md:w-4/5 p-1 md:p-0 text-white text-sm md:text-lg md:mt-5 gap-2 md:h-1/2 grid grid-cols-1 md:grid-cols-3">
       <div v-for="items in specializationStore.specializationArray"
-        class="w-full h-[300px] sm:h-[300px] md:w-1/2 group border-[1px] flex flex-col md:h-1/2 transition-all duration-300 hover:border-yellow-400">
+        class="w-full group border-[1px] flex flex-col md:h-[1/2] transition-all duration-300 hover:border-yellow-400">
 
         <div class="h-2/5 sm:h-1/3 flex items-center justify-center flex-col gap-5">
           <h1 class="transition-all duration-300 group-hover:text-yellow-400 text-center text-xl">~ {{ items.name }} ~
