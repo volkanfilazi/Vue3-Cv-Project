@@ -60,7 +60,7 @@ const vue = ref('')
                   :class="{ 'animate-bounce': likeAnimation[index] && like[index] }">{{ likeAnimation[index] &&
                     like[index]
                     ? '+1' : '' }}</span>
-                <p>{{ like[index] ? items.numberOfLikes + 1 : items.numberOfLikes }}</p>
+                <p :class="{'!text-black' : darkmode}">{{ like[index] ? items.numberOfLikes + 1 : items.numberOfLikes }}</p>
               </div>
               <Icon @click="likeUpdate(index)" class="cursor-pointer text-gray-500" icon="icon-park-solid:like" width="30"
                 height="30" :class="{ 'text-yellow-400': like[index] }" />
