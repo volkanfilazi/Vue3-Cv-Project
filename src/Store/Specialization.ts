@@ -5,6 +5,13 @@ export const useSpecializationStore = defineStore('specialization', () => {
   
     const shopApp = ref(['Vue.js','HTML','CSS','Tailwind','Typescript','Axios'])
     const copySpecializationArray = ref<any[]>([])
+    const hostingSelected = ref('')
+    const ratingSelected = ref('')
+    const vue = ref(false)
+    const typescript = ref(false)
+    const kotlin = ref(false)
+
+
     const specializationArray = [
       {
         status: 'Online',
@@ -69,9 +76,133 @@ export const useSpecializationStore = defineStore('specialization', () => {
     ]
 
     copySpecializationArray.value = specializationArray
+
+    function vueSelected() {
+      if (vue.value === true) {
+        copySpecializationArray.value = copySpecializationArray.value.filter((item) =>
+          item.frameworks.includes('Vue.js')
+        );
+      }
+      else if(vue.value === false){
+        copySpecializationArray.value = specializationArray
+      }
+      else if(typescript.value === true){
+        typescriptSelected()
+      }
+      else if(kotlin.value === true){
+        kotlinSelected()
+      }
+      else if(hostingSelected.value.length > 0){
+        selectedHosting()
+      }
+      else if(ratingSelected.value.length > 0){
+        filterRating()
+      }
+    }
+
+    function kotlinSelected() {
+      if (kotlin.value === true) {
+        copySpecializationArray.value = copySpecializationArray.value.filter((item) =>
+          item.frameworks.includes('Kotlin')
+        );
+      }else if(kotlin.value === false){
+        copySpecializationArray.value = specializationArray
+      }
+      else if(vue.value === true){
+        vueSelected()
+      }
+      else if(typescript.value === true){
+        typescriptSelected()
+      }
+      else if(hostingSelected.value.length > 0){
+        selectedHosting()
+      }
+      else if(ratingSelected.value.length > 0){
+        filterRating()
+      }
+      
+    }
+
+    function typescriptSelected() {
+      if (typescript.value === true) {
+        copySpecializationArray.value = copySpecializationArray.value.filter((item) =>
+          item.frameworks.includes('Typescript')
+        );
+      }
+      else if(vue.value === true){
+        vueSelected()
+      }
+      else if(kotlin.value === true){
+        kotlinSelected()
+      }
+      else if(typescript.value === false){
+        copySpecializationArray.value = specializationArray
+      }
+      else if(hostingSelected.value.length > 0){
+        selectedHosting()
+      }
+      else if(ratingSelected.value.length > 0){
+        filterRating()
+      }
+    }
+
+    function selectedHosting(){
+      if(hostingSelected.value === 'Online'){
+        copySpecializationArray.value = copySpecializationArray.value.filter((item) => item.status === 'Online')
+      }
+      if(hostingSelected.value === 'Offline'){
+        copySpecializationArray.value = copySpecializationArray.value.filter((item) => item.status === 'Offline')
+      }
+      if(hostingSelected.value === 'Coming Soon'){
+        copySpecializationArray.value = copySpecializationArray.value.filter((item) => item.status === 'Continues')
+      }
+    }
+
+    function filterRating(){
+      if(ratingSelected.value === 'High rating'){
+        const hightToLow = copySpecializationArray.value.sort((a, b) => {
+          const ratingA = parseFloat(a.numberOfLikes)
+          const ratingB = parseFloat(b.numberOfLikes)
+    
+          if (ratingA < ratingB) {
+            return 1
+          }
+          if (ratingA > ratingB) {
+            return -1
+          }
+          return 0
+        })
+        copySpecializationArray.value = hightToLow
+      }
+      if(ratingSelected.value === 'Low rating'){
+        const hightToLow = copySpecializationArray.value.sort((a, b) => {
+          const ratingA = parseFloat(a.numberOfLikes)
+          const ratingB = parseFloat(b.numberOfLikes)
+    
+          if (ratingA > ratingB) {
+            return 1
+          }
+          if (ratingA < ratingB) {
+            return -1
+          }
+          return 0
+        })
+        copySpecializationArray.value = hightToLow
+      }
+    }
     return {
       shopApp,
       specializationArray,
-      copySpecializationArray   
+      copySpecializationArray,
+      selectedHosting,
+      hostingSelected,
+      filterRating,
+      ratingSelected,
+      typescriptSelected,
+      typescript,
+      kotlinSelected,
+      kotlin,
+      vueSelected,
+      vue 
     }
 })
