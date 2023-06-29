@@ -17,7 +17,7 @@ export const useNavbarStore = defineStore('navbar',() =>{
     },
     {
       link: '#specialization',
-      name: 'Specialization'
+      name: 'Projects'
     },
     {
       link: '#myresume',

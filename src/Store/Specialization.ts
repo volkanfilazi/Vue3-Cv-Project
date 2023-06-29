@@ -160,7 +160,7 @@ export const useSpecializationStore = defineStore('specialization', () => {
 
     function filterRating(){
       if(ratingSelected.value === 'High rating'){
-        const hightToLow = copySpecializationArray.value.sort((a, b) => {
+        copySpecializationArray.value = copySpecializationArray.value.sort((a, b) => {
           const ratingA = parseFloat(a.numberOfLikes)
           const ratingB = parseFloat(b.numberOfLikes)
     
@@ -172,10 +172,9 @@ export const useSpecializationStore = defineStore('specialization', () => {
           }
           return 0
         })
-        copySpecializationArray.value = hightToLow
       }
       if(ratingSelected.value === 'Low rating'){
-        const hightToLow = copySpecializationArray.value.sort((a, b) => {
+        copySpecializationArray.value = copySpecializationArray.value.sort((a, b) => {
           const ratingA = parseFloat(a.numberOfLikes)
           const ratingB = parseFloat(b.numberOfLikes)
     
@@ -187,8 +186,15 @@ export const useSpecializationStore = defineStore('specialization', () => {
           }
           return 0
         })
-        copySpecializationArray.value = hightToLow
       }
+    }
+
+    function clearAllFilters(){
+      kotlin.value = false
+      vue.value = false
+      typescript.value = false
+      ratingSelected.value = ''
+      hostingSelected.value = ''
     }
     return {
       shopApp,
@@ -203,6 +209,7 @@ export const useSpecializationStore = defineStore('specialization', () => {
       kotlinSelected,
       kotlin,
       vueSelected,
-      vue 
+      vue,
+      clearAllFilters 
     }
 })
