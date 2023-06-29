@@ -6,7 +6,7 @@ import { useSpecializationStore } from '../Store/Specialization';
 import { useStorage } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
 import ProjectsFilter from './ProjectsFilter.vue';
-
+import ProjectsFilterBar from './ProjectsFilterBar.vue'
 const specializationStore = useSpecializationStore()
 const darkmode = useStorage("cvDarkmode", Boolean)
 const like = useStorage("like", Array(specializationStore.specializationArray.length).fill(false))
@@ -27,22 +27,22 @@ const vue = ref('')
 </script>
 <template>
   <div id="specialization"
-    class="observed-sections flex md:p-2 flex-col mt-20 md:mt-40 w-full items-center justify-center transition-all duration-500 relative min-h-screen">
+    class="observed-sections flex md:p-2 p-1 flex-col mt-20 md:mt-40 w-full transition-all duration-500 relative min-h-screen">
     <div class="flex md:mt-0 w-full items-center justify-center mt-5">
       <h1 class="text-white rounded-lg text-center p-1 font-bold text-[20px] md:text-[30px]"
         :style="[{ color: darkmode ? 'black' : '' }, { borderColor: darkmode ? 'black' : '' }]"
         :class="{ '!shadow-red-500': darkmode }">
-        {{ $t('myspecialization') }}</h1>
+        {{ $t('Projects') }}</h1>
     </div>
     <input
-      class="outline-none bg-transparent focus:text-yellow-400 focus:border-yellow-400 px-3 border-[1px] rounded-md w-1/2 p-1"
+      class="w-full outline-none bg-transparent focus:text-yellow-400 focus:border-yellow-400 px-3 border-[1px] rounded-md  p-1"
       placeholder="Search a project name" type="text"
       :class="[{ '!border-black': darkmode }, { '!text-black': darkmode }]">
-    <div class="border-[1px] w-full h-10 mt-2"></div>
+    <ProjectsFilterBar></ProjectsFilterBar>
     <div class="flex flex-col md:flex-row mt-2 w-full gap-2">
       <ProjectsFilter></ProjectsFilter>
       <div
-        class="w-full lg:w-4/5 p-1 md:p-0 text-white text-sm md:text-lg gap-2 md:h-1/2 grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+        class="w-full lg:w-4/5 md:p-0 text-white text-sm md:text-lg gap-2 md:h-1/2 grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         <div v-for="(items, index) in specializationStore.copySpecializationArray"
           class="w-full group border-[1px] flex flex-col md:h-[500px] transition-all duration-300 hover:border-yellow-400"
           :class="[{ 'hover:!border-red-700': darkmode }, { 'border-black': darkmode }]">
