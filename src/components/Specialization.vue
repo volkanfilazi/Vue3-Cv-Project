@@ -7,11 +7,22 @@ import { useStorage } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
 import ProjectsFilter from './ProjectsFilter.vue';
 import ProjectsFilterBar from './ProjectsFilterBar.vue'
+
 const specializationStore = useSpecializationStore()
 const darkmode = useStorage("cvDarkmode", Boolean)
 const like = useStorage("like", Array(specializationStore.specializationArray.length).fill(false))
 const likeAnimation = ref(Array(specializationStore.specializationArray.length).fill(false))
 const router = useRouter()
+
+function intelligenceSquareOpenNewTab() {
+  const routeURL = router.resolve({ name: 'intelligenceSquare' }).href;
+  window.open(routeURL, '_blank');
+}
+
+function shopOpenNewTab() {
+  const routeURL = router.resolve({ name: 'shop' }).href;
+  window.open(routeURL, '_blank');
+}
 
 function likeUpdate(index) {
   likeAnimation.value[index] = true
@@ -20,9 +31,6 @@ function likeUpdate(index) {
     likeAnimation.value[index] = false
   }, 2000)
 }
-
-const vue = ref('')
-
 
 </script>
 <template>
@@ -34,15 +42,12 @@ const vue = ref('')
         :class="{ '!shadow-red-500': darkmode }">
         {{ $t('Projects') }}</h1>
     </div>
-    <input
-      class="w-full outline-none bg-transparent focus:text-yellow-400 focus:border-yellow-400 px-3 border-[1px] rounded-md  p-1"
-      placeholder="Search a project name" type="text"
-      :class="[{ '!border-black': darkmode }, { '!text-black': darkmode }]">
     <ProjectsFilterBar></ProjectsFilterBar>
     <div class="flex flex-col md:flex-row mt-2 w-full gap-2">
       <ProjectsFilter></ProjectsFilter>
       <div
-        class="w-full lg:w-4/5 md:p-0 text-white text-sm md:text-lg gap-2 md:h-1/2 grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+        class="w-full lg:w-4/5 md:p-0 text-white text-sm md:text-lg gap-2 md:h-1/2 grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3" 
+        :class="{'lg:!w-full' : !specializationStore.mainFilterToggle}">
         <div v-for="(items, index) in specializationStore.copySpecializationArray"
           class="w-full group border-[1px] flex flex-col md:h-[500px] transition-all duration-300 hover:border-yellow-400"
           :class="[{ 'hover:!border-red-700': darkmode }, { 'border-black': darkmode }]">
@@ -87,17 +92,18 @@ const vue = ref('')
           </div>
 
           <div class="flex h-1/5 justify-center mt-5 md:mt-0 items-center md:mb-0">
-            <VButton v-if="items.name === 'Shop'" @click="router.push({ name: 'shop' })">Live Preview</VButton>
-            <VButton v-if="items.name === 'Intelligence Square'" @click="router.push({ name: 'intelligenceSquare' })">Live
-              Preview
-            </VButton>
-            <a href="https://github.com/volkanfilazi/DeskBookingSystem">
+            <VButton v-if="items.name === 'Shop'" @click="shopOpenNewTab()">Live Preview</VButton>
+            <VButton v-if="items.name === 'Intelligence Square'" @click="intelligenceSquareOpenNewTab()">Live Preview</VButton>
+          
+            <a href="https://github.com/volkanfilazi/DeskBookingSystem" target="_blank">
               <VButton v-if="items.name === 'Desk Booking System'">Github</VButton>
             </a>
             <VButton v-if="items.name === 'Second Cv'" @click="router.push({ name: 'secondCv' })" disabled>Coming Soon
             </VButton>
             <VButton v-if="items.name === 'Encryption'" disabled>Coming Soon</VButton>
-            <VButton v-if="items.name === 'Codagram'" disabled>Coming Soon</VButton>
+            <a href="https://github.com/volkanfilazi/Android-Kotlin-Codagram" target="_blank">
+              <VButton v-if="items.name === 'Codagram'">Github</VButton>
+            </a>
           </div>
         </div>
       </div>
