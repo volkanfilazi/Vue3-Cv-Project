@@ -17,7 +17,7 @@ const prop = withDefaults(defineProps<Props>(), {
 
 <template>
   <button :click="openProjectInfoToogle"
-    class="absolute z-20 cursor-pointer p-1 text-white right-[45%] md:right-20 top-5 md:top-20 hover:border-yellow-400 transition-all duration-300 border-[1px] rounded-md"
+    class="absolute z-20 cursor-pointer p-1 text-white right-[20%] md:right-20 top-5 md:top-20 hover:border-yellow-400 transition-all duration-300 border-[1px] rounded-md"
     :class="[{ 'hover:!border-red-500': darkmode }, { 'border-black': darkmode }]">
     <Icon class="text-yellow-400" icon="mdi:robot" width="36" height="36" :style="{ color: darkmode ? 'red' : '' }" />
   </button>

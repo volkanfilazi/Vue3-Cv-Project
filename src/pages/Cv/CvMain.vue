@@ -11,6 +11,7 @@ import { ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 import BottomNavigation from '../../components/BottomNavigation.vue'
 import VAIButton from '../../components/V-Base/V-AIButton.vue'
+import VDownloadResume from '../../components/V-Base/V-DownloadResume.vue'
 
 const projectInfoToogle = ref(false)
 const darkmode = useStorage("cvDarkmode", Boolean)
@@ -30,6 +31,7 @@ function closeProjectInfoToogle() {
     <div class="w-full h-full flex md:px-0 lg:px-20 xl:px-40">
       <div class="w-full flex relative h-full flex-col md:w-full bg-gray-800"
       :style="{ backgroundColor: darkmode ? '#f9f8f8' : '' }">
+        <VDownloadResume></VDownloadResume>
         <VAIButton @click="openProjectInfoToogle"></VAIButton>
         <Intro id="intro"></Intro>
         <Tools id="tools"></Tools>
