@@ -22,7 +22,7 @@ const ratingToogle = ref(true)
 </script>
 
 <template>
-  <div v-if="specializationStore.mainFilterToggle" class=" lg:w-1/5 border-[1px] p-2" :class="{'!border-black' : darkmode}">
+  <div v-if="specializationStore.mainFilterToggle" class="lg:w-1/5 h-full w-full border-[1px] p-2" :class="{'!border-black' : darkmode}">
     <div class="flex justify-between cursor-pointer" @click="advancedToogle = !advancedToogle">
       <h1 class="text-yellow-400 font-bold" :class="{'!text-red-600' : darkmode}">Advanced Filter</h1>
       <Icon v-if="advancedToogle" class="w-5 h-5" icon="mdi:arrow-bottom" color="white" />

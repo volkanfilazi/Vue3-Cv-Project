@@ -43,12 +43,16 @@ function likeUpdate(index) {
         {{ $t('Projects') }}</h1>
     </div>
     <ProjectsFilterBar></ProjectsFilterBar>
-    <div class="flex flex-col md:flex-row mt-2 w-full gap-2">
+    <div class="flex flex-col md:flex-row mt-2 w-full justify-center gap-2" :class="{'items-center' : specializationStore.copySpecializationArray.length <= 0}">
       <ProjectsFilter></ProjectsFilter>
       <div
         class="w-full lg:w-4/5 md:p-0 text-white text-sm md:text-lg gap-2 md:h-1/2 grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3" 
-        :class="{'lg:!w-full' : !specializationStore.mainFilterToggle}">
-        <div v-for="(items, index) in specializationStore.copySpecializationArray"
+        :class="[{'lg:!w-full' : !specializationStore.mainFilterToggle},
+        {'!flex' : specializationStore.copySpecializationArray.length <= 0},
+        {'!items-center' : specializationStore.copySpecializationArray.length <= 0},
+        {'!justify-center' : specializationStore.copySpecializationArray.length <= 0},
+        ]">
+        <div v-if="specializationStore.copySpecializationArray.length > 0" v-for="(items, index) in specializationStore.copySpecializationArray"
           class="w-full group border-[1px] flex flex-col md:h-[500px] transition-all duration-300 hover:border-yellow-400"
           :class="[{ 'hover:!border-red-700': darkmode }, { 'border-black': darkmode }]">
 
@@ -105,6 +109,11 @@ function likeUpdate(index) {
               <VButton v-if="items.name === 'Codagram'">Github</VButton>
             </a>
           </div>
+        </div>
+        <div v-else class="w-full flex flex-col items-center lg:w-4/5 md:p-0 text-white text-sm md:text-lg gap-2">
+          <Icon icon="ph:bag-fill" width="42" height="42" color="white" />
+          <p class="w-full text-center">Project not found</p>
+          <p class="w-full text-center">Check the selected filters or try other search criteria.</p>
         </div>
       </div>
     </div>
