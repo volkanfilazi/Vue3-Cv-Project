@@ -29,8 +29,13 @@ npm run dev
 ```
 
 ## Live View
+Vue3 Version
 ```
 https://www.volkanfilazi.at/
+```
+Angular Version
+```
+https://www.volkanfilazi.de/
 ```
 
 ## Languages and Packages used
