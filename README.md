@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Volki Filazi Personal Cv</h1>
+  <h1>Vue3 Personal Cv</h1>
   <h3>projects added as portfolio</h3>
   <h2>Shop Project</h2>
   <h3>And</h3>
@@ -26,6 +26,11 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 ```
 npm install
 npm run dev
+```
+
+## Live View
+```
+https://www.volkanfilazi.at/
 ```
 
 ## Languages and Packages used
