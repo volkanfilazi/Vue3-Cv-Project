@@ -102,8 +102,11 @@ function likeUpdate(index) {
             <a href="https://github.com/volkanfilazi/DeskBookingSystem" target="_blank">
               <VButton v-if="items.name === 'Desk Booking System'">Github</VButton>
             </a>
-            <VButton v-if="items.name === 'Second Cv'" @click="router.push({ name: 'secondCv' })" disabled>Coming Soon
-            </VButton>
+            <a href="https://volkanfilazi.de/" target="_blank">
+              <VButton v-if="items.name === 'Second Cv'" >Live Preview
+            </VButton>           
+          </a>
+            
             <VButton v-if="items.name === 'Encryption'" disabled>Coming Soon</VButton>
             <a href="https://github.com/volkanfilazi/Android-Kotlin-Codagram" target="_blank">
               <VButton v-if="items.name === 'Codagram'">Github</VButton>

@@ -29,7 +29,7 @@ onMounted(async () => {
   <div class="flex lg:w-5/6 flex-col bg-[#f6eeff]">
     <FilterBar></FilterBar>
     <div class="w-full flex flex-col md:flex-row md:p-5 gap-1 bg-[#f6eeff]">
-      <div class="flex flex-col w-full px-1 md:px-[200px]">
+      <div class="flex flex-col w-full px-1 xl:px-[200px]">
         <CategoriesBar></CategoriesBar>
         <ProductList></ProductList>
         <ProductListSkeleton></ProductListSkeleton>

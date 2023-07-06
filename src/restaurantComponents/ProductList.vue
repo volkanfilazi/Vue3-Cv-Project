@@ -22,7 +22,7 @@ async function addCartAndSendtoBasket(productId: number, title: string, price: s
 
 <template>
   <div v-if="shopStore.allProductsClone.length > 0" class="md:w-full mt-5 gap-3 grid grid-cols-1 w-full"
-    :class="{ 'grid lg:grid-cols-3': shopStore.allProductsClone.length > 0 }">
+    :class="{ 'grid md:grid-cols-2 xl:grid-cols-3 w-full': shopStore.allProductsClone.length > 0 }">
     <div  class="p-2 rounded-md bg-white h-[200px] relative md:mt-3 cursor-pointer flex"
       v-for="products in shopStore.allProductsClone">
       <div v-if="products.id > 0 && products.id < 5"
