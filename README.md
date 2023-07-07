@@ -45,6 +45,7 @@ https://www.volkanfilazi.de/
 - TailwindCss
 - Vite
 - Axios
+- Iconify
 
 ## License
 
